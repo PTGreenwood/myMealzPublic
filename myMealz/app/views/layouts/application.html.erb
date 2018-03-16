@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Blog</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>MyMealz</title>
+    <%= csrf_meta_tags %>
 
-<%= yield %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-</body>
+  <body>
+    <!-- Anything that is done on this page, happens on every single other page aswell -->
+
+
+    <!-- Load in Ruby HTML.erb nav into every page -->
+    <%= render '/layouts/nav' %>
+    <!-- Yield says what to be rendered -->
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>
