@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   #Define route URL
   # '#' is refferring to a method
   root 'pages#index'

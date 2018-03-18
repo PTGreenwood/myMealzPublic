@@ -10,12 +10,12 @@
 
   <body>
     <!-- Anything that is done on this page, happens on every single other page aswell -->
-
-
     <!-- Load in Ruby HTML.erb nav into every page -->
     <%= render '/layouts/nav' %>
     <!-- Yield says what to be rendered -->
     <div class="container">
+      <span class="notice"><%= notice %></span >
+      <span class="alert"><%= alert %></span>
       <%= yield %>
     </div>
   </body>

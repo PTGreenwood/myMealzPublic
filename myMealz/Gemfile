@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.1.4'
 gem 'sqlite3'
 
+# Using Devise Gems
+#https://rubygems.org/gems/devise
+#Flexible authentication solution for Rails with Warden
+gem 'devise'
+
+
 # Jquery for rails
 gem 'jquery-rails'
 
