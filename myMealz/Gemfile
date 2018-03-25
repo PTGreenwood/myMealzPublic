@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.4'
-gem 'sqlite3'
-
+#gem 'sqlite3'
+gem 'mysql2'
+#mySQL instead of sqlite3
+gem 'yaml_db'
 # Using Devise Gems
 #https://rubygems.org/gems/devise
 #Flexible authentication solution for Rails with Warden
