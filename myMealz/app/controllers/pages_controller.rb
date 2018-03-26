@@ -1,12 +1,19 @@
 # The pages controller contains all of the code for any page inside of /pages
 class PagesController < ApplicationController
+skip_before_action :authenticate_user!, :only => [:index]
+#This means that it will skip the before action define din application_controller (SITE WIDE CONTROLLER)
+#add not have authentication on the landing page.
 
   #backend code for pages/index
+
+  #Index is landing page.
   def index
+
   end
 
   #backend code for pages/home
   def home
+
   end
 
   #backend code for pages/profile

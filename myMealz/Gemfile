@@ -10,6 +10,9 @@ gem 'yaml_db'
 #Flexible authentication solution for Rails with Warden
 gem 'devise'
 
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+gem 'cancancan'
 
 # Jquery for rails
 gem 'jquery-rails'
