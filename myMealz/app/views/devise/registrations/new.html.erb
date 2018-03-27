@@ -36,6 +36,31 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="dropdown">
+    <%= f.label :dietitianID %>
+    <%= f.text_field :dietitianID %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin_role %>
+    <%= f.check_box :admin_role %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dietitian_role%>
+    <%= f.check_box :dietitian_role %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_role %>
+    <%= f.check_box :user_role %>
+  </div>
+
+  <div class="field">
+    <%= f.label :practiceid %>
+    <%= f.select :practiceid, options_for_select(practiceID_options),  { prompt: 'Choose Diet ID'} %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

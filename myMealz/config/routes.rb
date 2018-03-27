@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+
+  devise_for :clients, path: 'clients', controllers: { sessions: "clients/sessions" } #e.g. /clients/sign_in
+  devise_scope :clients do
+    get 'clients/login', to: 'clients/sessions#new'
+    get 'clients/sign_up', to: 'clients/sessions#create'
+    delete 'clients/logout', to: 'clients/sessions#destroy'
+  end
+
+  devise_for :users, path: 'users', controllers: { sessions: "devise/sessions" }
+  devise_scope :users do
+    get 'users/login', to: 'devise/sessions#new'
+    delete 'users/logout', to: 'devise/sessions#destroy'
+  end
   #Define route URL
   # '#' is refferring to a method
   root 'pages#index'
