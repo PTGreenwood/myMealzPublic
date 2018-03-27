@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         has_many :SavedMeals
-
   after_create :send_admin_mail
 
   def send_admin_mail

@@ -1,0 +1,78 @@
+
+---
+ar_internal_metadata:
+  columns:
+  - key
+  - value
+  - created_at
+  - updated_at
+  records: 
+  - - environment
+    - development
+    - 2018-03-25 13:06:03.000000000 Z
+    - 2018-03-25 13:06:03.000000000 Z
+
+---
+saved_meals:
+  columns:
+  - saved_meals_id
+  - content
+  - user_id
+  records: 
+  - - 1
+    - content
+    - 1
+  - - 2
+    - content
+    - 1
+  - - 3
+    - content
+    - 1
+  - - 4
+    - content
+    - 1
+
+---
+users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  - username
+  - firstname
+  - lastname
+  - dietitianID
+  - admin_role
+  - dietitian_role
+  - user_role
+  records: 
+  - - 1
+    - mysqltest@email.com
+    - "$2a$11$YaujfQ9m5XPQAFvLPxRAgux7dt4RkvPXu79H2JJfMdNp93bHpgn3S"
+    - 
+    - 
+    - 
+    - 9
+    - 2018-03-26 08:46:16.000000000 Z
+    - 2018-03-26 08:44:27.000000000 Z
+    - "::1"
+    - "::1"
+    - 2018-03-25 13:13:35.000000000 Z
+    - 2018-03-26 08:46:16.000000000 Z
+    - mysqlworking
+    - '123'
+    - '123456'
+    - 
+    - true
+    - false
+    - false

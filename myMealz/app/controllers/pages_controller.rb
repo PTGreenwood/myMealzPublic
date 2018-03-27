@@ -26,8 +26,8 @@ skip_before_action :authenticate_user!, :only => [:index]
       redirect_to root_path, :notice=> "User not found!"
     end
 
-    @savedmeals = SavedMeal.all.where("user_id = ?", User.find_by_username(params[:id]).id)
-    @newSavedMeal = SavedMeal.new
+    #@savedmeals = SavedMeal.all.where("user_id = ?", User.find_by_username(params[:id]).id)
+    #@newSavedMeal = SavedMeal.new
   end
 
   #backend code for pages/explore
@@ -35,6 +35,6 @@ skip_before_action :authenticate_user!, :only => [:index]
 
     #Display all Saved Meals here.. Not where we want it but ohwell.
     #Shows how to show all recipes.. or something of the like
-    @savedmeals = SavedMeal.all
+    #@savedmeals = SavedMeal.all
   end
 end

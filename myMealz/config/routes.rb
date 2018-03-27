@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  resources :saved_meals
   #Define route URL
   # '#' is refferring to a method
   root 'pages#index'
