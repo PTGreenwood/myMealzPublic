@@ -37,14 +37,14 @@
   </div>
 
   <div class="dropdown">
-    <%= f.label :dietitianID %>
-    <%= f.text_field :dietitianID %>
+    <%= f.label :dieititanID %>
+    <%= f.text_field :dieititanID %>
   </div>
 
-  <div class="field">
-    <%= f.label :admin_role %>
-    <%= f.check_box :admin_role %>
-  </div>
+  <!--<div class="field">-->
+    <%#= f.label :admin_role %>
+    <%#= f.check_box :admin_role %>
+  <!--</div>-->
 
   <div class="field">
     <%= f.label :dietitian_role%>
@@ -55,15 +55,19 @@
     <%= f.label :user_role %>
     <%= f.check_box :user_role %>
   </div>
-
+  <br>
   <div class="field">
-    <%= f.label :practiceid %>
-    <%= f.select :practiceid, options_for_select(practiceID_options),  { prompt: 'Choose Diet ID'} %>
+    <% @labelName = "Practice: " %>
+    <%= f.label @labelName%>
+    <!-- Practciedetails is name of table...
+    That contains the link between this user's ID number + chosen Practice (from the list) -->
+    <%= f.select :practicedetails, options_for_select(practiceID_options),  { prompt: 'Choose Diet ID'} %>
   </div>
 
+  <br>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" Is login name %>

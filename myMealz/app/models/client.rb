@@ -4,9 +4,9 @@ class Client < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
-  has_one :contract
+  #has_one :contract
   #where users are dietitians, so they only have one of them
-  has_one :users, through: :contract
+  #has_one :users, through: :contract
 
 
  #after_create :send_admin_mail

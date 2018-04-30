@@ -12,8 +12,6 @@ module ApplicationHelper
   def practiceID_options
     practiceid_array = Array.new()
 
-
-
     Practice.find_each do |element|
       practiceid_array.push(element.name)
     end

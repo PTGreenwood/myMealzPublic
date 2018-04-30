@@ -1,6 +1,8 @@
 # The pages controller contains all of the code for any page inside of /pages
 class PagesController < ApplicationController
-skip_before_action :authenticate_user!, :only => [:index]
+
+  skip_before_action :authenticate_user!, :only => [:index]
+
 #This means that it will skip the before action define din application_controller (SITE WIDE CONTROLLER)
 #add not have authentication on the landing page.
 
@@ -21,8 +23,8 @@ skip_before_action :authenticate_user!, :only => [:index]
     #grab the username from the URL as :id (check routes.rb)
     if (User.find_by_username(params[:id]))
       @username = params[:id] #<-- Specified in routes as user/:id which is a constant immutatble symbol value
-    else
       #redirect to 404 (root for now)
+    else
       redirect_to root_path, :notice=> "User not found!"
     end
 

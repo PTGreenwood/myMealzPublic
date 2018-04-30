@@ -25,8 +25,18 @@ ActiveRecord::Schema.define(version: 20180327044529) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "firstname", limit: 11
+    t.string "lastname", limit: 11
+    t.string "diet_connected", default: "", null: false
+    t.string "username"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
+    t.index ["username"], name: "uniqueElement", unique: true
+  end
+
+  create_table "contracts", primary_key: "contract_id", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "dietitian_id", null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "database_structures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -43,26 +53,12 @@ ActiveRecord::Schema.define(version: 20180327044529) do
     t.integer "vegetables", null: false
   end
 
-  create_table "dietitianclients", primary_key: "dietclient_tempid", id: :integer, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "dietitianid", null: false
+  create_table "practicedetails", primary_key: "practice_diet_id", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "practice_id", null: false
     t.bigint "user_id", null: false
   end
 
-  create_table "dietitianpractices", primary_key: "dietprac_tempid", id: :integer, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "practiceid", null: false
-    t.integer "dietitianid", null: false
-  end
-
-  create_table "dietitians", primary_key: "dietitianid", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "firstname", null: false
-    t.text "lastname", null: false
-    t.integer "practiceid", null: false
-    t.bigint "userid", null: false
-    t.index ["practiceid"], name: "PracticeID"
-    t.index ["userid"], name: "dietitians_user_foreign"
-  end
-
-  create_table "practices", primary_key: "practiceid", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "practices", primary_key: "practice_id", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "name", null: false
     t.text "suburb", null: false
     t.integer "postcode", null: false
@@ -95,14 +91,15 @@ ActiveRecord::Schema.define(version: 20180327044529) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
-    t.string "firstname"
-    t.string "lastname"
-    t.integer "dietitianID", default: 0
+    t.string "username", default: "", null: false
+    t.string "firstname", default: "", null: false
+    t.string "lastname", default: "", null: false
     t.boolean "admin_role", default: false, null: false
     t.boolean "dietitian_role", default: false, null: false
     t.boolean "user_role", default: true, null: false
-    t.index ["dietitianID"], name: "user_dietitianID_Foreign"
+    t.integer "connectedTo"
+    t.integer "dieititanID"
+    t.index ["dieititanID"], name: "dieititanID", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
