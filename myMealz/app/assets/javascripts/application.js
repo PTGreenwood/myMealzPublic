@@ -15,3 +15,4 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= stub rails_admin/custom/ui.js
