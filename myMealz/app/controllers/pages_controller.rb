@@ -18,12 +18,12 @@ class PagesController < ApplicationController
 
   end
 
-  #backend code for pages/profile
-  def profile
+  #backend code for pages/dashboard
+  def dashboard
     #grab the username from the URL as :id (check routes.rb)
     if (User.find_by_username(params[:id]))
       @username = params[:id] #<-- Specified in routes as user/:id which is a constant immutatble symbol value
-      #redirect to 404 (root for now)
+
     else
       redirect_to root_path, :notice=> "User not found!"
     end

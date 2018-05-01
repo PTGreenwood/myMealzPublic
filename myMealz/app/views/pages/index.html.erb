@@ -1,3 +1,4 @@
+
 <div class="row">
   <br><br>
   <div class="col-md-10 col-md-offset-1 row align-items-center">
@@ -45,7 +46,10 @@
 		<%#= link_to new_user_session_path, class: 'login-button' do %><!--Not logged in, Sign in.--><%# end %>
 
 	<% else %>
-	  <%= link_to "profile", 'profile/' + current_user.username %>
+	<!-- Redirect to the profile page -->
+		<script type="text/javascript">
+    	window.location.href="/dashboard/<%=current_user.username %>" // put your correct path in a string here
+  	</script>
 	<% end %>
 
 </div>

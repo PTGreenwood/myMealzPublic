@@ -1,4 +1,4 @@
-Blog::Application.configure do
+MYMEALZ::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   #Uses for Devises Gem -- will probably change for the server

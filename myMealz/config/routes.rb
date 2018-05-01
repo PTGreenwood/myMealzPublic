@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # '/' is referring to a page
   #Doing it this way allows the webaddress to not resemble the file structure on the server
   get '/home' => 'pages#home' #=> overrides default route
-  get '/profile/:id' => 'pages#profile'
+  get '/dashboard/:id' => 'pages#dashboard'
   get '/explore' => 'pages#explore'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

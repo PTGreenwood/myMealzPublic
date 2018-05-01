@@ -1,0 +1,14 @@
+<!-- Jumbrotron heading thing for looks. Don't need to keep it, just checking it out -->
+<div class="jumbotron">
+  <div class="container">
+    <%= "Hello " + @username + ", Welcome to your Dashboard" %>
+  </div>
+</div>
+
+<% if current_user.user_role == 1 %>
+  <%= render '/layouts/dashboard_user' %>
+<% elsif current_user.dietitian_role == 1 %>
+  <%= render '/layouts/dashboard_dietitian' %>
+<% else %>
+  <%= render '/layouts/dashboard_admin' %>
+<% end %>
