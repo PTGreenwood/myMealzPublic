@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+
+  #Dietitian Controller - dietitian_dashboard
+  #get 'dietitian_dashboard/myClients'
+  get 'dashboard/:id/dietitian/myClients' => 'dietitian_dashboard#myClients'
+  #get 'dietitian_dashboard/dietitianProfile'
+  get 'dashboard/:id/dietitian/profile' => 'dietitian_dashboard#dietitianProfile'
+  #get 'dietitian_dashboard/contactSupport'
+  get 'dashboard/:id/dietitian/support' => 'dietitian_dashboard#contactSupport'
+
+  #Admin Ctonroller - admin_dashboard
+  #get 'admin_dashboard_controller/support'
+  get 'dashboard/:id/admin/ticketSupport' => 'admin_dashboard#support'
+  #get 'admin_dashboard_controller/alterContent'
+  get 'dashboard/:id/admin/alterContent' => 'admin_dashboard#alterContent'
+
+
   #Client is Dietiian
   #devise_for :clients, path: 'clients', controllers: { sessions: "clients/sessions" } #e.g. /clients/sign_in
   #devise_scope :clients do
