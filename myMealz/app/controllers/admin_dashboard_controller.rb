@@ -1,6 +1,6 @@
 class AdminDashboardController < ApplicationController
 
-
+  @tickets = "None"
 
   def support
     if(User.find_by_username(params[:id]))
@@ -13,4 +13,5 @@ class AdminDashboardController < ApplicationController
 
   def alterContent
   end
+
 end

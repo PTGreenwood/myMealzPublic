@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502055433) do
+ActiveRecord::Schema.define(version: 20180507020613) do
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -66,17 +66,16 @@ ActiveRecord::Schema.define(version: 20180502055433) do
     t.text "address", null: false
   end
 
-  create_table "saved_meals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "content"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_saved_meals_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_saved_meals_on_user_id"
-  end
-
   create_table "savedmeals", primary_key: "saved_meals_id", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "content"
+  end
+
+  create_table "support_tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "ticketTitle"
+    t.integer "attachedUser"
+    t.text "subjectBody", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "userfridges", primary_key: "userid", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -100,17 +99,20 @@ ActiveRecord::Schema.define(version: 20180502055433) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
-    t.string "firstname"
-    t.string "lastname"
-    t.boolean "admin_role", default: false
-    t.boolean "dietitian_role", default: false
-    t.boolean "user_role", default: true
+    t.string "username", default: "", null: false
+    t.string "firstname", default: "", null: false
+    t.string "lastname", default: "", null: false
+    t.boolean "admin_role", default: false, null: false
+    t.boolean "dietitian_role", default: false, null: false
+    t.boolean "user_role", default: true, null: false
+    t.integer "connectedTo"
+    t.integer "dieititanID"
     t.integer "dietitianID"
+    t.index ["dieititanID"], name: "dieititanID", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "saved_meals", "users"
+  add_foreign_key "userfridges", "users", column: "userid", name: "fridge-user-foreign"
 end

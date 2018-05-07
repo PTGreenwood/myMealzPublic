@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/adminDB', as: 'rails_admin'
 
 
   #Dietitian Controller - dietitian_dashboard
@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   #get 'dietitian_dashboard/contactSupport'
   get 'dashboard/:id/dietitian/support' => 'dietitian_dashboard#contactSupport'
 
+  get 'showTickets', to: 'pages#showTickets'
   #Admin Ctonroller - admin_dashboard
   #get 'admin_dashboard_controller/support'
-  get 'dashboard/:id/admin/ticketSupport' => 'admin_dashboard#support'
+  get '/admin/ticketSupport' => 'admin_dashboard#support'
   #get 'admin_dashboard_controller/alterContent'
-  get 'dashboard/:id/admin/alterContent' => 'admin_dashboard#alterContent'
+  get '/admin/alterContent' => 'admin_dashboard#alterContent'
 
 
   #Client is Dietiian
