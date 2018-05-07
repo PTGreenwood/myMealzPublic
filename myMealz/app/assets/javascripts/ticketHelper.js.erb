@@ -1,0 +1,61 @@
+/* Takes the element with ID ticketID and shows the form for it */
+function showReply(ticketID) {
+
+  var element = $('#reply'+ticketID)
+  if (element.css('display') == 'block') {
+    element.css("display", "none");
+  } else {
+    element.css("display", "block");
+  }
+
+  /*Add in the Form */
+
+
+  var data = '<br><div class="col-lg-12">' +
+    '<div class="input-group">' +
+      '<input type="text" class="form-control" id="mReply'+ticketID+'" ' +
+      'placeholder="Message Reply">' +
+      '<span class="input-group-btn">' +
+        '<button class="btn btn-default" onclick="newTicketReply('+ticketID+')" ' +
+        'type="button">Send</button>' +
+      '</span>' +
+    '</div>' +
+  '</div>'
+
+  element.html(data);
+
+}
+
+function newTicketReply(ticketID) {
+  var message = "" + $('#mReply'+ticketID).val();
+  var data = { "ticketID": ticketID, "message": message };
+  data = JSON.stringify(data);
+
+  /*
+  Need to pass through
+  t.integer :admin_id --> current_user.id?
+  t.string :admin_username --> current_user.username?
+  t.integer :attachedUser   -> Ticket ID
+  t.text :subjectBody, limit: 255 --> Message
+
+  */
+
+  $.ajax({
+    url: "/admin_dashboard/replyMessage/"+data+ "",
+    contentType : "application/json",
+    /*url: "/admin_dashboard/replyMessage/"+data + "",*/
+    dataType: 'json',
+  }).success(function(data) {
+    alert("Successfully Did reply message");
+  }
+)};
+
+/*Probably shouldn't have the abilitity to do this... */
+function deleteTicket(ticketID) {
+  $.ajax({
+    url: "/admin_dashboard/deleteTicket/bzOYrqMEphgnIb/"+ticketID + "",
+    dataType: 'json',
+  }).success(function(data) {
+    alert("Successfully Deleted the Data");
+  }
+)};

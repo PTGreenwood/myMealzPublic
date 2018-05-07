@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507020613) do
+ActiveRecord::Schema.define(version: 20180507070310) do
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 20180507020613) do
 
   create_table "support_tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "ticketTitle"
+    t.integer "attachedUser"
+    t.text "subjectBody", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "support_tickets_replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "admin_id"
+    t.string "admin_username"
     t.integer "attachedUser"
     t.text "subjectBody", limit: 255
     t.datetime "created_at", null: false

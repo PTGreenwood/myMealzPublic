@@ -1,0 +1,2 @@
+class SupportTicketsReply < ApplicationRecord
+end

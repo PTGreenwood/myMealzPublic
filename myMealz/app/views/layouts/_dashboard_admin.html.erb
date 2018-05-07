@@ -11,9 +11,9 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <p> Links </p>
-        <li><a href="/adminDB">Admin Panel</a></li>
-        <li><%= link_to "showTickets", showTickets_path, remote: true %> </li>
-        <li><a href="/admin/alterContent">Alter Content</a></li>
+        <p><a href="/adminDB">Admin Panel</a></p>
+        <p><%= link_to "Support Tickets", showTickets_path, remote: true %></p>
+        <p><a href="/admin/alterContent">Alter Content</a></p>
       </div>
     </div>
 
@@ -22,16 +22,11 @@
 
   <!-- Middle -->
   <div class="col-xs-9">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div id="current_dash_render">
-            afdf
-          </div>
+    <div id="current_dash_render">
+
+    </div>
         <!-- @savedmeals is the variable in the controller that all SavedMeal database entries go into
         Is hooked up with Username as the foreign_key. Currently shows every single database entry and not profile specific-->
-        </div>
-      </div>
-
-    <% #end %>
   </div>
+</div>
 </div>

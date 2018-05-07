@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/adminDB', as: 'rails_admin'
 
-
   #Dietitian Controller - dietitian_dashboard
   #get 'dietitian_dashboard/myClients'
   get 'dashboard/:id/dietitian/myClients' => 'dietitian_dashboard#myClients'
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
   #get 'dietitian_dashboard/contactSupport'
   get 'dashboard/:id/dietitian/support' => 'dietitian_dashboard#contactSupport'
 
-  get 'showTickets', to: 'pages#showTickets'
+
   #Admin Ctonroller - admin_dashboard
   #get 'admin_dashboard_controller/support'
   get '/admin/ticketSupport' => 'admin_dashboard#support'
@@ -46,5 +45,10 @@ Rails.application.routes.draw do
   get '/dashboard/:id' => 'pages#dashboard'
   get '/explore' => 'pages#explore'
 
+
+  get 'showTickets', to: 'pages#showTickets'
+
+  get 'admin_dashboard/replyMessage/:messageDetails', to: 'admin_dashboard#replyTicketMessage'
+  get 'admin_dashboard/deleteTicket/bzOYrqMEphgnIb/:ticketID', to: 'admin_dashboard#deleteTicketWithID'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -18,29 +18,6 @@ class PagesController < ApplicationController
 
   end
 
-  #backend code for pages/dashboard
-  def dashboard
-    #grab the username from the URL as :id (check routes.rb)
-    if (User.find_by_username(params[:id]))
-      @username = params[:id] #<-- Specified in routes as user/:id which is a constant immutatble symbol value
-
-    else
-      redirect_to root_path, :notice=> "User not found!"
-    end
-
-    #JSON version
-    #if(@user = User.find_by_username(params[:id]))
-      #@user = User.find_by_username(params[:id])
-    #  @dashboard_response = render json: {status: 'SUCCESS', message: 'User', data: [@user.id, @user.admin_role, @user.username] }, status: :ok
-    #else
-    #  @dashboard_response = render json: {status: 'ERROR', message: 'Cannot find user' }, status: :unprocessable_entity
-    #  redirect_to root_path, :notice=> "User not found!" && return
-    #end
-
-    #@savedmeals = SavedMeal.all.where("user_id = ?", User.find_by_username(params[:id]).id)
-    #@newSavedMeal = SavedMeal.new
-  end
-
   def showTickets
 
     #get all the tickets and pass them through
@@ -51,7 +28,20 @@ class PagesController < ApplicationController
     end
     respond_to do |format|
       format.js
+    end
     #render :partial=>"layouts/supports/showTickets"
+  end
+
+  #backend code for pages/dashboard
+  def dashboard
+    #grab the username from the URL as :id (check routes.rb)
+    if (User.find_by_username(params[:id]))
+      @username = params[:id] #<-- Specified in routes as user/:id which is a constant immutatble symbol value
+
+    else
+      redirect_to root_path, :notice=> "User not found!"
+    end
+
   end
 
   #backend code for pages/explore
@@ -61,5 +51,4 @@ class PagesController < ApplicationController
     #Shows how to show all recipes.. or something of the like
     #@savedmeals = SavedMeal.all
   end
-end
 end
