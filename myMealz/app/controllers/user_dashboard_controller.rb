@@ -1,32 +1,50 @@
-class AdminDashboardController < ApplicationController
-
-  require 'json'
+class UserDashboardController < ApplicationController
 
   def support
+    puts 'made it here'
     if(User.find_by_username(params[:id]))
         @userLogged = User.find_by_username(params[:id])
-        if(@userLogged.admin_role == false)
-          redirect_to root_path, :notice=> "You do not have access to this page."
-        end
+    else
+      redirect_to root_path, :notice=> "You do not have access to this page."
     end
   end
 
-  def alterContent
-  end
-
-  def replyTicketMessage
+  def newTicket
     @data = JSON.parse(params[:messageDetails])
 
-    getTicketWithID = SupportTicket.find_by(id: @data["ticketID"])
+    #Assigns title from current ticket
+    title = @data["title"]
+    message = @data["message"]
+    isAdminMessage = false
+    isPartOfThread = false
+    sender = current_user.username
+    attacheduserID = current_user.id
 
+    #note admin_username is now admin_firstName
+    newTicketToAdd = SupportTicket.create(
+      ticketTitle: title, subjectBody: message,
+      isAdminMessage: isAdminMessage, isPartOfThread: isPartOfThread,
+      sender: sender, attachedUserID: attacheduserID)
+
+    newTicketToAdd.save
+  end
+
+
+  def replyTicketMessage
+
+    @data = JSON.parse(params[:messageDetails])
+  #@tickets[counter].id
+    #Get's the Currently Open Ticket
+    getTicketWithID = SupportTicket.find_by(id: @data["ticketID"])
+    #Assigns title from current ticket
     title = getTicketWithID.ticketTitle
     attachedToTicket = @data["ticketID"]
     message = @data["message"]
-    adminAssignedToTicket = current_user.username
-    isAdminMessage = true
+    adminAssignedToTicket = getTicketWithID.admin_assigned
+    isAdminMessage = false
     isPartOfThread = true
     sender = current_user.username
-    attacheduserID = getTicketWithID.attachedUserID
+    attacheduserID = current_user.id
 
     #note admin_username is now admin_firstName
     newTicket = SupportTicket.create(
@@ -36,12 +54,12 @@ class AdminDashboardController < ApplicationController
       sender: sender, attachedUserID: attacheduserID)
 
     newTicket.save
+
   end
 
   def getMessageHistory
     history ||= []
     SupportTicket.find_each do |item|
-
       if((item["attachedToTicket"].to_s == params[:ticketID].to_s) && item["isPartOfThread"])
         ticketDetails = {
           "ticketTitle": item["ticketTitle"],
@@ -65,21 +83,5 @@ class AdminDashboardController < ApplicationController
       format.html
       format.json {render json: @data.to_json}
     end
-    #@history = SupportTicket.find_by(attachedUser: :ticketID)
-  end
-
-  def deleteTicketWithID
-    @ticket = params[:ticketID]
-    ticketToDelete = SupportTicket.find_by(id: @ticket)
-
-    ticketToDelete.destroy
-  end
-
-  def resolveTicket
-    @ticket = params[:ticketID]
-    ticketToResolve = SupportTicket.find_by(id: @ticket)
-
-    ticketToResolve.resolved = true
-    ticketToResolve.save
   end
 end

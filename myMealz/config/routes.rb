@@ -11,12 +11,17 @@ Rails.application.routes.draw do
 
 
   #Admin Ctonroller - admin_dashboard
-  #get 'admin_dashboard_controller/support'
   get '/admin/ticketSupport' => 'admin_dashboard#support'
-  #get 'admin_dashboard_controller/alterContent'
   get '/admin/alterContent' => 'admin_dashboard#alterContent'
-
-
+  get 'admin_dashboard/replyMessage/:messageDetails', to: 'admin_dashboard#replyTicketMessage'
+  get 'admin_dashboard/deleteTicket/:ticketID', to: 'admin_dashboard#deleteTicketWithID'
+  get 'admin_dashboard/getMessageHistory/:ticketID', to: 'admin_dashboard#getMessageHistory'
+  get 'admin_dashboard/resolveTicket/:ticketID', to: 'admin_dashboard#resolveTicket'
+  #User Controller - user_dashboard
+  get '/user/ticketSupport' => 'user_dashboard#support'
+  get 'user_dashboard/replyMessage/:messageDetails', to: 'user_dashboard#replyTicketMessage'
+  get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
+  get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'
   #Client is Dietiian
   #devise_for :clients, path: 'clients', controllers: { sessions: "clients/sessions" } #e.g. /clients/sign_in
   #devise_scope :clients do
@@ -48,8 +53,6 @@ Rails.application.routes.draw do
 
   get 'showTickets', to: 'pages#showTickets'
 
-  get 'admin_dashboard/replyMessage/:messageDetails', to: 'admin_dashboard#replyTicketMessage'
-  get 'admin_dashboard/deleteTicket/:ticketID', to: 'admin_dashboard#deleteTicketWithID'
-  get 'admin_dashboard/getMessageHistory/:ticketID', to: 'admin_dashboard#getMessageHistory'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

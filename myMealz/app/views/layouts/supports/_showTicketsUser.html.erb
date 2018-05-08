@@ -1,0 +1,78 @@
+<h2> Your currently open tickets </h2>
+<span style="float:right; padding-right: 10px; margin-top: 20px">
+  <button type="button" class="btn btn-success"
+onclick="showFormNewTicket()">New Ticket</button></span>
+
+<div id="newTicket" style="display:none"><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs">
+        <div class="input-group">
+          <strong> Title: </strong> <input type="text" class="form-control" id="newTickTitle"
+          placeholder="Ticket Details"><br>
+          <strong> Message: </strong><input type="text" class="form-control" id="newTickMessage"
+          placeholder="Ticket Details"><br>
+          <span class="input-group-btn">
+            <button class="btn btn-default" onclick="generateNewTicket()"
+            type="button">Send</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<% @tickets.each do |item| %>
+  <%# if(!item.isAdminMessage) %>
+    <% if(!item.isPartOfThread) %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <strong>Title:</strong>
+                <%= item.ticketTitle %><br>
+                <strong>Status:</strong>
+                <% if(item.resolved) %>
+                  <%= "Resolved" %>
+                <% else %>
+                  <%= "Un-resolved" %>
+                <%end %>
+                <br>
+                <strong>Message:</strong>
+                <%= item.subjectBody %>
+              </div>
+
+              <div class="col-md-5 align-self-end">
+                <div class="btn-toolbar" role="toolbar" aria-label="EditBoxes">
+                  <div class="btn-group" role="group" aria-label="Reply">
+                    <% if(!item.resolved?) %>
+                      <button type="button" class="btn btn-primary"
+                      onclick="showUserReply('<%=item.id%>')">Reply</button>
+                    <% else %>
+                    <button type="button" class="btn btn-default">Reply</button>
+                    <% end %>
+                  </div>
+                  <div class="btn-group" role="group" aria-label="viewHistory">
+                    <button type="button" class="btn btn-info"
+                    onclick="getMessageHistory('<%=item.id%>')">View History </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <div id="reply<%=item.id%>" style="display:none">
+                    <p>No Content Found</p>
+                  </div>
+                  <div id="thread<%=item.id%>_0" style="display:none">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <%# end %>
+<% end %>
