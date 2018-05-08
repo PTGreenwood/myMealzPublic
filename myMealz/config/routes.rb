@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   get 'showTickets', to: 'pages#showTickets'
 
   get 'admin_dashboard/replyMessage/:messageDetails', to: 'admin_dashboard#replyTicketMessage'
-  get 'admin_dashboard/deleteTicket/bzOYrqMEphgnIb/:ticketID', to: 'admin_dashboard#deleteTicketWithID'
+  get 'admin_dashboard/deleteTicket/:ticketID', to: 'admin_dashboard#deleteTicketWithID'
+  get 'admin_dashboard/getMessageHistory/:ticketID', to: 'admin_dashboard#getMessageHistory'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507070310) do
+ActiveRecord::Schema.define(version: 20180508013813) do
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -76,6 +76,10 @@ ActiveRecord::Schema.define(version: 20180507070310) do
     t.text "subjectBody", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "resolved"
+    t.string "admin_assigned"
+    t.boolean "isAdminMessage"
+    t.boolean "isPartOfThread"
   end
 
   create_table "support_tickets_replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

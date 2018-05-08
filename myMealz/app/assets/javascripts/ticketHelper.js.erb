@@ -53,9 +53,38 @@ function newTicketReply(ticketID) {
 /*Probably shouldn't have the abilitity to do this... */
 function deleteTicket(ticketID) {
   $.ajax({
-    url: "/admin_dashboard/deleteTicket/bzOYrqMEphgnIb/"+ticketID + "",
+    url: "/admin_dashboard/deleteTicket/"+ticketID + "",
     dataType: 'json',
   }).success(function(data) {
     alert("Successfully Deleted the Data");
   }
 )};
+
+
+function getMessageHistory(ticketID) {
+  alert(ticketID);
+
+  var data = { "ticketID": ticketID };
+  data = JSON.stringify(data);
+
+  $.ajax({
+    type: "GET",
+    url: "/admin_dashboard/getMessageHistory/"+ticketID +"",
+    contentType : "application/json",
+    dataType: 'json'
+  }).success(function(result) {
+    /*Has return data from the DB in JSON array format... */
+    /*alert(result["ticketArray"][0].isAdminMessage);
+    */
+
+    var data = '<div class="row"><div class="col-lg-12">' +
+        '<div class="input-group">' +
+          'Hello there' +
+        '</div>' +
+      '</div></div>'
+
+      var element = $('#thread'+ticketID)
+      element.html(data);
+
+  }
+);}
