@@ -1,11 +1,12 @@
 <%= form_for(:user, :url => session_path(:user)) do |f| %>
-  <%= f.label :email %><br>
-  <%= f.text_field :email %> <br>
-  <%= f.label :password %><br>
-  <%= f.password_field :password %> <br>
-  <%= f.label :remember_me %> &nbsp
-  <%= f.check_box :remember_me %><br>
+  <div style="padding-top: 10px">
+    <%= f.label :email %> &nbsp
+    <%= f.text_field :email %>&nbsp
+    <%= f.label :password %>
+    <%= f.password_field :password %>
 
-  <%= f.submit 'Sign in' %><br>
-  <%= link_to "Forgot your password?", new_password_path(:user) %>
+    <%= f.submit 'Log in' %><br>
+  </div>
+    <span style="float:right"><%= link_to "Forgot your password?", new_password_path(:user) %></span>
+
 <% end %>
