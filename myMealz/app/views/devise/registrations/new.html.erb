@@ -56,13 +56,6 @@
     <%= f.check_box :user_role %>
   </div>
   <br>
-  <div class="field">
-    <% @labelName = "Practice: " %>
-    <%= f.label @labelName%>
-    <!-- Practciedetails is name of table...
-    That contains the link between this user's ID number + chosen Practice (from the list) -->
-    <%= f.select :practicedetails, options_for_select(practiceID_options),  { prompt: 'Choose Diet ID'} %>
-  </div>
 
   <br>
   <div class="actions">
