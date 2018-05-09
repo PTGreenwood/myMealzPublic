@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   get 'user_dashboard/replyMessage/:messageDetails', to: 'user_dashboard#replyTicketMessage'
   get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
   get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'
-  #Client is Dietiian
+  #Dietitian Controller - dietitian_dashboard
+  get '/dietitian/ticketSupport' => 'dietitian_dashboard#support'
+  get 'user_dashboard/replyMessage/:messageDetails', to: 'user_dashboard#replyTicketMessage'
+  get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
+  get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'
   #devise_for :clients, path: 'clients', controllers: { sessions: "clients/sessions" } #e.g. /clients/sign_in
   #devise_scope :clients do
   #  get 'clients/sign_in', to: 'clients/sessions#new'

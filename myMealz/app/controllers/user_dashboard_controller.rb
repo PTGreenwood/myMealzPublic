@@ -1,7 +1,6 @@
 class UserDashboardController < ApplicationController
 
   def support
-    puts 'made it here'
     if(User.find_by_username(params[:id]))
         @userLogged = User.find_by_username(params[:id])
     else
