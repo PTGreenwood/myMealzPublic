@@ -20,14 +20,29 @@
 */
 #navbarus {
  background-color: #37BC9B;
- margin-top: 10px;
+ //margin-top: 10px;
+ border: 0px;
+ border-radius: 0px;
 }
 
 #mymealznav {
  color: #fff;
  font-size: 20px;
  background-color: #2B957A;
- width: 150px;
+ height: 73px;
+ width: 120px;
  margin-top: -15px;
  padding-top: 30px;
+}
+
+#logins {
+ padding-right: 15px;
+}
+
+body {
+ background-color: #E9f0f9;
+}
+
+#navtext {
+ color: #fff;
 }

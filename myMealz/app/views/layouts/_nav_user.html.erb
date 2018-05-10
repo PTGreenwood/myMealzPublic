@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="navbarus">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -7,15 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">myMealz</a>
+      <a class="navbar-brand" id="mymealznav" href="#">myMealz</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="/home">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link 2</a></li>
-      </ul>
+
 
       <!-- SEARCH BAR BOOTSRAP. -->
       <!-- <form class="navbar-form navbar-right">
@@ -25,9 +21,9 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form> -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a id="navtext" href="#">Link</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= "Hello, " + current_user.firstname %> <span class="caret"></span></a>
+          <a id="navtext" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= "Hello, " + current_user.firstname %> <span class="caret"></span></a>
 
           <ul class="dropdown-menu">
             <li><a href="/dashboard/<%= current_user.username %>">Dashboard</a></li>
@@ -37,7 +33,7 @@
             <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
           </ul>
         </li>
-        <li><a href="#">Help</a></li>
+        <li><a id="navtext"href="#">Help</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
