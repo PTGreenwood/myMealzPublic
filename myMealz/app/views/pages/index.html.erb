@@ -1,30 +1,60 @@
 
 <div class="row">
   <br><br>
-  <div class="col-md-10 col-md-offset-1 row align-items-center">
+  <div class="col-md-12 col-md-offset-0 row align-items-center">
     <h1 align=center>myMealz. Meal Planning Resource</h1>
     <br><br>
   </div>
 </div>
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides">
+	<div id="contentdiv">
+		<!-- IMAGE HERE -->
+	</div>
+    <div class="text"></div>
+  </div>
+
+  <div class="mySlides">
+	<div id="contentdiv">
+		<!-- IMAGE HERE -->
+	</div>
+    <div class="text"></div>
+  </div>
+  <div class="mySlides">
+	<div id="contentdiv">
+		<!-- IMAGE HERE -->
+	</div>
+    <div class="text"></div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
 
 <!-- If not logged in, then will display the sign up and log in -->
 	<% if current_user.nil? %>
 
   	<div class="col-md-12">
       <div class="row">
-        <div class="col-md-4 col-md-offset-0">
+        <div class="col-md-4 col-md-offset-4">
           <h2>Sign up</h2>
           <%= render 'layouts/logup/signup' %>
         </div>
       </div>
-
-      <div class="row">
-        <br><br>
-        <div class="col-md-12 row align-items-center">
-        </div>
-      </div>
-  	</div>
-	</div>
 
 		<%#= link_to new_user_session_path, class: 'login-button' do %><!--Not logged in, Sign in.--><%# end %>
 
