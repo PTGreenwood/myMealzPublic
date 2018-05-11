@@ -15,6 +15,7 @@ class AdminDashboardController < ApplicationController
   end
 
   def replyTicketMessage
+
     @data = JSON.parse(params[:messageDetails])
 
     getTicketWithID = SupportTicket.find_by(id: @data["ticketID"])
