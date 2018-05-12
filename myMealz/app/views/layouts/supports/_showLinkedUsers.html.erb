@@ -1,0 +1,5 @@
+<% if(current_user.dietitian_role == true) %>
+  <%= render '/layouts/supports/showMyClientz' %>
+<% else %>
+  <%= render '/layouts/supports/showMyDietitians' %>
+<% end %>

@@ -2,10 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/adminDB', as: 'rails_admin'
 
   #Dietitian Controller - dietitian_dashboard
-  get 'myClientz' => 'dietitian_dashboard#getMyClientz'
-  #get 'dashboard/:id/dietitian/myClientz' => 'dietitian_dashboard#myClientz'
-  get 'dashboard/:id/dietitian/profile' => 'dietitian_dashboard#dietitianProfile'
-  get 'dashboard/:id/dietitian/support' => 'dietitian_dashboard#contactSupport'
+
 
   #Admin Controller - admin_dashboard
   get '/admin/ticketSupport' => 'admin_dashboard#support'
@@ -23,20 +20,14 @@ Rails.application.routes.draw do
 
   #Dietitian Controller - dietitian_dashboard
   get '/dietitian/ticketSupport' => 'dietitian_dashboard#support'
+  get 'getMyClientz' => 'dietitian_dashboard#getMyClientz'
   get 'user_dashboard/replyMessage/:messageDetails', to: 'user_dashboard#replyTicketMessage'
   get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
   get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'
+  get 'dietitian_dashboard/updateContract/:contractDetails', to: 'dietitian_dashboard#updateContract'
+
 
   get 'showTickets', to: 'pages#showTickets'
-
-  #devise_for :clients, path: 'clients', controllers: { sessions: "clients/sessions" } #e.g. /clients/sign_in
-  #devise_scope :clients do
-  #  get 'clients/sign_in', to: 'clients/sessions#new'
-  #  get 'clients/sign_up', to: 'clients/sessions#create'
-  #  delete 'clients/logout', to: 'clients/sessions#destroy'
-  #  get 'clients/index', to: 'pages#home'
-  #end
-
 
   #User is general public
   devise_for :users, path: 'users', controllers: { sessions: "devise/sessions" }

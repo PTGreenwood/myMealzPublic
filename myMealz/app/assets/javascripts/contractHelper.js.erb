@@ -1,0 +1,26 @@
+function updateContract(contractCounter, contractID) {
+
+    var message = ""
+    var messArr = []
+    for (var i = 0; i < 8; i++) {
+        message = parseInt($('#reqUpdate' + i + '_' + contractCounter + '_' + contractID).val());
+        messArr.push(message);
+    }
+
+
+
+    var data = { "user": contractID, "calRestriction": messArr[0], "protein": messArr[1], "grains": messArr[2],
+        "dairy": messArr[3], "vegetables": messArr[4], "fruit": messArr[5], "fats": messArr[6], "disc": messArr[7]};
+    data = JSON.stringify(data);
+
+      $.ajax({
+          type: "GET",
+          url: "/dietitian_dashboard/updateContract/"+data+"/",
+          /*contentType : "application/json",*/
+          dataType: 'json'
+      }).success(function(data) {
+          $('#notice_'+contractCounter).css("display", "block");
+          $('#notice_'+contractCounter).html("<h6>Successfully Updated Client</h6>");
+      }
+    )};
+

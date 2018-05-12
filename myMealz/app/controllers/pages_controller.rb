@@ -21,8 +21,6 @@ class PagesController < ApplicationController
   def showTickets
 
     #get all the tickets and pass them through
-    puts "current user id is: "
-    puts current_user.id
     @tickets ||= []
       SupportTicket.find_each do |item|
         if (current_user.admin_role == true)

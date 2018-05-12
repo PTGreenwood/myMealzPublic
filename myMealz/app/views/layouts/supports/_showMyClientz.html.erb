@@ -1,0 +1,139 @@
+<% contractCounter = 0 %>
+<% @contracts.each do |item| %>
+  <div class="panel panel-default">
+    <h3>&nbsp&nbsp&nbspYour clients</h3>
+     <div class="panel-body">
+       <div class="container">
+         <div class="row">
+           <div class="col-md-3">
+             <div class="panel panel-default">
+               <div class="panel-body">
+                 <p>Profile picture of client (taken from their profile)<br><br><br><br><br><br><br></p>
+               </div>
+             </div>
+           </div>
+
+           <div class="col-md-5">
+             <div class="panel panel-default">
+               <p> <strong> Client Name: </strong> <%= @extraDetails%></p>
+
+               <p> <strong> Current Cal Restriction: </strong>
+                 <input type="text" style="width: 50px" id="reqUpdate0_<%= contractCounter %>_<%= item.id %>"
+                        placeholder="" value="<%= item.totalCalRestriction %>">cal
+              </p>
+               <p> <strong> Currently set servings: </strong></p>
+               <table>
+                 <tr>
+                   <td width="100px" height="40px">
+                    <strong> Protein: </strong>
+                   </td>
+                   <td>
+                     <input type="text" style="width: 50px" id="reqUpdate1_<%=contractCounter%>_<%=item.id %>"
+                            placeholder="" value="<%= item.proteinReq %>">
+                   </td>
+                   <td style="padding-left: 5px">
+
+                   </td>
+                 </tr>
+                 <tr>
+                   <td width="100px" height="40px">
+                     <strong> Grains: </strong>
+                   </td>
+                   <td>
+                     <input type="text" style="width: 50px" id="reqUpdate2_<%=contractCounter%>_<%=item.id %>"
+                            placeholder="" value="<%= item.grainsReq %>">
+                   </td>
+                   <td style="padding-left: 5px">
+
+                   </td>
+
+                 </tr>
+                 <tr>
+                   <td width="100px" height="40px">
+                     <strong> Dairy: </strong>
+                   </td>
+                   <td>
+                     <input type="text" style="width: 50px" id="reqUpdate3_<%=contractCounter%>_<%=item.id %>"
+                            placeholder="" value="<%= item.dairyReq %>">
+                   </td>
+                   <td style="padding-left: 5px">
+
+                   </td>
+
+                 </tr>
+                 <tr>
+                   <td width="100px" height="40px">
+                     <strong> Vegetables: </strong>
+                   </td>
+                   <td>
+                     <input type="text" style="width: 50px" id="reqUpdate4_<%=contractCounter%>_<%=item.id %>"
+                            placeholder="" value="<%= item.vegeReq %>">
+                   </td>
+
+                 </tr>
+                 <tr>
+                   <td width="100px" height="40px">
+                     <strong> Fruit: </strong>
+                   </td>
+                   <td>
+                     <input type="text" style="width: 50px" id="reqUpdate5_<%=contractCounter%>_<%=item.id %>"
+                            placeholder="" value="<%= item.fruitReq %>">
+                   </td>
+                   <td style="padding-left: 5px">
+
+                   </td>
+
+                 </tr>
+                 <tr>
+                   <td width="100px" height="40px">
+                     <strong> Fats: </strong>
+                   </td>
+                   <td>
+                     <input type="text" style="width: 50px" id="reqUpdate6_<%=contractCounter%>_<%=item.id %>"
+                            placeholder="" value="<%= item.fatsReq %>">
+                   </td>
+                   <td style="padding-left: 5px">
+                   </td>
+
+                 </tr>
+                 <tr>
+                   <td width="100px" height="40px">
+                     <strong> Discretionary: </strong>
+                   </td>
+                   <td>
+                     <input type="text" style="width: 50px" id="reqUpdate7_<%=contractCounter%>_<%=item.id %>"
+                            placeholder="" value="<%= item.discReq %>">
+                   </td>
+                   <td style="padding-left: 5px">
+
+                   </td>
+
+                 </tr>
+                 <tr>
+                   <td height="50px">
+                     <button type="button" class="btn btn-info btn-xs"
+                             onclick="updateContract(<%=contractCounter%>, <%=item.id %>)">Make
+                       Changes
+                     </button>
+                   </td>
+                   <td>
+                     <div id='notice_<%= contractCounter %>' style="display:none; float:center"></div>
+                   </td>
+                 </tr>
+               </table>
+             </div>
+          </div>
+
+           <div class="col-md-3" style="display:none">
+             <div class="panel panel-default">
+               <p><strong> Client Name: </strong> Name from DB</p>
+               <p><strong> Current Cal Restriction: </strong> 1000000kj</p>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  <% contractCounter += 1 %>
+ <%end %>
+

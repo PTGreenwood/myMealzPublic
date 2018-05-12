@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512021326) do
+ActiveRecord::Schema.define(version: 20180512112142) do
 
   create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "UserID"
     t.integer "DietitianID"
     t.integer "totalCalRestriction"
     t.integer "proteinReq"
-    t.integer "carbReq"
-    t.integer "fatsReq"
-    t.integer "grainReq"
+    t.integer "fruitReq"
+    t.integer "dairyReq"
     t.integer "vegeReq"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "grainsReq"
+    t.integer "fatsReq"
+    t.integer "discReq"
   end
 
   create_table "database_structures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
