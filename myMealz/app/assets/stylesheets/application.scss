@@ -20,7 +20,6 @@
 */
 #navbarus {
  background-color: #37BC9B;
- //margin-top: 10px;
  border: 0px;
  border-radius: 0px;
 }
@@ -33,6 +32,23 @@
  width: 120px;
  margin-top: -15px;
  padding-top: 30px;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+ background-color: #2B957A;
+ color: #fff;
+}
+
+.dropdown-menu {
+    background-color: #273135;
+}
+
+.dropdown-menu > li > a {
+    color: #fff;
+}
+
+.dropdown-menu .divider {
+    background-color: #606060;
 }
 
 #logins {
