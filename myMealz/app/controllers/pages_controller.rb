@@ -41,7 +41,11 @@ class PagesController < ApplicationController
     #grab the username from the URL as :id (check routes.rb)
     if (User.find_by_username(params[:id]))
       @username = params[:id] #<-- Specified in routes as user/:id which is a constant immutatble symbol value
-
+      tempUser = User.find_by_username(params[:id])
+      if(!User.find_by_dietitianID(tempUser.connectedTo))
+        tempUser.connectedTo = ""
+        tempUser.save
+      end
     else
       redirect_to root_path, :notice=> "User not found!"
     end
