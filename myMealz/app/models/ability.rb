@@ -11,11 +11,11 @@ class Ability
          can :dashboard             #allow access to dashboard
        end
 
-       if user.dietitian_role?
-         can :manage, :all
-         can :access, :rails_admin  #allow access to railsAdmin to only admin admin_role
-         can :dashboard             #allow access to dashboard
-       end
+       #if user.dietitian_role?
+       #  can :manage, :all
+       #  can :access, :rails_admin  #allow access to railsAdmin to only admin admin_role
+       #  can :dashboard             #allow access to dashboard
+       #end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

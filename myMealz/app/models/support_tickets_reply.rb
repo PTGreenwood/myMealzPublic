@@ -1,2 +1,0 @@
-class SupportTicketsReply < ApplicationRecord
-end
