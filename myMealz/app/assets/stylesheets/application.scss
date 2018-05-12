@@ -18,27 +18,32 @@
 *= require_tree .
 *= require_self
 */
+
+// Navbar Basic Colours
 #navbarus {
  background-color: #37BC9B;
  border: 0px;
  border-radius: 0px;
 }
 
+// Navbar myMealz Home button
 #mymealznav {
  color: #fff;
  font-size: 20px;
  background-color: #2B957A;
- height: 73px;
+ height: 65px;
  width: 120px;
  margin-top: -15px;
  padding-top: 30px;
 }
 
+// Dropdown on click change colour
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
  background-color: #2B957A;
  color: #fff;
 }
 
+// Dropdown menu
 .dropdown-menu {
     background-color: #273135;
 }
@@ -51,17 +56,26 @@
     background-color: #606060;
 }
 
-#logins {
- padding-right: 15px;
+// Resizing Nav
+.nav > li > form {
+    margin-top: -2px;
 }
 
-body {
- background-color: #E9f0f9;
+#logins {
+ padding-right: 15px;
+ font-size: 12px;
 }
 
 #navtext {
  color: #fff;
 }
+
+//Body changes
+
+body {
+ background-color: #E9f0f9;
+}
+
 
 //SLIDESHOW CSS
 
@@ -81,6 +95,10 @@ overflow: scroll;
   position: relative;
   margin: auto;
 }
+
+/*.slideshow-container > a {
+    color: #37CB9B;
+}*/
 
 /* Hide the images by default */
 .mySlides {
