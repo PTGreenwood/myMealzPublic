@@ -12,10 +12,12 @@ class DietitianDashboardController < ApplicationController
     #get all the clientz and pass them through
     currentLoggedID = User.find_by_username(current_user.username)
     @extraDetails = "Empty"
+    @usersAttached ||= []
     @contracts ||= []
     Contract.find_each do |item|
       if (currentLoggedID.id == item.DietitianID)
         nameDetails = User.find_by(id: item.UserID)
+        @usersAttached.push(nameDetails)
         @extraDetails = nameDetails.firstname + " " + nameDetails.lastname
         @contracts.push(item)
       end

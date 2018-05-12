@@ -6,8 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #Dietitian works at many practices (outlined in practicestaffs)
-  #has_many :practices, through: :practicedetails
+  #Paperclip gem, for profile picture
+  has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100" }
+  #Extra validations
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  # Validate filename only allow png or jpeg
+  validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
 
 
   #after_create :send_admin_mail

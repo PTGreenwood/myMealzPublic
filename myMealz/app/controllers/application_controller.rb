@@ -11,15 +11,15 @@ class ApplicationController < ActionController::Base
   # protect the database, while allowing these fields to be updated.
   protected
   def configure_permitted_parameters
-    #Deprecated methods
-    #devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :firstname, :lastname, :email, :password, :password_confirmation, :remember_me) }
-    #devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :password_confirmation, :remember_me) }
-    #devise_parameter_sanitizer.for(:account_upate) { |u| u.permit(:firstname, :lastname, :email, :password, :password_confirmation, :remember_me) }
 
     #New methods
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :firstname, :lastname, :email, :password, :password_confirmation, :remember_me])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :firstname, :lastname, :email, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :remember_me])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :email, :password, :password_confirmation, :remember_me])
+
+    #devise_parameter_sanitizer.permit(:account_update) {[:username, :password, :password_confirmation, :avatar, :current_password ] }
+
+
   end
 
 
