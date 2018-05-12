@@ -79,21 +79,15 @@ body {
 
 //SLIDESHOW CSS
 
-#contentdiv{
-width: 80%;
-height: 150px;
-position: relative;
-margin: auto;
-overflow: scroll;
-}
-
 * {box-sizing:border-box}
 
 /* Slideshow container */
 .slideshow-container {
   width: 100%;
+  height: 500px;
   position: relative;
   margin: auto;
+  overflow: hidden;
 }
 
 /*.slideshow-container > a {
@@ -142,14 +136,6 @@ overflow: scroll;
   text-align: center;
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
 
 /* The dots/bullets/indicators */
 .dot {
@@ -192,6 +178,7 @@ overflow: scroll;
 
   width: 100%;
   margin: 0px;
+  padding: 0px;
 }
 
 .signupform{
