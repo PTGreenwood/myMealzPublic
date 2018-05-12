@@ -64,14 +64,6 @@ body {
 }
 
 //SLIDESHOW CSS
-#dropdiv {
-   width: 100%;
-    padding: 0px;
-    margin-bottom: 10px;
-    height: 200px;
-    border: 1px solid red;
-    overflow: scroll;
-}
 
 #contentdiv{
 width: 80%;
@@ -80,31 +72,6 @@ position: relative;
 margin: auto;
 overflow: scroll;
 }
-
-#totaldiv{
-    padding: 0px;
-    margin-bottom: 10px;
-    height: 200px;
-    border: 1px solid blue;
-    overflow: scroll;
-}
-
-#divdiv{
-max-width: 90%;
-margin:auto;
-}
-
-.pa, .pb, .pc, .pd, .pe, .pf, .pg, .ph, .pi{
-	list-style-type: none;
-	padding: 10px;
-	margin: 10px;
-	text-align: center;
-}
-
-.jumbotron{
-margin: 0px;
-}
-
 
 * {box-sizing:border-box}
 
@@ -202,8 +169,17 @@ margin: 0px;
 
 //END SLIDESHOW CSS
 
+//INDEX
 .container{
 
   width: 100%;
   margin: 0px;
 }
+
+.signupform{
+  margin: auto;
+  text-align: right;
+  background-color: #e6e6e6;
+}
+
+//END INDEX
