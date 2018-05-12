@@ -10,14 +10,14 @@
   <body>
     <!-- Anything that is done on this page, happens on every single other page aswell -->
     <!-- Load in Ruby HTML.erb nav into every page -->
-
+<div class="container-fluid">
     <%= render '/layouts/nav' %>
     <!-- Yield says what to be rendered -->
     <!-- Notice and Alerts are feedback from ruby calls. Specified in the code. Layout is here -->
-<div class="container-fluid">
+
       <span class="notice"><%= notice %></span >
       <span class="alert"><%= alert %></span>
       <%= yield %>
-    </div>
+</div>
   </body>
 </html>
