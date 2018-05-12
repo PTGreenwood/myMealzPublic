@@ -1,13 +1,13 @@
 
-<div class="row">
-  <div class="col-md-12 col-md-offset-0 row align-items-center">
+<div class="row titlerow">
+  <div class="col-md-12">
     <h1 align=center>Welcome to MyMealz, Your Meal Planning Resource</h1>
     <br><br>
   </div>
 </div>
 
 <!-- Slideshow container -->
-<div class="slideshow-container">
+<div class="row slideshow-container">
 
   <!-- Full-width images with number and caption text -->
   <div class="mySlides">
@@ -28,24 +28,24 @@
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
-<br>
 
 <!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
+<div class="row">
+  <span class="dot col-md-4" onclick="currentSlide(1)"></span>
+  <span class="dot col-md-4" onclick="currentSlide(2)"></span>
+  <span class="dot col-md-4" onclick="currentSlide(3)"></span>
 </div>
 
 
 <!-- If not logged in, then will display the sign up and log in -->
 	<% if current_user.nil? %>
 
-  	<div class="col-md-12">
-      <div class="row">
-        <div class="col-md-3 signupform col-md-offset-4">
+      <div class="row firstrow">
+        <div class="col-md-3 signupform">
           <h2 style="text-align: center">Sign up</h2>
           <%= render 'layouts/logup/signup' %>
+        </div>
+        <div class="col-md-9 informationdiv">
         </div>
       </div>
 
@@ -57,8 +57,8 @@
     	window.location.href="/dashboard/<%=current_user.username %>" // put your correct path in a string here
   	</script>
 	<% end %>
-
 </div>
+
 
 
 <%# <!--<%= link_to app_dashboard_index_path, class: 'login-button' do >Signed in, Go to App<% end %>
