@@ -57,7 +57,8 @@ function recreateSelectedList() {
     $('#currentList').html('');
 
     for(var j = 0; j < selectedItemList.length; j++) {
-        $('#currentList').html(''+$('#currentList').html() + '<tr><td class="mp_totalBorders" colspan="4">' + selectedItemList[j][0] +
+        $('#currentList').html(''+$('#currentList').html() +
+            '<tr style="background-color:'+COLOURS_USED[selectedItemList[j][7]]+'; color:white"><td class="mp_totalBorders" colspan="4">' + selectedItemList[j][0] +
             '</td><td class="mp_totalBorders" >' + selectedItemList[j][2] + 'g</td>' + '<td class="mp_totalBorders" >' +
             selectedItemList[j][3] + 'g</td> <td class="mp_totalBorders" >' + selectedItemList[j][4] + 'g</td> ' +
             '<td class="mp_totalBorders" >' + selectedItemList[j][1] + 'cal</td> </tr>');
@@ -76,10 +77,11 @@ function makeItemSelection(itemType, productID, productName, totalCal, proteinQt
         }
     }
 
-    selectedItemList.push([productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType]);
+    selectedItemList.push([productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType, itemType]);
 
-    $('#currentList').html(''+$('#currentList').html() + '<tr><td class="mp_totalBorders" colspan="4">'+productName+
-        '</td><td class="mp_totalBorders">'+proteinQty+'g</td>' + '<td class="mp_totalBorders">'+carbQty+
+    $('#currentList').html(''+$('#currentList').html() +
+        '<tr style="background-color: '+COLOURS_USED[itemType]+'; color:white"><td class="mp_totalBorders" colspan="4">'+
+        productName+ '</td><td class="mp_totalBorders">'+proteinQty+'g</td>' + '<td class="mp_totalBorders">'+carbQty+
         'g</td><td class="mp_totalBorders">' +fatQty+'g</td> <td class="mp_totalBorders">'+totalCal+'cal</td> </tr>');
 
 
