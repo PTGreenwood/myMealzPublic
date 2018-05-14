@@ -88,6 +88,7 @@ class UserDashboardController < ApplicationController
   #USER MEAL PLANNER
   def showMealPlanner
 
+    @clientRestriction = Contract.where(UserID: current_user.id)
     @proteinProducts = Product.where(productType: 'protein')
     @grainProducts = Product.where(productType: 'grain')
     @dairyProducts = Product.where(productType: 'dairy')

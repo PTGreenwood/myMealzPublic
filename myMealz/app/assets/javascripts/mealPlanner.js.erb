@@ -8,6 +8,9 @@ ELEMENT_LIST = ['b_mon', 'b_tue', 'b_wed', 'b_thur', 'b_fri', 'b_weekend', 'l_mo
     'l_weekend', 'd_mon', 'd_tue', 'd_wed', 'd_thur', 'd_fri', 'd_weekend'];
 
 COLOURS_USED = ["indianred", "orange", "dodgerblue", "green", "rebeccapurple", "saddlebrown", "gold"];
+TYPES_LIST = ['protein', 'grain', 'dairy', 'vege', 'fruit', 'fats', 'disc', 'totalCal'];
+
+currentServingAmount = [0,0,0,0,0,0,0,0];
 
 var currentlyViewed = 'Breakfast - Monday';
 var selectedItemList = [];
@@ -38,11 +41,14 @@ function calculateTotals() {
     var fTotal = 0;
     var calTotal = 0;
 
+
+
     for(var k = 0; k < selectedItemList.length; k++) {
         pTotal += selectedItemList[k][2];
         cTotal += selectedItemList[k][3];
         fTotal += selectedItemList[k][4];
         calTotal += selectedItemList[k][1];
+
     }
 
     $('#proteinTotal').html(pTotal + 'g');
@@ -68,23 +74,39 @@ function recreateSelectedList() {
 
 function makeItemSelection(itemType, productID, productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType) {
 
-    for(var i = 0; i< selectedItemList.length; i++) {
-        if(selectedItemList[i][0] == productName) {
-            selectedItemList.splice(i, 1);
-            $('#'+itemType+'_'+productID).css({"background-color": "white", "color": COLOURS_USED[itemType]});
-            recreateSelectedList();
-            return;
+    var el = $('#' + TYPES_LIST[itemType] + 'Serving');
+    var totalCalIn = $('#' + TYPES_LIST[7] + 'Serving');
+
+        for (var i = 0; i < selectedItemList.length; i++) {
+            if (selectedItemList[i][0] == productName) {
+                selectedItemList.splice(i, 1);
+                $('#' + itemType + '_' + productID).css({"background-color": "white", "color": COLOURS_USED[itemType]});
+                recreateSelectedList();
+                /* Increase the servings */
+
+                el.html(parseInt(el.html()) + 1);
+                totalCalIn.html(parseInt(totalCalIn.html()) + parseInt(totalCal));
+                return;
+            }
+        }
+
+    if(parseInt(totalCalIn.html()) >= parseInt(totalCal)) {
+        if (parseInt(el.html()) != 0) {
+            selectedItemList.push([productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType, itemType]);
+
+            $('#currentList').html('' + $('#currentList').html() +
+                '<tr style="background-color: ' + COLOURS_USED[itemType] + '; color:white"><td class="mp_totalBorders" colspan="4">' +
+                productName + '</td><td class="mp_totalBorders">' + proteinQty + 'g</td>' + '<td class="mp_totalBorders">' + carbQty +
+                'g</td><td class="mp_totalBorders">' + fatQty + 'g</td> <td class="mp_totalBorders">' + totalCal + 'cal</td> </tr>');
+
+
+            $('#' + itemType + '_' + productID).css({"background-color": COLOURS_USED[itemType], "color": "white"});
+            calculateTotals();
+
+            /* Reduce the servings */
+            el.html(parseInt(el.html()) - 1);
+            totalCalIn.html(parseInt(totalCalIn.html() - totalCal))
         }
     }
 
-    selectedItemList.push([productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType, itemType]);
-
-    $('#currentList').html(''+$('#currentList').html() +
-        '<tr style="background-color: '+COLOURS_USED[itemType]+'; color:white"><td class="mp_totalBorders" colspan="4">'+
-        productName+ '</td><td class="mp_totalBorders">'+proteinQty+'g</td>' + '<td class="mp_totalBorders">'+carbQty+
-        'g</td><td class="mp_totalBorders">' +fatQty+'g</td> <td class="mp_totalBorders">'+totalCal+'cal</td> </tr>');
-
-
-    $('#'+itemType+'_'+productID).css({"background-color": COLOURS_USED[itemType], "color": "white"});
-    calculateTotals();
 }

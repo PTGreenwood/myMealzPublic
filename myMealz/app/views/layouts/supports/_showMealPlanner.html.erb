@@ -15,21 +15,21 @@
                 <th scope="col" class="text-center mp_sTableHeaders">Fruits</th>
                 <th scope="col" class="text-center mp_sTableHeaders">Fats</th>
                 <th scope="col" class="text-center mp_sTableHeaders">Discretionary</th>
-                <th scope="col" class="text-center mp_sTableHeaders">Total Calorie Intake</th>
+                <th scope="col" class="text-center mp_sTableHeaders">Calorie Leftover</th>
               </tr>
             </thead>
 
             <tbody>
             <tr style="background-color: white">
               <td class="text-right mp_sTable">Servings Remaining:</td>
-              <td class="text-center mp_sTable">X</td>
-              <td class="text-center mp_sTable">X</td>
-              <td class="text-center mp_sTable">X</td>
-              <td class="text-center mp_sTable">Y</td>
-              <td class="text-center mp_sTable">X</td>
-              <td class="text-center mp_sTable">Z</td>
-              <td class="text-center mp_sTable">X</td>
-              <td class="text-center mp_sTable">1000</td>
+              <td id="proteinServing" class="text-center mp_sTable"><%=@clientRestriction[0].proteinReq%></td>
+              <td id="grainServing" class="text-center mp_sTable"><%=@clientRestriction[0].grainsReq%></td>
+              <td id="dairyServing" class="text-center mp_sTable"><%=@clientRestriction[0].dairyReq%></td>
+              <td id="vegeServing" class="text-center mp_sTable"><%=@clientRestriction[0].vegeReq%></td>
+              <td id="fruitServing" class="text-center mp_sTable"><%=@clientRestriction[0].fruitReq%></td>
+              <td id="fatsServing" class="text-center mp_sTable"><%=@clientRestriction[0].fatsReq%></td>
+              <td id="discServing" class="text-center mp_sTable"><%=@clientRestriction[0].discReq%></td>
+              <td id="totalCalServing" class="text-center mp_sTable"><%=@clientRestriction[0].totalCalRestriction%></td>
             </tr>
             </tbody>
           </table>
