@@ -1,44 +1,137 @@
-# SEED ALL THE PRODUCTS!
-prodType = Array["protein", "grain", "dairy", "vegetable", "fruit", "fat", "disc"]
-counter = 0
+#Seed products table
+
+#Protein
+proteinNames = Array["Chicken", "Turkey", "Beef", "Lamb", "Kangaroo", "Pork", "Smoked Salmon", "Eggs", "Tofu", "Lentils"]
+proteinServingSize = Array["80", "80", "65", "65", "65", "65", "100", "2", "170", "150"]
+proteinServingType = Array["grams", "grams", "grams", "slice", "qty", "crackers", "grams", "qty", "grams", "grams"]
+
+#Grains
+grainNames = Array["Cereal Flakes", "Muesli", "Semolina", "Bread", "Wrap", "Cruskits", "Rice", "Pasta", "Noodles", "CousCous"]
+grainServingSize = Array["30", "30", "30", "1", "1", "4", "30", "30", "30", "30"]
+grainServingType = Array["grams", "grams", "grams", "slice", "qty", "crackers", "grams", "grams", "grams", "grams"]
+
+#Dairy
+dairyNames = Array["Skim Milk", "Full-Cream Milk", "Almond Milk", "Low-fat Yoghurt", "Full-fat Yoghurt", "Reduced-fat Cheese", "Full-fat Cheese",
+                   "Ricotta", "Custard", "White Sauce"]
+dairyServingSize = Array["300", "200", "375", "165", "125", "40", "30", "120", "165", "250"]
+dairyServingType = Array["mL", "mL", "mL","grams", "grams", "grams", "grams", "grams", "mL", "mL"]
+
+#Veges
+vegeNames = Array["Asparagus", "Corn", "Broccoli", "Cucumber", "Eggplant", "Onions", "Squash", "Pumpkin", "Potato", "Sweet Potato"]
+vegeServingSize = Array["75", "75", "75", "75", "75", "75", "75", "75", "75", "75"]
+vegeServingType = Array["grams", "grams", "grams", "grams", "grams", "grams", "grams", "grams", "grams", "grams"]
+
+#Fruit
+fruitNames = Array["Grapefruit", "Apple", "Pear", "Peach", "Apricot", "Lychee", "Grape", "Strawberry", "Sultanas", "Juice"]
+fruitServingSize = Array["1", "1", "1", "2", "4", "8", "20", "1", "30", "125"]
+fruitServingType = Array["qty", "qty", "qty", "qty", "qty", "qty", "qty", "punnet", "grams", "mL"]
+
+#Fats
+fatsNames = Array["Peanut Oil", "Sunflower Oil", "Peanut Butter", "Avocado", "Olives", "Pistachios", "Cashews",
+                  "Chia Seeds", "Salad Dressing", "Mayonnaise"]
+fatsServingSize = Array["1", "1", "1", "15", "5", "8", "3", "2", "2", "1"]
+fatsServingType = Array["tsp", "tsp", "tsp", "grams", "qty", "qty", "qty", "tsp", "tsp", "tsp"]
+
+#Disc
+discNames = Array["Sausage", "Hot Chips", "Pizza", "Garlic Bread", "Soft Drnk", "Cake", "Chocolate", "Jelly Beans", "Honey", "Jam"]
+discServingSize = Array["1", "12", "1", "2", "330", "1", "4", "16", "7", "4"]
+discServingType = Array["qty", "qty", "slice", "pieces", "mL", "slice", "squares", "qty", "tsp", "tsp"]
+
+counter = 10
 typeCount = 0
 10.times do
-  if((counter % 2) == 0)
 
-
-
-    Product.create({
-        productID: counter+1,
-        productName: Faker::Food.ingredient,
-        totalCal: Faker::Number.between(5, 40),
-        proteinQty: Faker::Number.between(0, 2),
-        carbohydrateQty: Faker::Number.between(0, 4),
-        fatsQty: Faker::Number.between(0, 3),
-        productType: prodType[typeCount],
-        servingQty: Faker::Number.between(0, 10),
-        servingType: Faker::Measurement.metric_weight("none")
-
-                   })
-  else
-    Product.create({
+  #Proteins
+  Product.create({
                      productID: counter+1,
-                     productName: Faker::Food.ingredient,
-                     totalCal: Faker::Number.between(1, 20),
-                     proteinQty: Faker::Number.between(2, 6),
-                     carbohydrateQty: Faker::Number.between(0, 2),
-                     fatsQty: Faker::Number.between(2, 8),
-                     productType: prodType[typeCount],
-                     servingQty: Faker::Number.between(0, 10),
-                     servingType: Faker::Measurement.metric_volume("none")
-
+                     productName: proteinNames[typeCount],
+                     totalCal: Faker::Number.between(100, 120),
+                     proteinQty: Faker::Number.between(0, 10),
+                     carbohydrateQty: Faker::Number.between(0, 14),
+                     fatsQty: Faker::Number.between(0, 13),
+                     productType: "protein",
+                     servingQty: proteinServingSize[typeCount],
+                     servingType: proteinServingType[typeCount]
                  })
-  end
+  counter +=1
+  #Grains
+  Product.create({
+                     productID: counter+1,
+                     productName: grainNames[typeCount],
+                     totalCal: Faker::Number.between(100, 120),
+                     proteinQty: Faker::Number.between(0, 10),
+                     carbohydrateQty: Faker::Number.between(0, 14),
+                     fatsQty: Faker::Number.between(0, 13),
+                     productType: "grain",
+                     servingQty: grainServingSize[typeCount],
+                     servingType: grainServingType[typeCount]
+                   })
+  counter +=1
+  #Dairy
+  Product.create({
+                     productID: counter+1,
+                     productName: dairyNames[typeCount],
+                     totalCal: Faker::Number.between(100, 120),
+                     proteinQty: Faker::Number.between(0, 10),
+                     carbohydrateQty: Faker::Number.between(0, 14),
+                     fatsQty: Faker::Number.between(0, 13),
+                     productType: "dairy",
+                     servingQty: dairyServingSize[typeCount],
+                     servingType: dairyServingType[typeCount]
+                 })
+  counter +=1
+  #Vegetables
+  Product.create({
+                     productID: counter+10+1,
+                     productName: vegeNames[typeCount],
+                     totalCal: Faker::Number.between(100, 120),
+                     proteinQty: Faker::Number.between(0, 10),
+                     carbohydrateQty: Faker::Number.between(0, 14),
+                     fatsQty: Faker::Number.between(0, 13),
+                     productType: "vegetable",
+                     servingQty: vegeServingSize[typeCount],
+                     servingType: vegeServingType[typeCount]
+                 })
+  counter +=1
+  #Fruit
+  Product.create({
+                     productID: counter+10+1,
+                     productName: fruitNames[typeCount],
+                     totalCal: Faker::Number.between(100, 120),
+                     proteinQty: Faker::Number.between(0, 10),
+                     carbohydrateQty: Faker::Number.between(0, 14),
+                     fatsQty: Faker::Number.between(0, 13),
+                     productType: "fruit",
+                     servingQty: fruitServingSize[typeCount],
+                     servingType: fruitServingType[typeCount]
+                 })
+  counter +=1
+  #Fats
+  Product.create({
+                     productID: counter+10+1,
+                     productName: fatsNames[typeCount],
+                     totalCal: Faker::Number.between(100, 120),
+                     proteinQty: Faker::Number.between(0, 10),
+                     carbohydrateQty: Faker::Number.between(0, 14),
+                     fatsQty: Faker::Number.between(0, 13),
+                     productType: "fat",
+                     servingQty: fatsServingSize[typeCount],
+                     servingType: fatsServingType[typeCount]
+                 })
+  counter +=1
+  #Disc
+  Product.create({
+                     productID: counter+10+1,
+                     productName: discNames[typeCount],
+                     totalCal: Faker::Number.between(100, 120),
+                     proteinQty: Faker::Number.between(0, 10),
+                     carbohydrateQty: Faker::Number.between(0, 14),
+                     fatsQty: Faker::Number.between(0, 13),
+                     productType: "discretionary",
+                     servingQty: discServingSize[typeCount],
+                     servingType: discServingType[typeCount]
+                 })
+
   counter += 1
-
   typeCount += 1
-  if(typeCount == 7)
-    typeCount = 0
-  end
 end
-
-#SETUP ALL THE ___
