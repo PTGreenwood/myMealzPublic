@@ -8,6 +8,7 @@ class UserDashboardController < ApplicationController
     end
   end
 
+  #USER SUPPORT TICKETS
   def newTicket
     @data = JSON.parse(params[:messageDetails])
 
@@ -83,4 +84,28 @@ class UserDashboardController < ApplicationController
       format.json {render json: @data.to_json}
     end
   end
+
+  #USER MEAL PLANNER
+  def showMealPlanner
+
+    @proteinProducts = Product.where(productType: 'protein')
+    @grainProducts = Product.where(productType: 'grain')
+    @dairyProducts = Product.where(productType: 'dairy')
+    @vegeProducts = Product.where(productType: 'vege')
+    @fruitProducts = Product.where(productType: 'fruit')
+    @fatProducts = Product.where(productType: 'fat')
+    @discProducts = Product.where(productType: 'disc')
+
+    respond_to do |format|
+      #format.html
+      format.js
+      #render :partial=>"/layouts/supports/showTickets"
+    end
+
+  end
+
+
+
+
 end
+

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   #User Controller - user_dashboard
   get '/user/ticketSupport' => 'user_dashboard#support'
+  get '/showMealPlanner', to: 'user_dashboard#showMealPlanner'
   get 'user_dashboard/replyMessage/:messageDetails', to: 'user_dashboard#replyTicketMessage'
   get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
   get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'
