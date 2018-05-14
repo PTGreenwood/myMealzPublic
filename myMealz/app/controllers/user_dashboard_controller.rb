@@ -91,10 +91,10 @@ class UserDashboardController < ApplicationController
     @proteinProducts = Product.where(productType: 'protein')
     @grainProducts = Product.where(productType: 'grain')
     @dairyProducts = Product.where(productType: 'dairy')
-    @vegeProducts = Product.where(productType: 'vege')
+    @vegeProducts = Product.where(productType: 'vegetable')
     @fruitProducts = Product.where(productType: 'fruit')
     @fatProducts = Product.where(productType: 'fat')
-    @discProducts = Product.where(productType: 'disc')
+    @discProducts = Product.where(productType: 'discretionary')
 
     respond_to do |format|
       #format.html

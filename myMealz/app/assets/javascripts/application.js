@@ -17,6 +17,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= stub rails_admin/custom/ui.js
+//= require meal_planner
 
 // SLIDESHOW CODE START
 var slideIndex = 1;

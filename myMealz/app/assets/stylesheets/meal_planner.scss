@@ -1,0 +1,139 @@
+/* If adding anything to this file. Make sure all css are labeled
+mp_X
+ */
+
+.mp_totalBorders {
+  border-right: 1px solid limegreen;
+}
+
+/*Servings table*/
+.mp_sTable {
+  border-right:2px solid burlywood;
+  max-width: 80px;
+
+}
+
+.mp_sTableHeaders {
+  max-width: 80px;
+}
+
+.mp_sTableHeadersException {
+  max-width: 80px;
+  color: white;
+}
+
+/*Protein */
+.mp_proteinTable {
+  border: 3px solid indianred;
+}
+.mp_proteinTableHead {
+  color: white;
+  background-color: indianred;
+  max-width: 100px;
+}
+
+.mp_proteinTableBody {
+  color: indianred;
+}
+
+.mp_hover {
+  cursor: pointer;
+}
+/* End Protein */
+
+/*Grains */
+.mp_grainsTable {
+  border: 3px solid orange;
+}
+.mp_grainsTableHead {
+  color: white;
+  background-color: orange;
+}
+
+.mp_grainsTableBody {
+  color: orange;
+}
+/* End Grains */
+
+/*Dairy */
+.mp_dairyTable {
+  border: 3px solid dodgerblue;
+}
+.mp_dairyTableHead {
+  color: white;
+
+  background-color: dodgerblue;
+}
+
+.mp_dairyTableBody {
+  color: dodgerblue;
+}
+/* End Dairy */
+
+/*Vegetables */
+.mp_vegeTable {
+  border: 3px solid green;
+}
+.mp_vegeTableHead {
+  color: white;
+  background-color: green;
+}
+
+.mp_vegeTableBody {
+  color: green;
+}
+/* End Vegetables */
+
+/*Fruit */
+.mp_fruitTable {
+  border: 3px solid rebeccapurple;
+}
+.mp_fruitTableHead {
+  color: white;
+  background-color: rebeccapurple;
+}
+
+.mp_fruitTableBody {
+  color: rebeccapurple;
+}
+/* End Fruit */
+
+
+/*Fats */
+.mp_fatsTable {
+  border: 3px solid saddlebrown;
+}
+.mp_fatsTableHead {
+  color: white;
+  background-color: saddlebrown;
+}
+
+.mp_fatsTableBody {
+  color: saddlebrown;
+}
+/* End Fats */
+
+/*Discretionary */
+
+.mp_discTable {
+  border: 3px solid gold;
+}
+.mp_discTableHead {
+  color: white;
+  background-color: gold;
+}
+
+.mp_discTableBody {
+  color: gold;
+}
+/* End Discretionary  */
+
+/* Drop down panels for meal selection */
+.mp_panelSection {
+  background-color: honeydew;
+}
+
+.mp_panelSection:hover {
+  background-color: red;
+}
+/*End drop down panels section */
