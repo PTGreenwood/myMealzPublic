@@ -1,6 +1,7 @@
 
+<!-- Title row, single column, greeting title -->
 <div class="row titlerow">
-  <div class="col-md-12">
+  <div class="col-md-12" style="margin-top:80px">
     <h1 align=center>Welcome to MyMealz <br> <small>Your Meal Planning Resource</small></h1>
     <br>
   </div>
@@ -9,7 +10,7 @@
 <!-- Slideshow container -->
 <div class="row slideshow-container">
 
-  <!-- Full-width images with number and caption text -->
+  <!-- Full-width images and {caption text} -->
   <div class="mySlides">
 	<%= image_tag("food1.jpg", :alt => "food1") %>
     <div class="text"></div>
@@ -36,59 +37,67 @@
   <span class="dot col-md-4" onclick="currentSlide(3)"></span>
 </div>
 
-
 <!-- If not logged in, then will display the sign up and log in -->
-	<% if current_user.nil? %>
-
-      <div class="row firstrow">
-        <div class="col-md-4">
-          <%= image_tag("icon1.png", :alt => "icon1", :class => "icon1") %>
-          <h1 style="text-align: center">CREATE YOUR OWN RECIPIES</h1>
-          <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
-            Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="col-md-4">
-          <%= image_tag("icon2.png", :alt => "icon2", :class => "icon2") %>
-          <h1 style="text-align: center">WEEKLY MEAL ORGANISER</h1>
-          <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
-            Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>        </div>
-        <div class="col-md-4">
-          <%= image_tag("icon3.png", :alt => "icon3", :class => "icon3") %>
-          <h1 style="text-align: center">SUPPORTED BY QUALIFIED DIETITIANS</h1>
-          <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
-            Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>        </div>
+<% if current_user.nil? %>
+  <!-- First row, divided into 3 equal columns, icons and text -->
+  <div class="row firstrow">
+    <!-- column 1 of firstrow -->
+    <div class="col-md-4">
+      <%= image_tag("icon1.png", :alt => "icon1", :class => "icon1") %>
+      <h1 style="text-align: center">CREATE YOUR OWN RECIPIES</h1>
+      <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
+        Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <!-- column 2 of firstrow -->
+    <div class="col-md-4">
+      <%= image_tag("icon2.png", :alt => "icon2", :class => "icon2") %>
+      <h1 style="text-align: center">WEEKLY MEAL ORGANISER</h1>
+      <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
+        Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
-      <div class="row secondrow">
-        <div class="col-md-3 signupform">
-          <h2 style="text-align: center">Sign up</h2>
-          <%= render 'layouts/logup/signup' %>
-        </div>
-        <div class="col-md-9 informationdiv">
-          <h1 style="text-align: center">What is myMealz?</h1>
-          <br>
-          <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis
-            velit laoreet non. Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. In diam dui, commodo nec lacus tristique, blandit auctor diam.
-            Vestibulum eget mi a orci congue faucibus. Aliquam venenatis, libero condimentum feugiat facilisis,
-            nulla quam finibus ipsum, in elementum ipsum justo at neque. Mauris ultrices sit amet eros ac pulvinar.
-            Nunc mollis sit amet sapien vel vulputate. Nullam tempor rhoncus nisi. Aliquam vel quam dignissim,
-            interdum mauris sit amet, pellentesque nisi. Sed tincidunt nisi in aliquam iaculis.</p>
-        </div>
+    <!-- column 3 of firstrow -->
+    <div class="col-md-4">
+      <%= image_tag("icon3.png", :alt => "icon3", :class => "icon3") %>
+      <h1 style="text-align: center">SUPPORTED BY QUALIFIED DIETITIANS</h1>
+      <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
+        Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
+  </div>
 
-		<%#= link_to new_user_session_path, class: 'login-button' do %><!--Not logged in, Sign in.--><%# end %>
+  <!-- second row, divided into 2 inequal columns, icons and text -->
+  <div class="row secondrow">
+    <!-- first column of second row -->
+    <div class="col-md-9 informationdiv">
+      <h1 style="text-align: center">What is myMealz?</h1>
+      <br>
+      <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis
+        velit laoreet non. Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. In diam dui, commodo nec lacus tristique, blandit auctor diam.
+        Vestibulum eget mi a orci congue faucibus. Aliquam venenatis, libero condimentum feugiat facilisis,
+        nulla quam finibus ipsum, in elementum ipsum justo at neque. Mauris ultrices sit amet eros ac pulvinar.
+        Nunc mollis sit amet sapien vel vulputate. Nullam tempor rhoncus nisi. Aliquam vel quam dignissim,
+        interdum mauris sit amet, pellentesque nisi. Sed tincidunt nisi in aliquam iaculis.</p>
+    </div>
+    <!-- second column of second row -->
+    <div class="col-md-3 signupform">
+      <h2 style="text-align: center">Sign up</h2>
+      <%= render 'layouts/logup/signup' %>
+    </div>
+  </div>
 
-	<% else %>
-	<!-- Redirect to the profile page -->
-		<script type="text/javascript">
-    	window.location.href="/dashboard/<%=current_user.username %>" // put your correct path in a string here
-  	</script>
-	<% end %>
-</div>
+<!-- if logged in (as any user), redirect to respective dashboard -->
+<% else %>
+  <!-- Script to redirect to the profile page -->
+	<script type="text/javascript">
+  	window.location.href="/dashboard/<%=current_user.username %>" // put your correct path in a string here
+	</script>
+
+<!-- end page load -->
+<% end %>
 
 
 
