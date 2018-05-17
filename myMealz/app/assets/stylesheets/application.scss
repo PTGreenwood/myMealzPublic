@@ -234,8 +234,8 @@ float: right;
 
 }
 
-.profile-picture {
-    max-height: 250px;
+.profile-picture > p > img {
+    max-width: 230px;
     min-height: 200px;
 }
 
