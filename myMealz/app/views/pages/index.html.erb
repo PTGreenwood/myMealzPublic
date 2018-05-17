@@ -41,15 +41,43 @@
 	<% if current_user.nil? %>
 
       <div class="row firstrow">
+        <div class="col-md-4">
+          <%= image_tag("icon1.png", :alt => "icon1", :class => "icon1") %>
+          <h1 style="text-align: center">CREATE YOUR OWN RECIPIES</h1>
+          <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
+            Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="col-md-4">
+          <%= image_tag("icon2.png", :alt => "icon2", :class => "icon2") %>
+          <h1 style="text-align: center">WEEKLY MEAL ORGANISER</h1>
+          <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
+            Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>        </div>
+        <div class="col-md-4">
+          <%= image_tag("icon3.png", :alt => "icon3", :class => "icon3") %>
+          <h1 style="text-align: center">SUPPORTED BY QUALIFIED DIETITIANS</h1>
+          <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
+            Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>        </div>
+      </div>
+      <div class="row secondrow">
         <div class="col-md-3 signupform">
           <h2 style="text-align: center">Sign up</h2>
           <%= render 'layouts/logup/signup' %>
         </div>
         <div class="col-md-9 informationdiv">
+          <h1 style="text-align: center">What is myMealz?</h1>
+          <br>
+          <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis
+            velit laoreet non. Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. In diam dui, commodo nec lacus tristique, blandit auctor diam.
+            Vestibulum eget mi a orci congue faucibus. Aliquam venenatis, libero condimentum feugiat facilisis,
+            nulla quam finibus ipsum, in elementum ipsum justo at neque. Mauris ultrices sit amet eros ac pulvinar.
+            Nunc mollis sit amet sapien vel vulputate. Nullam tempor rhoncus nisi. Aliquam vel quam dignissim,
+            interdum mauris sit amet, pellentesque nisi. Sed tincidunt nisi in aliquam iaculis.</p>
         </div>
-      </div>
-      <div class="row secondrow">
-        <div class="col-md-12 othercrap">
       </div>
 
 		<%#= link_to new_user_session_path, class: 'login-button' do %><!--Not logged in, Sign in.--><%# end %>

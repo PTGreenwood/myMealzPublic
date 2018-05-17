@@ -184,10 +184,10 @@ body {
 .signupform{
 top: 50%;
 transform: translateY(-50%);
-background-color: #E9f0f9;
+background-color: #37BC9B;
 text-align: right;
-height: 95%;
-float: left;
+height: 350px;
+float: right;
 border-radius: 10px;
 }
 
@@ -195,13 +195,19 @@ border-radius: 10px;
   height: 100%;
   right: 0;
   top: 0;
-  float: left;
+
 }
 
 .firstrow{
   position: relative;
-  height: 300px;
+  height: 500px;
   background-color: #37BC9B;
+}
+
+.secondrow{
+  background-color: #E9f0f9;
+  position: relative;
+  height: 500px;
 }
 //END INDEX
 
@@ -225,4 +231,12 @@ border-radius: 10px;
 
 .main-panel {
     height: 900px;
+}
+
+.icon1, .icon2, .icon3{
+  height: 150px;
+  width: 150px;
+  display:block;
+  margin:auto;
+  margin-top: 25px;
 }
