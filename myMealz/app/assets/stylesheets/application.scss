@@ -26,6 +26,13 @@
 .loginbutton{
   float: right;
   margin-top: 22px;
+  background-color: #37BC9B;
+  border-color: white;
+}
+//#4C927B
+.loginbutton:hover, .loginbutton:focus, .loginbutton.focus{
+  background-color: #4C927B;
+  color: white;
 }
 
 // Navbar Basic Colours
@@ -163,37 +170,13 @@ body {
   background-color: #717171;
 }
 
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
 //END SLIDESHOW CSS
 
 //INDEX
 
 
 .signupform{
-top: 50%;
-transform: translateY(-50%);
-background-color: #37BC9B;
-text-align: right;
-height: 350px;
 float: right;
-border-radius: 10px;
 }
 
 .informationdiv{
@@ -205,13 +188,14 @@ border-radius: 10px;
 
 .firstrow{
   position: relative;
-  background-color: #37BC9B;
+  background-color: #E9f0f9;
+  padding-bottom: 50px;
 }
 
 .secondrow{
-  background-color: #E9f0f9;
+  background-color: #37BC9B;
   position: relative;
-  height: 500px;
+  height: 800px;
 }
 
 .icon1, .icon2, .icon3{
@@ -223,7 +207,16 @@ border-radius: 10px;
 }
 
 .signupcontent{
-  float: left;
+  float: right;
+  margin-top: 22px;
+  background-color: #37BC9B;
+  border-color: white;
+  color: white;
+}
+//#4C927B
+.signupcontent:hover, .signupcontent:focus, .signupcontent.focus{
+  background-color: #4C927B;
+  color: white;
 }
 //END INDEX
 
