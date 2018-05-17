@@ -45,9 +45,10 @@
  width: 100%;
  z-index: 1;
 }
-
-#usernavleft{
-  color: white;
+.dividerline{
+  border-left: 1px solid white;
+  height: 40px;
+  margin-top: 5px;
 }
 // Navbar myMealz Home button
 #mymealznav {
