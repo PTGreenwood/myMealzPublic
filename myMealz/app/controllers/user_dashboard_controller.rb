@@ -1,4 +1,5 @@
 class UserDashboardController < ApplicationController
+  respond_to :js, :json, :html, :xml
 
   def support
     if(User.find_by_username(params[:id]))
@@ -106,6 +107,38 @@ class UserDashboardController < ApplicationController
   end
 
 
+  def getMealData
+
+    requestReceived = params[:request]
+
+    if(requestReceived["meal"] == "b")
+      puts("breakfast")
+    elsif(requestReceived["meal"] == "l")
+      puts("lunch")
+    elsif(requestReceived["meal"] == "d")
+      puts("dinner")
+    else
+      puts("NOTHING")
+
+    end
+
+    require 'json'
+
+    text = "Hello world"
+
+    json = '{"fruits": [{"name": "Apple", "location": "Harbor"}, {"name": "Banana", "location": "Kitchen"}, {"name": "Mango", "location": "Bedroom"}]}'
+    fruits = JSON.parse(json)['fruits'] # append ['fruits']
+
+    puts(fruits)
+    def format_fruits(fruits)
+      fruits.map do |fruit| # change each -> map
+        "\n\n#{ fruit['name'] }, #{ fruit['location'] }" # delete puts, [0]
+      end.join # change to_sentence -> join
+    end
+
+    text += format_fruits(fruits)
+    respond_with(fruits)
+  end
 
 
 end

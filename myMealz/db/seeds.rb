@@ -3,34 +3,34 @@
 #Protein
 proteinNames = Array["Chicken", "Turkey", "Beef", "Lamb", "Kangaroo", "Pork", "Smoked Salmon", "Eggs", "Tofu", "Lentils"]
 proteinServingSize = Array["80", "80", "65", "65", "65", "65", "100", "2", "170", "150"]
-proteinServingType = Array["grams", "grams", "grams", "slice", "qty", "crackers", "grams", "qty", "grams", "grams"]
+proteinServingType = Array["g", "g", "g", "g", "qty", "qty", "g", "qty", "g", "g"]
 
 #Grains
 grainNames = Array["Cereal Flakes", "Muesli", "Semolina", "Bread", "Wrap", "Cruskits", "Rice", "Pasta", "Noodles", "CousCous"]
 grainServingSize = Array["30", "30", "30", "1", "1", "4", "30", "30", "30", "30"]
-grainServingType = Array["grams", "grams", "grams", "slice", "qty", "crackers", "grams", "grams", "grams", "grams"]
+grainServingType = Array["g", "g", "g", "slice", "qty", "qty", "g", "g", "g", "g"]
 
 #Dairy
 dairyNames = Array["Skim Milk", "Full-Cream Milk", "Almond Milk", "Low-fat Yoghurt", "Full-fat Yoghurt", "Reduced-fat Cheese", "Full-fat Cheese",
                    "Ricotta", "Custard", "White Sauce"]
 dairyServingSize = Array["300", "200", "375", "165", "125", "40", "30", "120", "165", "250"]
-dairyServingType = Array["mL", "mL", "mL","grams", "grams", "grams", "grams", "grams", "mL", "mL"]
+dairyServingType = Array["mL", "mL", "mL","g", "g", "g", "g", "g", "mL", "mL"]
 
 #Veges
 vegeNames = Array["Asparagus", "Corn", "Broccoli", "Cucumber", "Eggplant", "Onions", "Squash", "Pumpkin", "Potato", "Sweet Potato"]
 vegeServingSize = Array["75", "75", "75", "75", "75", "75", "75", "75", "75", "75"]
-vegeServingType = Array["grams", "grams", "grams", "grams", "grams", "grams", "grams", "grams", "grams", "grams"]
+vegeServingType = Array["g", "g", "g", "g", "g", "g", "g", "g", "g", "g"]
 
 #Fruit
 fruitNames = Array["Grapefruit", "Apple", "Pear", "Peach", "Apricot", "Lychee", "Grape", "Strawberry", "Sultanas", "Juice"]
 fruitServingSize = Array["1", "1", "1", "2", "4", "8", "20", "1", "30", "125"]
-fruitServingType = Array["qty", "qty", "qty", "qty", "qty", "qty", "qty", "punnet", "grams", "mL"]
+fruitServingType = Array["qty", "qty", "qty", "qty", "qty", "qty", "qty", "punnet", "g", "mL"]
 
 #Fats
 fatsNames = Array["Peanut Oil", "Sunflower Oil", "Peanut Butter", "Avocado", "Olives", "Pistachios", "Cashews",
                   "Chia Seeds", "Salad Dressing", "Mayonnaise"]
 fatsServingSize = Array["1", "1", "1", "15", "5", "8", "3", "2", "2", "1"]
-fatsServingType = Array["tsp", "tsp", "tsp", "grams", "qty", "qty", "qty", "tsp", "tsp", "tsp"]
+fatsServingType = Array["tsp", "tsp", "tsp", "g", "qty", "qty", "qty", "tsp", "tsp", "tsp"]
 
 #Disc
 discNames = Array["Sausage", "Hot Chips", "Pizza", "Garlic Bread", "Soft Drnk", "Cake", "Chocolate", "Jelly Beans", "Honey", "Jam"]

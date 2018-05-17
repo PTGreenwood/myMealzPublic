@@ -1,3 +1,4 @@
+
 <div class="row">
   <!-- Left -->
   <div class="col-xs-2">
@@ -25,7 +26,51 @@
       </div>
     </div>
 
+    <div class="panel panel-default" id="accessoryPanel" style="display: none">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-hover" style="border: 3px solid limegreen">
+            <thead style="background-color: limegreen">
+              <tr>
+                <th scope="col" class="text-center" style="color: white" colspan="2">Chosen Menu Items</th>
+              </tr>
+            </thead>
 
+            <tbody id="accessoryPanel_currentList">
+
+            </tbody>
+            <tr style="background-color: white; color:black">
+              <td class="mp_totalBorders CellWithComment" colspan="2"> Total Nutrient Content
+                <span id="cellNum_total" class="CellComment">
+                  <table>
+                    <tr>
+                      <td class="text-right">
+                        <strong>Protein:&nbsp</strong>
+                      </td>
+                      <td id ="assPanel_protein">
+                      </td>
+                    </tr>
+                    <tr>
+                    <td class="text-right"><strong>Carb:&nbsp</strong></td>
+                      <td id="assPanel_carb">
+                    </td></tr>
+                    <tr>
+                      <td class="text-right"><strong>Fat:&nbsp</strong></td>
+                      <td id="assPanel_fat"></td>
+                    </tr>
+                    <tr>
+                      <td class="text-right"><strong>Total Cal:&nbsp</strong></td>
+                      <td id="assPanel_cal"></td>
+                    </tr>
+                  </table>
+                </span>
+              </td>
+            </tr>
+          </table>
+          <br><br>
+        </div>
+      </div>
+  </div>
   </div>
 
   <!-- Middle -->
@@ -39,3 +84,4 @@
   </div>
 </div>
 </div>
+

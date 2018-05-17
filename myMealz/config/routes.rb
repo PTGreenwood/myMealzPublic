@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
   get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'
 
+  #Meal planner stuff
+  get '/user_dashboard/getMealData/:request', to: 'user_dashboard#getMealData'
+
   #Dietitian Controller - dietitian_dashboard
   get '/dietitian/ticketSupport' => 'dietitian_dashboard#support'
   get 'getMyClientz' => 'dietitian_dashboard#getMyClientz'

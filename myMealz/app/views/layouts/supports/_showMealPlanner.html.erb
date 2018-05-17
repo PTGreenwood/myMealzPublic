@@ -1,5 +1,84 @@
- <!-- Do Nutrition Value -->
+<!-- Do Nutrition Value -->
+
+<script>
+    $(document).ready(function(){
+        $('.dropdown-submenu a.breakMenu').on("click", function(e){
+
+            $('#breakMenu').toggle();
+            $('#lunchMenu').hide();
+            $('#dinnerMenu').hide();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+
+        $('.dropdown-submenu a.lunchMenu').on("click", function (e) {
+
+            $('#breakMenu').hide();
+            $('#lunchMenu').toggle();
+            $('#dinnerMenu').hide();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+
+        $('.dropdown-submenu a.dinnerMenu').on("click", function (e) {
+
+            /*$(this).next('ul').toggle();*/
+            $('#breakMenu').hide();
+            $('#lunchMenu').hide();
+            $('#dinnerMenu').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
+
  <%= stylesheet_link_tag "meal_planner" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select Meal
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-submenu">
+            <a class="breakMenu" tabindex="-2" href="#">Breakfast <span class="caret"></span></a>
+            <ul id="breakMenu" class="dropdown-menu">
+              <li><a tabindex="-1" onclick="getMealData('b_mon')">Monday</a></li>
+              <li><a tabindex="-1" href="#">Tuesday</a></li>
+              <li><a tabindex="-1" href="#">Wednesday</a></li>
+              <li><a tabindex="-1" href="#">Thursday</a></li>
+              <li><a tabindex="-1" href="#">Friday</a></li>
+              <li><a tabindex="-1" href="#">Weekend</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="lunchMenu" tabindex="-1" href="#">Lunch <span class="caret"></span></a>
+            <ul class="dropdown-menu" id="lunchMenu">
+              <li><a tabindex="-1" href="#">Monday</a></li>
+              <li><a tabindex="-1" href="#">Tuesday</a></li>
+              <li><a tabindex="-1" href="#">Wednesday</a></li>
+              <li><a tabindex="-1" href="#">Thursday</a></li>
+              <li><a tabindex="-1" href="#">Friday</a></li>
+              <li><a tabindex="-1" href="#">Weekend</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="dinnerMenu" tabindex="-1" href="#">Dinner <span class="caret"></span></a>
+            <ul id="dinnerMenu" class="dropdown-menu">
+              <li><a tabindex="-1" href="#">Monday</a></li>
+              <li><a tabindex="-1" href="#">Tuesday</a></li>
+              <li><a tabindex="-1" href="#">Wednesday</a></li>
+              <li><a tabindex="-1" href="#">Thursday</a></li>
+              <li><a tabindex="-1" href="#">Friday</a></li>
+              <li><a tabindex="-1" href="#">Weekend</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
  <div class="row">
       <div class="col-md-pull-12">
@@ -37,12 +116,13 @@
       </div>
     </div>
 </div>
+
 <div class="panel panel-default">
   <div class="panel-body">
     <!--<div class="container">-->
       <div class="row">
         <!-- Do Nutrition Value -->
-        <div class="col-md-4">
+        <!--<div class="col-xs-4">
           <div class="table-responsive">
             <table class="table table-hover" style="border: 3px solid limegreen">
               <thead style="background-color: limegreen">
@@ -66,18 +146,17 @@
               </tr>
             </table>
           </div>
-        </div>
+        </div>-->
           <!-- End Nutrition Value -->
-
+        <!-- HOW TO MAKE TABLE SCROLL AFTER 10 ROWS -->
         <!-- Start Meal planner for realsies -->
-        <div class="col-md-2">
+        <div class="col-xs-4">
           <div class="table-responsive-xs">
           <table class="table table-hover mp_proteinTable" >
             <thead class = "mp_proteinTableHead">
               <tr>
-                <th scope="col">Protein</th>
-                <th scope="col"></th>
-                <th scope="col">Serving Size</th>
+                <th scope="col" colspan="2">Protein</th>
+                <th scope="col" class="text-right">Qty</th>
               </tr>
             </thead>
             <tbody class="mp_proteinTableBody" id="proteinBody">
@@ -93,14 +172,13 @@
           </table>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-xs-4">
           <div class="table-responsive-xs">
             <table class="table table-hover mp_grainsTable">
               <thead class="mp_grainsTableHead">
               <tr>
                 <th scope="col">Grains</th>
-                <th scope="col"></th>
-                <th scope="col">Serving Size</th>
+                <th scope="col" class="text-right" colspan="2">Qty</th>
               </tr>
               </thead>
               <tbody class="mp_grainsTableBody">
@@ -115,13 +193,13 @@
             </table>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
           <div class="table-responsive-xs">
             <table class="table table-hover mp_dairyTable">
               <thead class="mp_dairyTableHead">
               <tr>
                 <th scope="col" >Dairy</th>
-                <th scope="col" colspan="2">Serving Size</th>
+                <th scope="col" class="text-right" colspan="2">Qty</th>
               </tr>
               </thead>
               <tbody class="mp_dairyTableBody">
@@ -136,34 +214,14 @@
             </table>
           </div>
         </div>
-        <div class="col-md-2">
-          <div class="table-responsive-xs">
-            <table class="table table-hover mp_vegeTable">
-              <thead class="mp_vegeTableHead">
-              <tr>
-                <th scope="col">Vegetables</th>
-                <th scope="col"></th>
-                <th scope="col">Serving Size</th>
-              </tr>
-              </thead>
-              <tbody class="mp_vegeTableBody">
-              <% @vegeProducts.each do |item| %>
-                <tr id="3_<%=item.productID%>">
-                  <td class="mp_hover" colspan="2" onclick="makeItemSelection(3, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
-                    <%= item.productName %></td>
-                  <td align="right"><%= item.servingQty%>  <%= item.servingType %></td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-    </div>
 
-    <!-- 2nd Row -->
+
+
+
+    <!-- 2nd Row --
     <div class="row">
       <!-- Begin meal selection -->
-      <div class="col-md-4">
+      <!--<div class="col-md-4">
         <div class="panel panel-default" >
           <div class="panel-heading" id="breakfast_panel" onclick="showDaysOfType('breakfast')"
                style="background-color: olivedrab"><center>Breakfast</center></div>
@@ -209,16 +267,35 @@
             <center>Dinner</center>
           </div>
         </div>
+      </div>-->
+      <div class="col-md-3">
+        <div class="table-responsive-xs">
+          <table class="table table-hover mp_vegeTable">
+            <thead class="mp_vegeTableHead">
+            <tr>
+              <th scope="col">Vegetables</th>
+              <th scope="col" class="text-right" colspan="2">Qty</th>
+            </tr>
+            </thead>
+            <tbody class="mp_vegeTableBody">
+            <% @vegeProducts.each do |item| %>
+              <tr id="3_<%= item.productID %>">
+                <td class="mp_hover" colspan="2" onclick="makeItemSelection(3, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
+                  <%= item.productName %></td>
+                <td align="right"><%= item.servingQty %>  <%= item.servingType %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
-
       <div class="col-md-3">
         <div class="table-responsive-xs">
           <table class="table table-hover mp_fruitTable">
             <thead class="mp_fruitTableHead">
             <tr>
               <th scope="col">Fruit</th>
-              <th scope="col"></th>
-              <th scope="col">Serving Size</th>
+              <th scope="col" class="text-right" colspan="2">Qty</th>
             </tr>
             </thead>
             <tbody class="mp_fruitTableBody">
@@ -239,8 +316,7 @@
             <thead class="mp_fatsTableHead">
             <tr>
               <th scope="col">Fats</th>
-              <th scope="col"></th>
-              <th scope="col">Serving Size</th>
+              <th scope="col" class="text-right" colspan="2">Qty</th>
             </tr>
             </thead>
             <tbody class="mp_fatsTableBody">
@@ -255,14 +331,13 @@
           </table>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="table-responsive-xs">
           <table class="table table-hover mp_discTable">
             <thead class="mp_discTableHead">
             <tr>
               <th scope="col">Discretionary</th>
-              <th scope="col"></th>
-              <th scope="col">Serving Size</th>
+              <th scope="col" class="text-right" colspan="2">Qty</th>
             </tr>
             </thead>
             <tbody class="mp_discTableBody">

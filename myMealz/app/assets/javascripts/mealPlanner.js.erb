@@ -12,8 +12,19 @@ TYPES_LIST = ['protein', 'grain', 'dairy', 'vege', 'fruit', 'fats', 'disc', 'tot
 
 currentServingAmount = [0,0,0,0,0,0,0,0];
 
+var pTotal = 0;
+var cTotal = 0;
+var fTotal = 0;
+var calTotal = 0;
+
+var assPanelProtein = 0;
+var assPanelCarb = 0;
+var assPanelFat = 0;
+var assPanelCal = 0;
+
 var currentlyViewed = 'Breakfast - Monday';
 var selectedItemList = [];
+
 
 function showDaysOfType(mealType) {
 
@@ -23,6 +34,12 @@ function showDaysOfType(mealType) {
     } else {
         element.css("display", "block");
     }
+}
+
+function showDataEntries(tableRow) {
+
+    alert(tableRow);
+
 }
 
 function changeMealSelectionDay(dayChosen) {
@@ -36,10 +53,7 @@ function changeMealSelectionDay(dayChosen) {
 }
 
 function calculateTotals() {
-    var pTotal = 0;
-    var cTotal = 0;
-    var fTotal = 0;
-    var calTotal = 0;
+
 
 
 
@@ -55,22 +69,46 @@ function calculateTotals() {
     $('#carbTotal').html(cTotal + 'g');
     $('#fatsTotal').html(fTotal + 'g');
     $('#calTotal').html(calTotal + 'cal');
+
+    /*$('#accessoryPanel_currentList').html("<tr><td>Kangaroo</td></tr>");*/
 }
 
 function recreateSelectedList() {
 
-    /*clear out the list */
-    $('#currentList').html('');
+    assPanelProtein = 0;
+    assPanelCarb = 0;
+    assPanelFat = 0;
+    assPanelCal = 0;
 
-    for(var j = 0; j < selectedItemList.length; j++) {
-        $('#currentList').html(''+$('#currentList').html() +
-            '<tr style="background-color:'+COLOURS_USED[selectedItemList[j][7]]+'; color:white"><td class="mp_totalBorders" colspan="4">' + selectedItemList[j][0] +
-            '</td><td class="mp_totalBorders" >' + selectedItemList[j][2] + 'g</td>' + '<td class="mp_totalBorders" >' +
-            selectedItemList[j][3] + 'g</td> <td class="mp_totalBorders" >' + selectedItemList[j][4] + 'g</td> ' +
-            '<td class="mp_totalBorders" >' + selectedItemList[j][1] + 'cal</td> </tr>');
+
+
+    $('#accessoryPanel_currentList').html('');
+
+    for (var j = 0; j < selectedItemList.length; j++) {
+        $('#accessoryPanel_currentList').html(''+$('#accessoryPanel_currentList').html() +
+            '<tr onclick = (showDataEntries('+j+')) style="background-color:'+COLOURS_USED[selectedItemList[j][7]]+'; color:white">' +
+            '<td class="mp_totalBorders CellWithComment" colspan="2"> ' + selectedItemList[j][0] +
+            '<span id="cellNum_'+j+'" class="CellComment"><table><tr><td class="text-right"><strong>Protein:&nbsp</strong></td><td>' + selectedItemList[j][2] + 'g</tr><tr>' +
+            '<td class="text-right"><strong>Carb:&nbsp</strong></td><td>' + selectedItemList[j][3] +
+            'g</tr><tr><td class="text-right"><strong>Fat:&nbsp</strong>' +
+            '</td><td>' + selectedItemList[j][4] + 'g</tr><tr><td class="text-right"><strong>'+
+            'Total Cal:&nbsp</strong></td><td>' + selectedItemList[j][1] + 'cal</td></tr></table></span></td> </tr>');
+
+        assPanelProtein += parseInt(selectedItemList[j][2]);
+        assPanelCarb += parseInt(selectedItemList[j][3]);
+        assPanelFat += parseInt(selectedItemList[j][4]);
+        assPanelCal += parseInt(selectedItemList[j][1]);
+
     }
     calculateTotals();
+
+    $('#assPanel_protein').html(assPanelProtein+'g');
+    $('#assPanel_carb').html(assPanelCarb+'g');
+    $('#assPanel_fat').html(assPanelFat+'g');
+    $('#assPanel_cal').html(assPanelCal+'cal');
 }
+
+var counter = 0;
 
 function makeItemSelection(itemType, productID, productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType) {
 
@@ -86,6 +124,7 @@ function makeItemSelection(itemType, productID, productName, totalCal, proteinQt
 
                 el.html(parseInt(el.html()) + 1);
                 totalCalIn.html(parseInt(totalCalIn.html()) + parseInt(totalCal));
+                counter = 0;
                 return;
             }
         }
@@ -94,11 +133,24 @@ function makeItemSelection(itemType, productID, productName, totalCal, proteinQt
         if (parseInt(el.html()) != 0) {
             selectedItemList.push([productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType, itemType]);
 
-            $('#currentList').html('' + $('#currentList').html() +
-                '<tr style="background-color: ' + COLOURS_USED[itemType] + '; color:white"><td class="mp_totalBorders" colspan="4">' +
-                productName + '</td><td class="mp_totalBorders">' + proteinQty + 'g</td>' + '<td class="mp_totalBorders">' + carbQty +
-                'g</td><td class="mp_totalBorders">' + fatQty + 'g</td> <td class="mp_totalBorders">' + totalCal + 'cal</td> </tr>');
+            $('#accessoryPanel_currentList').html('' + $('#accessoryPanel_currentList').html() +
+                '<tr onclick = (showDataEntries('+counter+')) style="background-color: ' + COLOURS_USED[itemType] + '; color:white">' +
+                '<td  class="mp_totalBorders CellWithComment" colspan="2">' + productName + '<span id="cellNum_'+counter+
+                '"class="CellComment"><table><tr><td class="text-right"><strong>Protein:&nbsp</strong></td><td>'+proteinQty+'g</tr><tr>' +
+                '<td class="text-right"><strong>Carb:&nbsp</strong></td><td>'+carbQty+'g</tr><tr><td class="text-right"><strong>Fat:&nbsp</strong>' +
+                '</td><td>'+fatQty+'g</tr><tr><td class="text-right"><strong>Total Cal:&nbsp</strong></td><td>'+totalCal+'cal</td></tr></table></span></td></tr>');
 
+            counter+=1;
+
+            assPanelProtein += parseInt(proteinQty);
+            assPanelCarb += parseInt(carbQty);
+            assPanelFat += parseInt(fatQty);
+            assPanelCal += parseInt(totalCal);
+
+            $('#assPanel_protein').html(assPanelProtein+'g');
+            $('#assPanel_carb').html(assPanelCarb+'g');
+            $('#assPanel_fat').html(assPanelFat+'g');
+            $('#assPanel_cal').html(assPanelCal+'cal');
 
             $('#' + itemType + '_' + productID).css({"background-color": COLOURS_USED[itemType], "color": "white"});
             calculateTotals();
@@ -110,3 +162,21 @@ function makeItemSelection(itemType, productID, productName, totalCal, proteinQt
     }
 
 }
+
+function getMealData(mealData) {
+    var message = mealData;
+    var split = mealData.split('_');
+    var data = {"meal": split[0], "day": split[1]};
+    data = JSON.stringify(data);
+
+    $.ajax({
+        url: "/user_dashboard/getMealData/"+data+"",
+        type: "GET",
+        contentType: "application/json",
+        /*url: "/admin_dashboard/replyMessage/"+data + "",*/
+        dataType: 'json',
+    }).success(function(data) {
+            alert(data[0]["name"]);
+        }
+    )
+};
