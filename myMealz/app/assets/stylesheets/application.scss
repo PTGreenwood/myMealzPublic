@@ -20,34 +20,36 @@
 */
 #navbarleft{
   height: 100%;
-  min-height: 77px;
+  min-height: 90px;
 }
 
-.navbar-brand{
-  height:100%;
-  min-height: 77px;
+.loginbutton{
+  float: right;
+  margin-top: 22px;
 }
+
 // Navbar Basic Colours
 #navbarus {
  background-color: #37BC9B;
- border: 0px;
  border-radius: 0px;
  margin: 0px;
+ border: 0px;
  position: fixed;
  width: 100%;
  z-index: 1;
 }
-
 // Navbar myMealz Home button
 #mymealznav {
  color: #fff;
  font-size: 20px;
- background-color: #2B957A;
  width: 120px;
  text-align: center;
  vertical-align: middle;
- line-height: 77px;
+ line-height: 70px;
+ height: 70px;
+ border-right: 1px solid white;
  padding: 0px;
+ margin: 10px 0px 10px 0px;
 }
 
 // Dropdown on click change colour
@@ -96,7 +98,7 @@ body {
 
 /* Slideshow container */
 .slideshow-container {
-  height: 500px;
+  height: 700px;
   position: relative;
   overflow: hidden;
 }
@@ -151,7 +153,7 @@ body {
 /* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
-  height: 15px;
+  height: 10px;
   background-color: #bbb;
   display: inline-block;
   transition: background-color 0.6s ease;
