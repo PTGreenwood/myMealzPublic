@@ -3,7 +3,7 @@
 
 <div class="row titlerow">
   <div class="col-md-12" style="padding-top:80px">
-    <h1 align=center>Welcome to MyMealz <br> <small>Your Meal Planning Resource</small></h1>
+    <h1 align=center>Welcome to MyMealz <br> <small>Your Online Meal Planning Resource</small></h1>
     <br>
   </div>
 </div>
@@ -27,8 +27,8 @@
   </div>
 
   <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  <p class="prev" onclick="plusSlides(-1)">&#10094;</p>
+  <p class="next" onclick="plusSlides(1)">&#10095;</p>
 </div>
 
 <!-- The dots/circles -->
@@ -41,55 +41,75 @@
 <!-- If not logged in, then will display the sign up and log in -->
 <% if current_user.nil? %>
   <!-- First row, divided into 3 equal columns, icons and text -->
+<div class="row beforefirstrow">
+  <div class="col-md-12">
+<h1>HOW DOES IT WORK?<h1>
+  </div>
+  </div>
+  <div class="row beforefirstrows">
+  <div class="col-md-12">
+    <h2><small>We've figured out how to make meal time easy and delicious.</small></h2>
+  </div>
+</div>
+
+
   <div class="row firstrow">
+
     <!-- column 1 of firstrow -->
-    <div class="col-md-4">
+    <div class="col-md-4 icons">
       <%= image_tag("icon1.png", :alt => "icon1", :class => "icon1") %>
-      <h1 style="text-align: center">CREATE YOUR OWN RECIPIES</h1>
-      <h3 style="text-align: center"><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
-        Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h3>
+      <h2 style="text-align: center">CREATE YOUR OWN RECIPIES</h2>
+      <h3 style="text-align: center"><small>Select from our delicious range of fresh chef prepared meals, snacks and drinks. New items added to the menu every week.</small></h3>
     </div>
     <!-- column 2 of firstrow -->
-    <div class="col-md-4">
+    <div class="col-md-4 icons">
       <%= image_tag("icon2.png", :alt => "icon2", :class => "icon2") %>
-      <h1 style="text-align: center">WEEKLY MEAL ORGANISER</h1>
-      <h3 style="text-align: center"><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
-        Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h3>
+      <h2 style="text-align: center">WEEKLY MEAL ORGANISER</h2>
+      <h3 style="text-align: center"><small>Fresh from the markets, direct to our kitchens and delivered straight to your door in just 48 hours. Now that's FRESH!</small></h3>
       </div>
     <!-- column 3 of firstrow -->
-    <div class="col-md-4">
+    <div class="col-md-4 icons">
       <%= image_tag("icon3.png", :alt => "icon3", :class => "icon3") %>
-      <h1 style="text-align: center">SUPPORTED BY QUALIFIED DIETITIANS</h1>
-      <h3 style="text-align: center"><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis velit laoreet non.
-        Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h3>
+      <h2 style="text-align: center">SUPPORTED BY QUALIFIED DIETITIANS</h2>
+      <h3 style="text-align: center"><small>Cause we're fresh there's so many ways you can enjoy your meals. Fresh, mic, pan, press, or oven, the choice is yours.</small></h3>
       </div>
   </div>
 
   <!-- second row, divided into 2 inequal columns, icons and text -->
   <div class="row secondrow">
     <!-- first column of second row -->
-    <div class="col-md-9 informationdiv">
+    <div class="col-md-8 informationdiv">
       <h1 style="text-align: center">What is myMealz?</h1>
-      <br>
-      <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <h3 style="text-align: center"><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis
         velit laoreet non. Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet,
         consectetur adipiscing elit. In diam dui, commodo nec lacus tristique, blandit auctor diam.
         Vestibulum eget mi a orci congue faucibus. Aliquam venenatis, libero condimentum feugiat facilisis,
         nulla quam finibus ipsum, in elementum ipsum justo at neque. Mauris ultrices sit amet eros ac pulvinar.
         Nunc mollis sit amet sapien vel vulputate. Nullam tempor rhoncus nisi. Aliquam vel quam dignissim,
-        interdum mauris sit amet, pellentesque nisi. Sed tincidunt nisi in aliquam iaculis.</p>
+        interdum mauris sit amet, pellentesque nisi. Sed tincidunt nisi in aliquam iaculis.</small></h3>
+      <br>
+      <h1 style="text-align: center">What is myMealz?</h1>
+      <h3 style="text-align: center"><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Maecenas tincidunt mi sit amet vulputate rutrum. Phasellus iaculis velit dolor, ac facilisis
+        velit laoreet non. Proin bibendum neque id placerat imperdiet. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. In diam dui, commodo nec lacus tristique, blandit auctor diam.
+        Vestibulum eget mi a orci congue faucibus. Aliquam venenatis, libero condimentum feugiat facilisis,
+        nulla quam finibus ipsum, in elementum ipsum justo at neque. Mauris ultrices sit amet eros ac pulvinar.
+        Nunc mollis sit amet sapien vel vulputate. Nullam tempor rhoncus nisi. Aliquam vel quam dignissim,
+        interdum mauris sit amet, pellentesque nisi. Sed tincidunt nisi in aliquam iaculis.</small></h3>
     </div>
     <!-- second column of second row -->
-    <div class="col-md-3 signupform">
-      <h2 style="text-align: center; color: white">Sign up</h2>
+    <div class="col-md-4 signupform">
+      <h2 style="text-align: center; color: #293135">Create an account</h2>
+      <br>
       <%= render 'layouts/logup/signup' %>
     </div>
   </div>
 
+  <div class="row thirdrow">
+    <h1>LINKS/NAVIGATION</h1>
+  </div>
 <!-- if logged in (as any user), redirect to respective dashboard -->
 <% else %>
   <!-- Script to redirect to the profile page -->

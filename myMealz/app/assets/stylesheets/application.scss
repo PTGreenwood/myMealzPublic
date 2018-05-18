@@ -13,44 +13,23 @@
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ //GENERAL NAV BAR FORMATTING
+ #navbarus {
+  background-color: #37BC9B;
+  border-radius: 0px;
+  margin: 0px;
+  border: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+ }
 
-/*
-*= require_tree .
-*= require_self
-*/
+//GUEST HOME BUTTON CONTAINER ON LEFT
 #navbarleft{
   height: 100%;
   min-height: 90px;
 }
-
-.loginbutton{
-  float: right;
-  margin-top: 22px;
-  background-color: #37BC9B;
-  border-color: white;
-}
-//#4C927B
-.loginbutton:hover, .loginbutton:focus, .loginbutton.focus{
-  background-color: #4C927B;
-  color: white;
-}
-
-// Navbar Basic Colours
-#navbarus {
- background-color: #37BC9B;
- border-radius: 0px;
- margin: 0px;
- border: 0px;
- position: fixed;
- width: 100%;
- z-index: 1;
-}
-.dividerline{
-  border-left: 1px solid white;
-  height: 40px;
-  margin-top: 5px;
-}
-// Navbar myMealz Home button
+//GUEST HOME BUTTON ON LEFT
 #mymealznav {
  color: #fff;
  font-size: 20px;
@@ -64,26 +43,46 @@
  margin: 10px 0px 10px 0px;
 }
 
-// Dropdown on click change colour
+//GUEST LOGIN BUTTON ON NAV BAR
+.loginbutton{
+  float: right;
+  margin-top: 22px;
+  background-color: #37BC9B;
+  border-color: white;
+}
+//GUEST LOGIN BUTTON HOVER
+.loginbutton:hover, .loginbutton:focus, .loginbutton.focus{
+  background-color: #4C927B;
+  color: white;
+}
+//END GUEST NAV BAR
+
+//USER NAV BAR
+//DIVIDER FOR USER NAV BAR
+.dividerline{
+  border-left: 1px solid white;
+  height: 40px;
+  margin-top: 5px;
+}
+//DROPDOWN COLORS
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
  background-color: #2B957A;
  color: #fff;
 }
-
-// Dropdown menu
+//DROPDOWN COLORS
 .dropdown-menu {
     background-color: #273135;
 }
-
+//DROPDOWN COLORS
 .dropdown-menu > li > a {
     color: #fff;
 }
-
+//DROPDOWN COLORS
 .dropdown-menu .divider {
     background-color: #606060;
 }
 
-// Resizing Nav
+//NAV BAR SIZE
 .nav > li > form {
     margin-top: -2px;
 }
@@ -97,60 +96,121 @@
  color: #fff;
 }
 
-//Body changes
-
+//BODY CHANGES
 body {
  background-color: #E9f0f9;
 }
 
+//TITLE ROW "WELCOME TO MYMEALZ"
+.titlerow{
+  background-color: #293135;
+  color: white;
+}
 
-//SLIDESHOW CSS
+//ROW CONTAINING ICONS AND CONTENT
+.firstrow{
+  position: relative;
+  background-color: #F5F5F5;
+  padding: 0px 140px 0px 140px;
+}
+//DIVS CONTAINING ICONS
+.icons{
+  padding: 30px 60px 40px 60px;
+}
+
+//IMAGES IN FIRSTROW
+.icon1, .icon2, .icon3{
+  height: 100px;
+  width: 100px;
+  display:block;
+  margin:auto;
+}
+
+//ROW CONTAINING SIGNUP FORM AND CONTENT
+.secondrow{
+  background-color: #FFFFFF;
+  padding: 0px 120px 0px 120px;
+}
+
+//CONTENT FOR SECONDROW
+.informationdiv{
+  height: 100%;
+  padding: 20px 80px 40px 30px;
+}
+
+//SIGN UP FORM IN SECONDROW
+.signupform{
+float: right;
+padding: 20px 10px 40px 30px;
+}
+
+//SIGN UP BUTTON
+.signupcontent{
+  float: right;
+  margin-top: 22px;
+  background-color: #37BC9B;
+  border-color: white;
+  color: white;
+}
+//SIGN UP BUTTON HOVER
+.signupcontent:hover, .signupcontent:focus, .signupcontent.focus{
+  background-color: #4C927B;
+  color: white;
+}
+//DARK DIVS FOR SUBTITLES
+.beforefirstrow, .thirdrow{
+  text-align: center;
+  background-color: #293135;
+  color: white;
+}
+.beforefirstrows{
+  text-align: center;
+  background-color: #F5F5F5;
+}
+
+//SLIDESHOW
 
 * {box-sizing:border-box}
 
-/* Slideshow container */
+//SLIDESHOW CONTAINER
 .slideshow-container {
   height: 700px;
   position: relative;
   overflow: hidden;
 }
 
-/*.slideshow-container > a {
-    color: #37CB9B;
-}*/
-
-/* Hide the images by default */
+//HIDES IMAGES
 .mySlides {
     display: none;
 }
 
-/* Next & previous buttons */
+//PREV AND NEXT BUTTON
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
+  line-height: 700px;
+  top: 0;
+  width: 150px;
+  height:700px;
   padding: 16px;
   color: white;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
 }
 
-/* Position the "next button" to the right */
+//SPECIAL FORMATTING FOR NEXT BUTTON
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
+  text-align: right;
 }
 
-/* On hover, add a black background color with a little bit see-through */
+//PREV AND NEXT BUTTON HOVER
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
-/* Caption text */
+//CAPTION TEXT (NOT CURRENTLY IN USE)
 .text {
   color: #f2f2f2;
   font-size: 15px;
@@ -161,8 +221,7 @@ body {
   text-align: center;
 }
 
-
-/* The dots/bullets/indicators */
+//SLIDE SELECTORS
 .dot {
   cursor: pointer;
   height: 10px;
@@ -170,79 +229,32 @@ body {
   display: inline-block;
   transition: background-color 0.6s ease;
 }
-
+//SLIDE SELECTORS HOVER
 .active, .dot:hover {
   background-color: #717171;
 }
-
 //END SLIDESHOW CSS
-
-//INDEX
-
-
-.signupform{
-float: right;
-}
-
-.informationdiv{
-  height: 100%;
-  right: 0;
-  top: 0;
-
-}
-
-.firstrow{
-  position: relative;
-  background-color: #E9f0f9;
-  padding-bottom: 50px;
-}
-
-.secondrow{
-  background-color: #37BC9B;
-  position: relative;
-  height: 800px;
-}
-
-.icon1, .icon2, .icon3{
-  height: 150px;
-  width: 150px;
-  display:block;
-  margin:auto;
-  margin-top: 25px;
-}
-
-.signupcontent{
-  float: right;
-  margin-top: 22px;
-  background-color: #37BC9B;
-  border-color: white;
-  color: white;
-}
-//#4C927B
-.signupcontent:hover, .signupcontent:focus, .signupcontent.focus{
-  background-color: #4C927B;
-  color: white;
-}
 //END INDEX
 
-//Pages
+//DASHBOARD
+//JUMBOTRON WITH USER GREETING
 .jumbotron {
     background-color: #fff;
     color: #273135;
     font-size: 30px;
     text-align: center;
-
 }
-
+//PROFILE PICTURE DISPLAY
 .profile-picture > p > img {
     max-width: 230px;
     min-height: 200px;
 }
-
+//LEFT PANEL
 .panel-offset {
     padding-left: 8%;
 }
-
+//MAIN PANEL
 .main-panel {
     height: 900px;
 }
+//END DASHBOARD
