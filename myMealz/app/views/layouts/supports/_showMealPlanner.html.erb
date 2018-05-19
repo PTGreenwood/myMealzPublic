@@ -42,40 +42,45 @@
         <ul class="dropdown-menu">
           <li><a href="#">No Set Day</a></li>
           <li class="dropdown-submenu">
-            <a class="breakMenu" tabindex="-2" href="#">Breakfast <span class="caret"></span></a>
+            <a class="breakMenu" tabindex="-2">Breakfast <span class="caret"></span></a>
             <ul id="breakMenu" class="dropdown-menu">
-              <li><a tabindex="-1" onclick="getMealData('b_mon')">Monday</a></li>
-              <li><a tabindex="-1" href="#">Tuesday</a></li>
-              <li><a tabindex="-1" href="#">Wednesday</a></li>
-              <li><a tabindex="-1" href="#">Thursday</a></li>
-              <li><a tabindex="-1" href="#">Friday</a></li>
-              <li><a tabindex="-1" href="#">Weekend</a></li>
+              <li><a tabindex="-1" onclick="getMealData('breakfast_Monday')">Monday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('breakfast_Tuesday')">Tuesday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('breakfast_Wednesday')">Wednesday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('breakfast_Thursday')">Thursday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('breakfast_Friday')">Friday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('breakfast_Weekend')">Weekend</a></li>
             </ul>
           </li>
           <li class="dropdown-submenu">
-            <a class="lunchMenu" tabindex="-1" href="#">Lunch <span class="caret"></span></a>
+            <a class="lunchMenu" tabindex="-1">Lunch <span class="caret"></span></a>
             <ul class="dropdown-menu" id="lunchMenu">
-              <li><a tabindex="-1" href="#">Monday</a></li>
-              <li><a tabindex="-1" href="#">Tuesday</a></li>
-              <li><a tabindex="-1" href="#">Wednesday</a></li>
-              <li><a tabindex="-1" href="#">Thursday</a></li>
-              <li><a tabindex="-1" href="#">Friday</a></li>
-              <li><a tabindex="-1" href="#">Weekend</a></li>
+              <li><a tabindex="-1" onclick="getMealData('lunch_Monday')">Monday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('lunch_Tuesday')">Tuesday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('lunch_Wednesday')">Wednesday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('lunch_Thursday')">Thursday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('lunch_Friday')">Friday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('lunch_Weekend')">Weekend</a></li>
             </ul>
           </li>
           <li class="dropdown-submenu">
-            <a class="dinnerMenu" tabindex="-1" href="#">Dinner <span class="caret"></span></a>
+            <a class="dinnerMenu" tabindex="-1">Dinner <span class="caret"></span></a>
             <ul id="dinnerMenu" class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Monday</a></li>
-              <li><a tabindex="-1" href="#">Tuesday</a></li>
-              <li><a tabindex="-1" href="#">Wednesday</a></li>
-              <li><a tabindex="-1" href="#">Thursday</a></li>
-              <li><a tabindex="-1" href="#">Friday</a></li>
-              <li><a tabindex="-1" href="#">Weekend</a></li>
+              <li><a tabindex="-1" onclick="getMealData('dinner_Monday')">Monday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('dinner_Tuesday')">Tuesday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('dinner_Wednesday')">Wednesday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('dinner_Thursday')">Thursday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('dinner_Friday')">Friday</a></li>
+              <li><a tabindex="-1" onclick="getMealData('dinner_Weekend')">Weekend</a></li>
             </ul>
           </li>
         </ul>
       </div>
+    </div>
+    <div class="col col-md-4">
+      <ol id="mp_breadcrumb" class="breadcrumb">
+        <li class="breadcrumb-item">No Meal Selected</li>
+      </ol>
     </div>
   </div>
 </div>
@@ -87,7 +92,7 @@
           <table class="table table-sm" style="border: 1px solid burlywood">
             <thead style="background-color: burlywood">
               <tr>
-                <th scope="col" id="currentViewed" class="text-center mp_sTableHeadersException">Breay</th>
+                <th scope="col" id="currentViewed" class="text-center mp_sTableHeadersException">Any meal</th>
                 <th scope="col" class="text-center mp_sTableHeaders">Protein</th>
                 <th scope="col" class="text-center mp_sTableHeaders">Grains</th>
                 <th scope="col" class="text-center mp_sTableHeaders">Dairy</th>
@@ -101,7 +106,7 @@
 
             <tbody>
             <tr style="background-color: white">
-              <td class="text-right mp_sTable">Servings Remaining:</td>
+              <td class="text-right mp_sTable">Daily AMT Remaining:</td>
               <td id="proteinServing" class="text-center mp_sTable"><%=@clientRestriction[0].proteinReq%></td>
               <td id="grainServing" class="text-center mp_sTable"><%=@clientRestriction[0].grainsReq%></td>
               <td id="dairyServing" class="text-center mp_sTable"><%=@clientRestriction[0].dairyReq%></td>
@@ -163,7 +168,7 @@
             <tbody class="mp_proteinTableBody" id="proteinBody">
             <% @proteinProducts.each do |item| %>
               <tr id="0_<%=item.productID%>">
-              <td class="mp_hover" colspan="2" onclick="makeItemSelection(0, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
+              <td class="mp_hover" id="td_0_<%=item.productID%>" colspan="2" onclick="makeItemSelection(0, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
               <%= item.productName %></td>
               <td align="right"><%= item.servingQty%>  <%= item.servingType %></td>
               </tr>
@@ -185,7 +190,7 @@
               <tbody class="mp_grainsTableBody">
               <% @grainProducts.each do |item| %>
                 <tr id="1_<%=item.productID%>">
-                  <td class="mp_hover" colspan="2" onclick="makeItemSelection(1, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
+                  <td class="mp_hover" id="td_1_<%=item.productID%>" colspan="2" onclick="makeItemSelection(1, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
                     <%= item.productName %></td>
                   <td align="right"><%= item.servingQty%>  <%= item.servingType %></td>
                 </tr>
@@ -206,7 +211,7 @@
               <tbody class="mp_dairyTableBody">
               <% @dairyProducts.each do |item| %>
                 <tr id="2_<%=item.productID%>">
-                  <td class="mp_hover" colspan="2" onclick="makeItemSelection(2, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
+                  <td class="mp_hover" id="td_2_<%=item.productID%>" colspan="2" onclick="makeItemSelection(2, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
                     <%= item.productName %></td>
                   <td align="right"><%= item.servingQty%>  <%= item.servingType %></td>
                 </tr>
@@ -281,7 +286,7 @@
             <tbody class="mp_vegeTableBody">
             <% @vegeProducts.each do |item| %>
               <tr id="3_<%= item.productID %>">
-                <td class="mp_hover" colspan="2" onclick="makeItemSelection(3, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
+                <td class="mp_hover" id="td_3_<%=item.productID%>" colspan="2" onclick="makeItemSelection(3, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
                   <%= item.productName %></td>
                 <td align="right"><%= item.servingQty %>  <%= item.servingType %></td>
               </tr>
@@ -302,7 +307,7 @@
             <tbody class="mp_fruitTableBody">
             <% @fruitProducts.each do |item| %>
               <tr id="4_<%=item.productID%>">
-                <td class="mp_hover" colspan="2" onclick="makeItemSelection(4, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
+                <td class="mp_hover" id="td_4_<%=item.productID%>" colspan="2" onclick="makeItemSelection(4, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
                   <%= item.productName %></td>
                 <td align="right"><%= item.servingQty%>  <%= item.servingType %></td>
               </tr>
@@ -323,7 +328,7 @@
             <tbody class="mp_fatsTableBody">
             <% @fatProducts.each do |item| %>
               <tr id="5_<%=item.productID%>">
-                <td class="mp_hover" colspan="2" onclick="makeItemSelection(5, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
+                <td class="mp_hover" id="td_5_<%=item.productID%>" colspan="2" onclick="makeItemSelection(5, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
                   <%= item.productName %></td>
                 <td align="right"><%= item.servingQty%>  <%= item.servingType %></td>
               </tr>
@@ -344,7 +349,7 @@
             <tbody class="mp_discTableBody">
             <% @discProducts.each do |item| %>
               <tr id="6_<%=item.productID%>">
-                <td class="mp_hover" colspan="2" onclick="makeItemSelection(6, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
+                <td class="mp_hover" id="td_6_<%=item.productID%>" colspan="2" onclick="makeItemSelection(6, <%=item.productID %>,'<%= item.productName%>',<%=item.totalCal %>,<%=item.proteinQty %>,<%=item.carbohydrateQty%>,<%=item.fatsQty %>,<%=item.servingQty %>,'<%= item.servingType%>')">
                   <%= item.productName %></td>
                 <td align="right"><%= item.servingQty%>  <%= item.servingType %></td>
               </tr>

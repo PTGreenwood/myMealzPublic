@@ -1,5 +1,6 @@
 class UserDashboardController < ApplicationController
   respond_to :js, :json, :html, :xml
+  require 'json'
 
   def support
     if(User.find_by_username(params[:id]))
@@ -163,6 +164,21 @@ class UserDashboardController < ApplicationController
     end
   end
 
+  def mealHelper(receivedString)
+    arrCopy ||= []
+    for i in receivedString
+      if(i != ',')
+        arrCopy.push(i)
+      end
+
+
+    end
+    puts(arrCopy)
+    return arrCopy
+  end
+
+
+
   def getMealData
 
     requestReceived = JSON.parse(params[:request])
@@ -187,34 +203,45 @@ class UserDashboardController < ApplicationController
     #t.integer :FatAMT
     #t.integer :discAMT
 
-    if(requestReceived["meal"] == "b")
-      puts("breakfast")
+    isDin = false
+    isLun = false
+    isBre = false
 
-    elsif(requestReceived["meal"] == "l")
-      puts("lunch")
-    elsif(requestReceived["meal"] == "d")
-      puts("dinner")
+    if(requestReceived["meal"] == "breakfast")
+      isBre = true
+    elsif(requestReceived["meal"] == "lunch")
+      isLun = true
+    elsif(requestReceived["meal"] == "dinner")
+      isDin = true
+    end
+
+
+    if(Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun,
+                           isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"]))
+
+      pm = Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun,
+                               isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"])
+
+      mealToReturn = Savedmeal.find_by(id: pm.SavedMealID)
+
+      proteinIDs = {"IDs": mealHelper(mealToReturn.ProteinIDs.split(','))}
+      grainIDs = {"IDs": mealHelper(mealToReturn.GrainIDs.split(','))}
+      dairyIDs = {"IDs": mealHelper(mealToReturn.DairyIDs.split(','))}
+      vegeIDs  = {"IDs": mealHelper(mealToReturn.VegeIDs.split(','))}
+      fruitIDs = {"IDs": mealHelper(mealToReturn.FruitIDs.split(','))}
+      fatIDs = {"IDs": mealHelper(mealToReturn.FatIDs.split(','))}
+      discIDs = {"IDs": mealHelper(mealToReturn.DiscIDs.split(','))}
+
+      @reply = {"mealname": mealToReturn.MealName, "proteinIDs": proteinIDs.to_json, "grainIDs": grainIDs.to_json,
+                "dairyIDs": dairyIDs.to_json, "vegeIDs": vegeIDs.to_json, "fruitIDs": fruitIDs.to_json,
+                "fatIDs": fatIDs.to_json, "discIDs": discIDs.to_json}
+
     else
-      puts("NOTHING")
-
+      puts("NOTHING FOUND FOR THAT SEARCH")
+      @reply = {"mealname": '', "proteinIDs": '', "grainIDs": '', "dairyIDs": '', "vegeIDs": '', "fruitIDs": '',
+                "fatIDs": '', "discIDs": ''}
     end
-
-    require 'json'
-
-    text = "Hello world"
-
-    json = '{"fruits": [{"name": "Apple", "location": "Harbor"}, {"name": "Banana", "location": "Kitchen"}, {"name": "Mango", "location": "Bedroom"}]}'
-    fruits = JSON.parse(json)['fruits'] # append ['fruits']
-
-    puts(fruits)
-    def format_fruits(fruits)
-      fruits.map do |fruit| # change each -> map
-        "\n\n#{ fruit['name'] }, #{ fruit['location'] }" # delete puts, [0]
-      end.join # change to_sentence -> join
-    end
-
-    text += format_fruits(fruits)
-    respond_with(fruits)
+    respond_with(JSON.parse(@reply.to_json))
   end
 
 
