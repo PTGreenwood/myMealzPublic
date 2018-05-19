@@ -3,7 +3,7 @@
   <!-- Left -->
   <div class="col-xs-2">
     <div class="panel panel-default">
-      <div class="panel-body">
+      <div class="panel-body profile-picture">
         <p>
           <% if (current_user.avatar?) %>
             <%= image_tag current_user.avatar, :size => '100x100'%>
@@ -17,16 +17,11 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <p> Links </p>
-        <p><a href="#">Link 1</a></p>
         <p><%= link_to "Meal Planner", showMealPlanner_path, remote: true %></p>
-        <p><a href="#">Link 3</a></p>
-        <p><a href="#">Link 4</a></p>
         <p><%= link_to "Support Tickets", showTickets_path, remote: true %></p>
-        <p><a href="#">Link 5</a></p>
       </div>
     </div>
-
-    <div class="panel panel-default" id="accessoryPanel" style="display: none">
+    <div class="panel panel-default" id="accessoryPanel" style="display:none">
       <div class="panel-body">
         <div class="table-responsive">
           <table class="table table-hover" style="border: 3px solid limegreen">
@@ -35,25 +30,23 @@
                 <th scope="col" class="text-center" style="color: white" colspan="2">Chosen Menu Items</th>
               </tr>
             </thead>
-
+  
             <tbody id="accessoryPanel_currentList">
-
             </tbody>
             <tr style="background-color: white; color:black">
-              <td class="mp_totalBorders CellWithComment"  colspan="2"> Total Nutrient Content
+              <td class="mp_totalBorders CellWithComment" colspan="2"> Total Nutrient Content
                 <span id="cellNum_total" class="CellComment">
                   <table>
                     <tr>
                       <td class="text-right">
                         <strong>Protein:&nbsp</strong>
                       </td>
-                      <td id ="assPanel_protein">
-                      </td>
+                      <td id ="assPanel_protein"></td>
                     </tr>
                     <tr>
-                    <td class="text-right"><strong>Carb:&nbsp</strong></td>
-                      <td id="assPanel_carb">
-                    </td></tr>
+                      <td class="text-right"><strong>Carb:&nbsp</strong></td>
+                        <td id="assPanel_carb"></td>
+                    </tr>
                     <tr>
                       <td class="text-right"><strong>Fat:&nbsp</strong></td>
                       <td id="assPanel_fat"></td>
@@ -67,12 +60,15 @@
               </td>
             </tr>
           </table>
-          <!-- Trigger the modal with a button -->
-          <button type="button" class="btn btn-warning btn-sm " data-toggle="modal" data-target="#myModal">Save Meal
-          </button>
+          <br><br>
+        </div>
 
-          <!-- Modal -->
-          <div id="myModal" class="modal" tabindex="-1" role="dialog">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-warning btn-sm pull-right" data-toggle="modal" data-target="#myModal">Save Meal</button>
+
+        <!-- Modal -->
+
+        <div id="myModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role ="document">
 
               <!-- Modal content-->
@@ -111,17 +107,18 @@
 
             </div>
           </div>
-          <br><br>
+        <br><br>
         </div>
+
       </div>
-  </div>
-  </div>
+
+    </div>
+
 
   <!-- Middle -->
   <!-- Middle -->
   <div class="col-xs-10">
-    <div id="current_dash_render">
-
+    <div id="current_dash_render"> <!--class="panel panel-default main-panel">=-->
     </div>
         <!-- @savedmeals is the variable in the controller that all SavedMeal database entries go into
         Is hooked up with Username as the foreign_key. Currently shows every single database entry and not profile specific-->

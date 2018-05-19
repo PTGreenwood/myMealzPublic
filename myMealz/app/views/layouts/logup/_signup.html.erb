@@ -2,27 +2,27 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :username, :style => "color: white" %>
+    <%= f.label :username, :style => "color: #293135" %>
     <%= f.text_field :username, :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :firstname, :style => "color: white" %>
+    <%= f.label :first_name, :style => "color: #293135" %>
     <%= f.text_field :firstname, :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :lastname, :style => "color: white" %>
+    <%= f.label :last_name, :style => "color: #293135" %>
     <%= f.text_field :lastname, :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :email, :style => "color: white" %>
+    <%= f.label :email, :style => "color: #293135" %>
     <%= f.email_field :email, :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :password, :style => "color: white" %>
+    <%= f.label :password, :style => "color: #293135" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
@@ -30,18 +30,18 @@
   </div>
 <br>
   <div class="field">
-    <%= f.label :password_confirmation, :style => "color: white"%>
+    <%= f.label :password_confirmation, :style => "color: #293135"%>
     <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :dietitian_referral_code, :style => "color: white" %>
+    <%= f.label :dietitian_referral_code, :style => "color: #293135" %>
     <%= f.text_field :connectedTo, :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :upload_profile_picture, :style => "color: white"%>
-    <%= f.file_field :avatar, :style => "color: white" %>
+    <%= f.label :upload_profile_picture, :style => "color: #293135"%>
+    <%= f.file_field :avatar, :style => "color: #293135" %>
   </div>
   <div class="actions">
     <%= f.submit "Sign up", :class => "btn signupcontent" %>
