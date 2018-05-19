@@ -1,11 +1,18 @@
 /* Global Functions for use */
-VIEWING_LIST = ['Breakfast - Monday', 'Breakfast - Tuesday', 'Breakfast - Wednesday', 'Breakfast - Thursday',
+/*VIEWING_LIST = ['Breakfast - Monday', 'Breakfast - Tuesday', 'Breakfast - Wednesday', 'Breakfast - Thursday',
     'Breakfast - Friday','Breakfast - Weekend', 'Lunch - Monday', 'Lunch - Tuesday', 'Lunch - Wednesday',
     'Lunch - Wednesday', 'Lunch - Thursday', 'Lunch - Friday', 'Lunch - Weekend', 'Dinner - Monday', 'Dinner - Tuesday',
     'Dinner - Wednesday', 'Dinner - Thursday', 'Dinner - Friday', 'Dinner - Weekend'];
+*/
+
+VIEWING_LIST = [['Breakfast - Monday', 'Breakfast - Tuesday', 'Breakfast - Wednesday', 'Breakfast - Thursday',
+    'Breakfast - Friday','Breakfast - Weekend'], ['Lunch - Monday', 'Lunch - Tuesday', 'Lunch - Wednesday',
+    'Lunch - Wednesday', 'Lunch - Thursday', 'Lunch - Friday', 'Lunch - Weekend'], ['Dinner - Monday', 'Dinner - Tuesday',
+    'Dinner - Wednesday', 'Dinner - Thursday', 'Dinner - Friday', 'Dinner - Weekend'], ['No Meal Selected']];
 
 WEEK_LIST = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Weekend'];
 MEAL_LIST = ['Breakfast', 'Lunch', 'Dinner'];
+
 ELEMENT_LIST = ['b_mon', 'b_tue', 'b_wed', 'b_thur', 'b_fri', 'b_weekend', 'l_mon', 'l_tue', 'l_wed', 'l_thur', 'l_fri',
     'l_weekend', 'd_mon', 'd_tue', 'd_wed', 'd_thur', 'd_fri', 'd_weekend'];
 
@@ -25,13 +32,52 @@ var assPanelFat = 0;
 var assPanelCal = 0;
 
 var currentlyViewed = 'Breakfast - Monday';
+var saveDay = -1;
+var saveMeal = -1;
 var selectedItemList = [];
+
+function resetAllVariables() {
+    currentServingAmount = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    pTotal = 0;
+    cTotal = 0;
+    fTotal = 0;
+    calTotal = 0;
+
+    assPanelProtein = 0;
+    assPanelCarb = 0;
+    assPanelFat = 0;
+    assPanelCal = 0;
+
+    currentlyViewed = 'Breakfast - Monday';
+    saveDay = -1;
+    saveMeal = -1;
+    selectedItemList = [];
+
+    $('#accessoryPanel_currentList').html('');
+    $('#assPanel_protein').html('0g');
+    $('#assPanel_carb').html('0g');
+    $('#assPanel_fat').html('0g');
+    $('#assPanel_cal').html('0cal');
+
+    alert(selectedItemList);
+
+}
 
 
 function updateSelected(day, slot, mealname) {
-    $('#currentViewed').html(VIEWING_LIST[slot]);
-    $('#mp_breadcrumb').html('<li class="breadcrumb-item">'+WEEK_LIST[day]+'</li><li class="breadcrumb-item">'+
-        MEAL_LIST[slot]+'</li><li class="breadcrumb-item"><strong>'+mealname+'</strong></li>');
+    saveDay = WEEK_LIST[day];
+    saveMeal = MEAL_LIST[slot];
+
+    if(day != -1) {
+        $('#currentViewed').html(VIEWING_LIST[slot][day]);
+        $('#mp_breadcrumb').html('<li class="breadcrumb-item">' + WEEK_LIST[day] + '</li><li class="breadcrumb-item">' +
+            MEAL_LIST[slot] + '</li><li class="breadcrumb-item"><strong>' + mealname + '</strong></li>');
+    } else {
+        $('#currentViewed').html("Unspecified");
+        $('#mp_breadcrumb').html('<li class="breadcrumb-item">Anyday</li><li class="breadcrumb-item"><strong>No Specific Meal</strong></li>');
+    }
+
 }
 
 function loadInValuesFromDB(data, productType) {
@@ -46,14 +92,46 @@ function loadInValuesFromDB(data, productType) {
     /*Also add to left list */
 }
 
-function showDaysOfType(mealType) {
+function resetTables() {
+    /* Loop through the data for each of the sections and update that row in the tables. */
+    var proElem = $('#proteinBody');
+    var fatElem = $('#mp_fatsTableBody');
 
-    var element = $('#'+mealType+'_panel_content');
-    if (element.css('display') == 'block') {
-        element.css("display", "none");
-    } else {
-        element.css("display", "block");
+    var test = document.querySelectorAll('tr');
+
+    for (var i = 1; i < test.length; i++) {
+        var t = $(test[i]).attr('id');
+        if(t != null) {
+            var trimmed = t.slice('_');
+            console.log(trimmed[0]);
+            switch (trimmed[0]) {
+                case '0':
+                    $(test[i]).css({"background-color": "white", "color": COLOURS_USED[0]});
+                    break;
+                case '1':
+                    $(test[i]).css({"background-color": "white", "color": COLOURS_USED[1]});
+                    break;
+                case '2':
+                    $(test[i]).css({"background-color": "white", "color": COLOURS_USED[2]});
+                    break;
+                case '3':
+                    $(test[i]).css({"background-color": "white", "color": COLOURS_USED[3]});
+                    break;
+                case '4':
+                    $(test[i]).css({"background-color": "white", "color": COLOURS_USED[4]});
+                    break;
+                case '5':
+                    $(test[i]).css({"background-color": "white", "color": COLOURS_USED[5]});
+                    break;
+                case '6':
+                    $(test[i]).css({"background-color": "white", "color": COLOURS_USED[6]});
+                    break;
+            }
+        }
     }
+
+    resetAllVariables();
+    /*Also add to left list */
 }
 
 function showDataEntries(tableRow) {
@@ -128,7 +206,6 @@ function recreateSelectedList() {
 var counter = 0;
 
 function makeItemSelection(itemType, productID, productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType) {
-
     var el = $('#' + TYPES_LIST[itemType] + 'Serving');
     var totalCalIn = $('#' + TYPES_LIST[7] + 'Serving');
 
@@ -180,30 +257,84 @@ function makeItemSelection(itemType, productID, productName, totalCal, proteinQt
 
 }
 
+function convertMeal(mealWord) {
+    switch (mealWord) {
+        case 'breakfast':
+            return 0;
+            break;
+        case 'lunch':
+            return 1;
+            break;
+        case 'dinner':
+            return 2;
+            break;
+    }
+}
+
+function convertDay(dayWord) {
+    switch (dayWord) {
+        case 'Monday':
+            return 0;
+            break;
+        case 'Tuesday':
+            return 1;
+            break;
+        case 'Wednesday':
+            return 2;
+            break;
+        case 'Thursday':
+            return 3;
+            break;
+        case 'Friday':
+            return 4;
+            break;
+        case 'Weekend':
+            return 5;
+            break;
+        case 'Monday':
+            return 6;
+            break;
+    }
+}
+
+
 function getMealData(mealData) {
-    var message = mealData;
-    var split = mealData.split('_');
-    var data = {"meal": split[0], "day": split[1]};
-    data = JSON.stringify(data);
 
-    $.ajax({
-        url: "/user_dashboard/getMealData/"+data+"",
-        type: "GET",
-        contentType: "application/json",
-        dataType: 'json',
-    }).success(function(data) {
+    if(mealData != "-1") {
+        var message = mealData;
+        var split = mealData.split('_');
+        var data = {"meal": split[0], "day": split[1]};
+        var mealInt = convertMeal(split[0]);
+        var dayInt = convertDay(split[1]);
+        data = JSON.stringify(data);
 
-        loadInValuesFromDB(JSON.parse(data["proteinIDs"])["IDs"], 0);
-        loadInValuesFromDB(JSON.parse(data["grainIDs"])["IDs"], 1);
-        loadInValuesFromDB(JSON.parse(data["dairyIDs"])["IDs"], 2);
-        loadInValuesFromDB(JSON.parse(data["vegeIDs"])["IDs"], 3);
-        loadInValuesFromDB(JSON.parse(data["fruitIDs"])["IDs"], 4);
-        loadInValuesFromDB(JSON.parse(data["fatIDs"])["IDs"], 5);
-        loadInValuesFromDB(JSON.parse(data["discIDs"])["IDs"], 6);
+        $.ajax({
+            url: "/user_dashboard/getMealData/" + data + "",
+            type: "GET",
+            contentType: "application/json",
+            dataType: 'json',
+        }).success(function (data) {
+                if (data["mealname"] != '-1') {
+                    loadInValuesFromDB(JSON.parse(data["proteinIDs"])["IDs"], 0);
+                    loadInValuesFromDB(JSON.parse(data["grainIDs"])["IDs"], 1);
+                    loadInValuesFromDB(JSON.parse(data["dairyIDs"])["IDs"], 2);
+                    loadInValuesFromDB(JSON.parse(data["vegeIDs"])["IDs"], 3);
+                    loadInValuesFromDB(JSON.parse(data["fruitIDs"])["IDs"], 4);
+                    loadInValuesFromDB(JSON.parse(data["fatIDs"])["IDs"], 5);
+                    loadInValuesFromDB(JSON.parse(data["discIDs"])["IDs"], 6);
+                    changeMealSelectionDay(split[1]);
+                    updateSelected(dayInt, mealInt, data["mealname"]);
+                } else {
+                    updateSelected(dayInt, mealInt, "");
+                    /* There is nothing stored in the DB for this day display what's stored */
+                }
+            }
+        )
+    } else {
 
-        updateSelected(0,0, data["mealname"]);
-        }
-    )
+        updateSelected(-1, 0, '');
+        resetTables();
+    }
 };
 
 
@@ -252,10 +383,7 @@ function saveMealData(mealData) {
         }
     }
 
-    var message = mealData;
-    var split = mealData.split('_');
-
-    var data = {"mealname": mealName, "description": description, "mealChosen": split[1], "dayChosen": split[0],
+    var data = {"mealname": mealName, "description": description, "mealChosen": saveMeal, "dayChosen": saveDay,
     "isBreakfastSuitable": isB, "isLunchSuitable": isL, "isDinnerSuitable": isD, "proteinIDs": proteinIDs,
     "grainIDs": grainIDs, "dairyIDs": dairyIDs, "vegeIDs": vegeIDs, "fruitIDs":fruitIDs, "fatIDs": fatsIDs,
     "discIDs": discIDs, "proteinTotal": assPanelProtein, "carbTotal": assPanelCarb, "fatTotal": assPanelFat,

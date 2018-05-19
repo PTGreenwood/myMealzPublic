@@ -131,14 +131,15 @@ class UserDashboardController < ApplicationController
     isL = false
     isB = false
 
-
+    puts(dataReceived["dayChosen"])
+    puts(dataReceived["mealChosen"])
     if(dataReceived["dayChosen"] != -1)
 
-      if(dataReceived["mealChosen"]) == 'b'
+      if(dataReceived["mealChosen"]) == 'Breakfast'
         isB = true
-      elsif(dataReceived["mealChosen"]) == 'l'
+      elsif(dataReceived["mealChosen"]) == 'Lunch'
         isL = true
-      elsif(dataReceived["mealChosen"]) == 'd'
+      elsif(dataReceived["mealChosen"]) == 'Dinner'
         isD = true
       end
 
@@ -238,7 +239,7 @@ class UserDashboardController < ApplicationController
 
     else
       puts("NOTHING FOUND FOR THAT SEARCH")
-      @reply = {"mealname": '', "proteinIDs": '', "grainIDs": '', "dairyIDs": '', "vegeIDs": '', "fruitIDs": '',
+      @reply = {"mealname": '-1', "proteinIDs": '', "grainIDs": '', "dairyIDs": '', "vegeIDs": '', "fruitIDs": '',
                 "fatIDs": '', "discIDs": ''}
     end
     respond_with(JSON.parse(@reply.to_json))

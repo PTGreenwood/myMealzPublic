@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     delete 'users/logout', to: 'devise/sessions#destroy'
   end
 
+
+
   #Define route URL
   # '#' is refferring to a method
   root 'pages#index'
