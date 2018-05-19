@@ -106,13 +106,90 @@ class UserDashboardController < ApplicationController
 
   end
 
+  def saveMealData
+    #    var data = {"mealname": mealName, "description": description, "mealChosen": split[0], "dayChosen": split[1],
+    #"isBreakfastSuitable": isB, "isLunchSuitable": isL, "isDinnerSuitable": isD, "proteinIDs": proteinIDs,
+    #"grainIDs": grainIDs, "dairyIDs": dairyIDs, "vegeIDs": vegeIDs, "fruitIDs":fruitIDs, "fatIDs": fatsIDs,
+    #"discIDs": discIDs, "proteinTotal": pTotal, "carbTotal": cTotal, "fatTotal": fTotal, "calTotal": calTotal};
+
+    dataReceived = JSON.parse(params[:mealData])
+
+    newMeal = Savedmeal.create(
+        UserID: current_user.id, MealName: dataReceived["mealname"], ProteinIDs: dataReceived["proteinIDs"],
+        GrainIDs: dataReceived["grainIDs"], DairyIDs: dataReceived["dairyIDs"], VegeIDs: dataReceived["vegeIDs"],
+        FruitIDs: dataReceived["fruitIDs"], FatIDs: dataReceived["fatIDs"], DiscIDs: dataReceived["discIDs"],
+        totalProtein: dataReceived["proteinTotal"], totalCarb: dataReceived["carbTotal"], totalFat: dataReceived["fatTotal"],
+        totalCal: dataReceived["calTotal"], IsDinnerItem: dataReceived["isDinnerSuitable"], IsLunchItem: dataReceived["isLunchSuitable"],
+        IsBreakfastItem: dataReceived["isBreakfastSuitable"]
+    )
+
+    newMeal.save
+
+    mealID = Savedmeal.find_by(MealName: dataReceived["mealname"])
+    isD = false
+    isL = false
+    isB = false
+
+
+    if(dataReceived["dayChosen"] != -1)
+
+      if(dataReceived["mealChosen"]) == 'b'
+        isB = true
+      elsif(dataReceived["mealChosen"]) == 'l'
+        isL = true
+      elsif(dataReceived["mealChosen"]) == 'd'
+        isD = true
+      end
+
+      if(Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isB, isLunchItem: isL,
+                             isDinnerItem: isD, dayOfPlannedMeal: dataReceived["dayChosen"]))
+
+        #Already a value for this time of meal so update it.
+        mealToUpdate = Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isB, isLunchItem: isL,
+                                           isDinnerItem: isD, dayOfPlannedMeal: dataReceived["dayChosen"])
+        mealToUpdate.SavedMealID = mealID.id
+        mealToUpdate.MealName = dataReceived["mealname"]
+        mealToUpdate.save
+
+      else
+        #No meal has been planned for this day yet, so make a new plan
+        plannedMeal = Plannedmeal.create(
+            UserID: current_user.id, MealName: dataReceived["mealname"], SavedMealID: mealID.id,
+            IsDinnerItem: isD, IsLunchItem: isL,
+            IsBreakfastItem: isB, dayOfPlannedMeal: dataReceived["dayChosen"])
+
+        plannedMeal.save
+      end
+    end
+  end
 
   def getMealData
 
-    requestReceived = params[:request]
+    requestReceived = JSON.parse(params[:request])
+    #t.integer :UserID
+    #t.integer :MealName
+    #t.string :ProteinIDs
+    #t.string :GrainIDs
+    #t.string :DairyIDs
+    #t.string :VegeIDs
+    #t.string :FruitIDs
+    #t.string :FatIDs
+    #t.string :DiscIDs
+    #t.boolean :IsDinnerItem
+    #t.boolean :IsLunchItem
+    #t.boolean :IsBreakfastItem
+
+    #t.integer :proteinAMT
+    #t.integer :grainAMT
+    #t.integer :dairyAMT
+    #t.integer :vegeAMT
+    #t.integer :fruitAMT
+    #t.integer :FatAMT
+    #t.integer :discAMT
 
     if(requestReceived["meal"] == "b")
       puts("breakfast")
+
     elsif(requestReceived["meal"] == "l")
       puts("lunch")
     elsif(requestReceived["meal"] == "d")

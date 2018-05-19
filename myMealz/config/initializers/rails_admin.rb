@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
 
+  config.included_models = [User, SupportTicket, Product, Contract, Savedmeal, Plannedmeal]
   ### Popular gems integration
 
   ## == Devise ==

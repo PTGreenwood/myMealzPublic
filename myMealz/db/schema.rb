@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512121620) do
+ActiveRecord::Schema.define(version: 20180517123538) do
 
   create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "UserID"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 20180512121620) do
   create_table "database_structures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   end
 
+  create_table "plannedmeals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "UserID"
+    t.boolean "IsDinnerItem"
+    t.boolean "IsLunchItem"
+    t.boolean "IsBreakfastItem"
+    t.string "dayOfPlannedMeal"
+    t.integer "SavedMealID"
+    t.string "MealName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "productID"
     t.string "productName"
@@ -42,13 +54,27 @@ ActiveRecord::Schema.define(version: 20180512121620) do
     t.string "servingType"
   end
 
-  create_table "saved_meals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "content"
-    t.bigint "user_id"
+  create_table "savedmeals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "UserID"
+    t.string "MealName"
+    t.string "ProteinIDs"
+    t.string "GrainIDs"
+    t.string "DairyIDs"
+    t.string "VegeIDs"
+    t.string "FruitIDs"
+    t.string "FatIDs"
+    t.string "DiscIDs"
+    t.boolean "IsDinnerItem"
+    t.boolean "IsLunchItem"
+    t.boolean "IsBreakfastItem"
+    t.integer "totalProtein"
+    t.integer "totalCarb"
+    t.integer "totalFat"
+    t.integer "totalCal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_saved_meals_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_saved_meals_on_user_id"
+    t.integer "totalCalorie"
+    t.integer "SavedMealID"
   end
 
   create_table "support_tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -131,7 +131,7 @@ function makeItemSelection(itemType, productID, productName, totalCal, proteinQt
 
     if(parseInt(totalCalIn.html()) >= parseInt(totalCal)) {
         if (parseInt(el.html()) != 0) {
-            selectedItemList.push([productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType, itemType]);
+            selectedItemList.push([productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType, itemType, productID]);
 
             $('#accessoryPanel_currentList').html('' + $('#accessoryPanel_currentList').html() +
                 '<tr onclick = (showDataEntries('+counter+')) style="background-color: ' + COLOURS_USED[itemType] + '; color:white">' +
@@ -177,6 +177,73 @@ function getMealData(mealData) {
         dataType: 'json',
     }).success(function(data) {
             alert(data[0]["name"]);
+        }
+    )
+};
+
+
+
+function saveMealData(mealData) {
+
+    var mealName = $('#mealName').val();
+    var description = $('#mealDescription').val();
+
+    var isB = document.querySelector('#breakfastMeal').checked;
+    var isL = document.querySelector('#lunchMeal').checked;
+    var isD = document.querySelector('#dinnerMeal').checked;
+
+    var proteinIDs = "";
+    var grainIDs = "";
+    var dairyIDs = "";
+    var vegeIDs = "";
+    var fruitIDs = "";
+    var fatsIDs = "";
+    var discIDs = "";
+
+
+    for(var i = 0; i < selectedItemList.length; i++) {
+        switch (parseInt(selectedItemList[i][7])) {
+            case 0:
+                proteinIDs += selectedItemList[i][8] + ',';
+                break;
+            case 1:
+                grainIDs += selectedItemList[i][8] + ',';
+                break;
+            case 2:
+                dairyIDs += selectedItemList[i][8] + ',';
+                break;
+            case 3:
+                vegeIDs += selectedItemList[i][8] +  ',';
+                break;
+            case 4:
+                fruitIDs += selectedItemList[i][8] + ',';
+                break;
+            case 5:
+                fatsIDs += selectedItemList[i][8] + ',';
+                break;
+            case 6:
+                discIDs += selectedItemList[i][8] + ',';
+                break;
+        }
+    }
+
+    var message = mealData;
+    var split = mealData.split('_');
+
+    var data = {"mealname": mealName, "description": description, "mealChosen": split[1], "dayChosen": split[0],
+    "isBreakfastSuitable": isB, "isLunchSuitable": isL, "isDinnerSuitable": isD, "proteinIDs": proteinIDs,
+    "grainIDs": grainIDs, "dairyIDs": dairyIDs, "vegeIDs": vegeIDs, "fruitIDs":fruitIDs, "fatIDs": fatsIDs,
+    "discIDs": discIDs, "proteinTotal": assPanelProtein, "carbTotal": assPanelCarb, "fatTotal": assPanelFat,
+        "calTotal": assPanelCal};
+
+    data = JSON.stringify(data);
+
+    $.ajax({
+        url: "/user_dashboard/saveMeal/"+data+"",
+        contentType: "application/json",
+        dataType: 'json',
+    }).success(function(data) {
+            alert("Successful");
         }
     )
 };

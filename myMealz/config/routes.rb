@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   #Meal planner stuff
   get '/user_dashboard/getMealData/:request', to: 'user_dashboard#getMealData'
+  get '/user_dashboard/saveMeal/:mealData' , to: 'user_dashboard#saveMealData'
 
   #Dietitian Controller - dietitian_dashboard
   get '/dietitian/ticketSupport' => 'dietitian_dashboard#support'
