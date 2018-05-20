@@ -35,11 +35,26 @@ Rails.application.routes.draw do
   get 'showTickets', to: 'pages#showTickets'
 
   #User is general public
-  devise_for :users, path: 'users', controllers: { sessions: "devise/sessions" }
-  devise_scope :users do
-    get 'users/login', to: 'devise/sessions#new'
-    delete 'users/logout', to: 'devise/sessions#destroy'
+  #devise_for :users, path: 'users', controllers: { sessions: "devise/sessions" }
+  #devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
+  #devise_scope :users do
+    #get 'users/login', to: 'devise/sessions#new'
+  #  get 'login', to: 'pages#index'
+    #delete 'users/logout', to: 'devise/sessions#destroy'
+  #end
+  #
+  #devise_for :users, skip: [:session], :controllers => {:registrations => "registrations2"}
+  devise_for :users, skip: [:sessions]
+  as :user do
+    get 'signin', to: 'pages#index', as: :new_user_session
+    post 'signin', to: 'pages#index', as: :user_session
+    #get 'users', to: 'pages#index', as: :user_registration_path
+    #post 'users', to: 'pages#index', as: :new_user_registration_path
+    delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
+
+
+
 
 
 
