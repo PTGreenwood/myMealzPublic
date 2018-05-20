@@ -25,6 +25,8 @@
     <%= f.label :password, :style => "color: #293135" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% else %>
+    <em>(6 characters minimum)</em>
     <% end %>
     <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
   </div>

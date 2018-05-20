@@ -2,12 +2,10 @@
   <div style="padding-top: 10px">
     <div class="form-group" style="float: left; color: white; margin-bottom: 0px; margin-right: 10px;">
       <%= f.label :email%>
-      <br>
       <%= f.text_field :email, :class => "form-control"%>
     </div>
     <div class="form-group" style="float: left; color: white; margin-bottom: 0px; margin-right: 10px;">
       <%= f.label :password %>
-      <br>
       <%= f.password_field :password, :class => "form-control"%>
 
       <span style="float:left; line-height: 2;"><%= link_to "Forgot your password?", new_password_path(:user) %></span>
