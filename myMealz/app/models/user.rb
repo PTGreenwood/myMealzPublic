@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
 
 
-  #after_create :send_admin_mail
+  after_create :send_admin_mail
 
   def send_admin_mail
     UserMailer.send_welcome_email(self).deliver_later
