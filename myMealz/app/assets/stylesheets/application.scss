@@ -150,14 +150,32 @@ padding: 20px 10px 40px 30px;
   float: right;
   margin-top: 22px;
   background-color: #37BC9B;
-  border-color: white;
+  border-color: #37BC9B;
   color: white;
 }
+
 //SIGN UP BUTTON HOVER
 .signupcontent:hover, .signupcontent:focus, .signupcontent.focus{
   background-color: #4C927B;
   color: white;
 }
+
+//CANCEL BUTTON
+.cancelbutton{
+  float: right;
+  margin-top: 22px;
+  margin-right: 10px;
+  background-color: none;
+  border-color: red;
+  color: red;
+}
+
+//CANCEL BUTTON HOVER
+.cancelbutton:hover, .cancelbutton:focus, .cancelbutton.focus{
+  background-color: red;
+  color: white;
+}
+
 //DARK DIVS FOR SUBTITLES
 .beforefirstrow, .thirdrow{
   text-align: center;

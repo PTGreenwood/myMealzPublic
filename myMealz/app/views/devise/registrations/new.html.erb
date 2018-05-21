@@ -11,26 +11,26 @@
   </div>
 <br>
   <div class="field">
-    <%= f.label :first_name, :style => "color: #293135" %>
+    <%= f.label :firstname, :style => "color: #293135" %>
     <%= f.text_field :firstname, :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :last_name, :style => "color: #293135" %>
+    <%= f.label :lastname, :style => "color: #293135" %>
     <%= f.text_field :lastname, :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :email, :style => "color: #293135" %>
-    <%= f.email_field :email, :class => "form-control" %>
+    <%= f.label :email2, "Email", :style => "color: #293135" %>
+    <%= f.email_field :email, :class => "form-control", :id => "user_email2" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :password, :style => "color: #293135" %>
+    <%= f.label :password2, "Password", :style => "color: #293135" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+    <%= f.password_field :password, autocomplete: "off", :class => "form-control", :id => "user_password2" %>
   </div>
 <br>
   <div class="field">
@@ -39,12 +39,12 @@
   </div>
 <br>
   <div class="field">
-    <%= f.label :dietitian_referral_code, :style => "color: #293135" %>
+    <%= f.label :connectedTo, :style => "color: #293135" %>
     <%= f.text_field :connectedTo, :class => "form-control" %>
   </div>
 <br>
   <div class="field">
-    <%= f.label :upload_profile_picture, :style => "color: #293135"%>
+    <%= f.label :avatar, :style => "color: #293135"%>
     <%= f.file_field :avatar, :style => "color: #293135" %>
   </div>
   <div class="actions">
