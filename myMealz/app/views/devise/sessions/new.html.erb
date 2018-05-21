@@ -1,26 +1,31 @@
-<h2>Log in</h2>
-
+<div class="row" style="margin: 80px 0px">
+ <div class="col-md-4 col-md-offset-4">
+<h2>Log In With Your Account Details Below!</h2>
+<br>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email2, "Email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control", :id => "user_email2" %>
   </div>
-
+<br>
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :password2, "Password" %>
+    <%= f.password_field :password, autocomplete: "off", :class => "form-control", :id => "user_password2" %>
   </div>
-
+<br>
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end -%>
-
+<br>
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", :class => "btn signupcontent" %>
+    <%= link_to "Back", :back, :class => "btn cancelbutton" %>
   </div>
+<br>
+  <%= render "devise/shared/links" %>
+</div>
+</div>
 <% end %>
-
-<%= render "devise/shared/links" %>

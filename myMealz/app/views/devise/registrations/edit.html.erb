@@ -6,42 +6,40 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email, :style => "color: #293135" %><br />
+    <%= f.label :email, "Change Email", :style => "color: #293135" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control" %>
   </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <br>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
+<br>
   <div class="field">
-    <%= f.label :password, :style => "color: #293135" %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password, "New Password",:style => "color: #293135" %> <i>(leave blank if you don't want to change it)</i><br />
     <% if @minimum_password_length %>
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
     <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
-
   </div>
-
+<br>
   <div class="field">
-    <%= f.label :password_confirmation, :style => "color: #293135" %><br />
+    <%= f.label :password_confirmation, "Confirm New Password", :style => "color: #293135" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
   </div>
-
+<br>
   <div class="field">
-    <%= f.label :avatar, :style => "color: #293135"%>
+    <%= f.label :avatar, "Change Profile Picture", :style => "color: #293135"%>
     <%= f.file_field :avatar, :style => "color: #293135" %>
-
     <% if @user.avatar? %>
       <%= image_tag @user.avatar.url(:thumb) %>
     <% end %>
   </div>
-
+<br>
   <div class="field">
     <%= f.label :current_password, :style => "color: #293135" %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off", :class => "form-control" %>
   </div>
-
+<br>
   <div class="actions">
     <%= f.submit "Save Changes", :class => "btn signupcontent" %>
   </div>
