@@ -6,7 +6,7 @@ if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
   ENV['RAILS_ADMIN_THEME'] = 'rollincode' #The rails_admin curstom theme
-  
+
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
@@ -29,6 +29,8 @@ module MYMEALZ
     config.assets.version = '1.0'
 
     config.assets.precompile += %w(meal_planner.js)
+
+    config.assets.precompile += %w(recipe_options.js)
 
     config.middleware.use PDFKit::Middleware
   end

@@ -18,3 +18,4 @@
 //= require bootstrap-sprockets
 //= stub rails_admin/custom/ui.js
 //= require meal_planner
+//= require recipe_options
