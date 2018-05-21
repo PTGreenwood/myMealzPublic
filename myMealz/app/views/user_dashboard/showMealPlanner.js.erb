@@ -1,2 +1,91 @@
 $('#accessoryPanel').css("display", "block");
+$('#accessoryPanel').html('<div class="panel-body">\n' +
+    '        <div class="table-responsive">\n' +
+    '          <table class="table table-hover" style="border: 3px solid limegreen">\n' +
+    '            <thead style="background-color: limegreen">\n' +
+    '              <tr>\n' +
+    '                <th scope="col" class="text-center" style="color: white" colspan="2">Chosen Menu Items</th>\n' +
+    '              </tr>\n' +
+    '            </thead>\n' +
+    '  \n' +
+    '            <tbody id="accessoryPanel_currentList">\n' +
+    '            </tbody>\n' +
+    '            <tr style="background-color: white; color:black">\n' +
+    '              <td class="mp_totalBorders CellWithComment" colspan="2"> Total Nutrient Content\n' +
+    '                <span id="cellNum_total" class="CellComment">\n' +
+    '                  <table>\n' +
+    '                    <tr>\n' +
+    '                      <td class="text-right">\n' +
+    '                        <strong>Protein:&nbsp</strong>\n' +
+    '                      </td>\n' +
+    '                      <td id ="assPanel_protein">0g</td>\n' +
+    '                    </tr>\n' +
+    '                    <tr>\n' +
+    '                      <td class="text-right"><strong>Carb:&nbsp</strong></td>\n' +
+    '                        <td id="assPanel_carb">0g</td>\n' +
+    '                    </tr>\n' +
+    '                    <tr>\n' +
+    '                      <td class="text-right"><strong>Fat:&nbsp</strong></td>\n' +
+    '                      <td id="assPanel_fat">0g</td>\n' +
+    '                    </tr>\n' +
+    '                    <tr>\n' +
+    '                      <td class="text-right"><strong>Total Cal:&nbsp</strong></td>\n' +
+    '                      <td id="assPanel_cal">0cal</td>\n' +
+    '                    </tr>\n' +
+    '                  </table>\n' +
+    '                </span>\n' +
+    '              </td>\n' +
+    '            </tr>\n' +
+    '          </table>\n' +
+    '          <br><br>\n' +
+    '        </div>\n' +
+    '\n' +
+    '        <!-- Trigger the modal with a button -->\n' +
+    '        <button type="button" class="btn btn-warning btn-sm pull-right" data-toggle="modal" data-target="#myModal">Save Meal</button>\n' +
+    '\n' +
+    '        <!-- Modal -->\n' +
+    '\n' +
+    '        <div id="myModal" class="modal" tabindex="-1" role="dialog">\n' +
+    '            <div class="modal-dialog" role ="document">\n' +
+    '\n' +
+    '              <!-- Modal content-->\n' +
+    '              <div class="modal-content">\n' +
+    '                <div class="modal-header">\n' +
+    '                  <button type="button" class="close" data-dismiss="modal">&times;</button>\n' +
+    '                  <h4 class="modal-title">Save your meal</h4>\n' +
+    '                </div>\n' +
+    '                <div class="modal-body">\n' +
+    '                  <form>\n' +
+    '                    <div class="form-group">\n' +
+    '                      <label for="mealName">What\'s your meal called?</label>\n' +
+    '                      <textarea class="form-control" id="mealName" rows="1"></textarea>\n' +
+    '                    </div>\n' +
+    '                    <div class="form-group">\n' +
+    '                      <label for="description">Description:</label>\n' +
+    '                      <textarea class="form-control" id="mealDescription" rows="3"></textarea>\n' +
+    '                    </div>\n' +
+    '                    <label for="description">Is this meal for:</label>\n' +
+    '                    <div class="form-check form-check-inline">\n' +
+    '                      <input class="form-check-input" type="checkbox" id="breakfastMeal" value="breakfastMeal">\n' +
+    '                      <label class="form-check-label" for="breakfastMeal">Breakfast</label><br>\n' +
+    '                      <input class="form-check-input" type="checkbox" id="lunchMeal" value="lunchMeal">\n' +
+    '                      <label class="form-check-label" for="lunchMeal">Lunch</label><br>\n' +
+    '                      <input class="form-check-input" type="checkbox" id="dinnerMeal" value="dinnerMeal">\n' +
+    '                      <label class="form-check-label" for="dinnerMeal">Dinner</label>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                  </form>\n' +
+    '                </div>\n' +
+    '                <div class="modal-footer">\n' +
+    '                  <button type="button" class="btn btn-primary" onclick="saveMealData()" data-dismiss="modal">Save changes</button>\n' +
+    '                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n' +
+    '                </div>\n' +
+    '              </div>\n' +
+    '\n' +
+    '            </div>\n' +
+    '          </div>\n' +
+    '        <br><br>\n' +
+    '        </div>\n' +
+    '\n' +
+    '      </div>');
 $('#current_dash_render').html("<%= escape_javascript(render :partial => 'layouts/supports/showMealPlanner')%>")

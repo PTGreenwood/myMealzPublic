@@ -1,0 +1,13 @@
+<html>
+<p>Welcome <%=current_user.firstname%> <%= current_user.lastname%> to your profile,</p>
+
+<p>Email: <%= current_user.email %>
+<p>Username: <%= current_user.username %>
+<p><% if current_user.connectedTo != "" %>
+  Dietitian ID Connected to: <%= current_user.connectedTo %>
+<% else %>
+  Dietitian Connect to: No Dietitian
+<% end %>
+</p>
+
+</html>

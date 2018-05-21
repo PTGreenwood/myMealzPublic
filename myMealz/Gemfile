@@ -21,6 +21,7 @@ gem 'cancancan'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 
+
 # Jquery for rails
 gem 'jquery-rails'
 
@@ -38,6 +39,8 @@ gem 'faker'
 
 #File attachment and profile images
 gem 'paperclip'
+#Editing images
+gem 'rmagick'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

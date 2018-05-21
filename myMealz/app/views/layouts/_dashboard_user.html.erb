@@ -18,6 +18,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <p> Links </p>
+        <p><%= link_to "Profile", profile_path, remote: true %></p>
         <p><%= link_to "Meal Planner", showMealPlanner_path, remote: true %></p>
         <p><%= link_to "myMealz", showPlannedMeals_path, remote: true %></p>
         <p><%= link_to "View Recipes", showRecipeOptions_path, remote: true %></p>
@@ -25,103 +26,14 @@
       </div>
     </div>
     <div class="panel panel-default" id="accessoryPanel" style="display:none">
-      <div class="panel-body">
-        <div class="table-responsive">
-          <table class="table table-hover" style="border: 3px solid limegreen">
-            <thead style="background-color: limegreen">
-              <tr>
-                <th scope="col" class="text-center" style="color: white" colspan="2">Chosen Menu Items</th>
-              </tr>
-            </thead>
-  
-            <tbody id="accessoryPanel_currentList">
-            </tbody>
-            <tr style="background-color: white; color:black">
-              <td class="mp_totalBorders CellWithComment" colspan="2"> Total Nutrient Content
-                <span id="cellNum_total" class="CellComment">
-                  <table>
-                    <tr>
-                      <td class="text-right">
-                        <strong>Protein:&nbsp</strong>
-                      </td>
-                      <td id ="assPanel_protein">0g</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>Carb:&nbsp</strong></td>
-                        <td id="assPanel_carb">0g</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>Fat:&nbsp</strong></td>
-                      <td id="assPanel_fat">0g</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>Total Cal:&nbsp</strong></td>
-                      <td id="assPanel_cal">0cal</td>
-                    </tr>
-                  </table>
-                </span>
-              </td>
-            </tr>
-          </table>
-          <br><br>
-        </div>
-
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-warning btn-sm pull-right" data-toggle="modal" data-target="#myModal">Save Meal</button>
-
-        <!-- Modal -->
-
-        <div id="myModal" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role ="document">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Save your meal</h4>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="mealName">What's your meal called?</label>
-                      <textarea class="form-control" id="mealName" rows="1"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="description">Description:</label>
-                      <textarea class="form-control" id="mealDescription" rows="3"></textarea>
-                    </div>
-                    <label for="description">Is this meal for:</label>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="breakfastMeal" value="breakfastMeal">
-                      <label class="form-check-label" for="breakfastMeal">Breakfast</label><br>
-                      <input class="form-check-input" type="checkbox" id="lunchMeal" value="lunchMeal">
-                      <label class="form-check-label" for="lunchMeal">Lunch</label><br>
-                      <input class="form-check-input" type="checkbox" id="dinnerMeal" value="dinnerMeal">
-                      <label class="form-check-label" for="dinnerMeal">Dinner</label>
-                    </div>
-
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" onclick="saveMealData()" data-dismiss="modal">Save changes</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        <br><br>
-        </div>
-
-      </div>
-
     </div>
-
+  </div>
 
   <!-- Middle -->
   <!-- Middle -->
   <div class="col-xs-9">
     <div id="current_dash_render"class="panel panel-default main-panel">
+      <%= render '/layouts/supports/profile' %>
     </div>
         <!-- @savedmeals is the variable in the controller that all SavedMeal database entries go into
         Is hooked up with Username as the foreign_key. Currently shows every single database entry and not profile specific-->

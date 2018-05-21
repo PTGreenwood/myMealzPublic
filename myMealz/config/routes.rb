@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
 
   get 'showTickets', to: 'pages#showTickets'
+  get 'profile', to: 'pages#showProfile'
 
   #User is general public
   devise_for :users, path: 'users', controllers: { sessions: "devise/sessions" }

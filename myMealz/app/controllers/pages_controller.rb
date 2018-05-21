@@ -8,6 +8,11 @@ class PagesController < ApplicationController
 
   #backend code for pages/index
 
+  def showProfile
+    respond_to do |format|
+      format.js
+    end
+  end
   #Index is landing page.
   def index
 
