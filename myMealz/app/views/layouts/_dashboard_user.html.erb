@@ -10,6 +10,7 @@
           <% else %>
             <%= "No Profile Picture Found" %>
           <% end %>
+
         </p>
       </div>
     </div>
@@ -18,6 +19,8 @@
       <div class="panel-body">
         <p> Links </p>
         <p><%= link_to "Meal Planner", showMealPlanner_path, remote: true %></p>
+        <p><%= link_to "myMealz", showPlannedMeals_path, remote: true %></p>
+        <p><%= link_to "View Recipes", showRecipeOptions_path, remote: true %></p>
         <p><%= link_to "Support Tickets", showTickets_path, remote: true %></p>
       </div>
     </div>

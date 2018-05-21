@@ -17,6 +17,10 @@ gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 
 gem 'cancancan'
 
+#PDF Generation made easy
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+
 # Jquery for rails
 gem 'jquery-rails'
 

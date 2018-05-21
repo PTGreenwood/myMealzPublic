@@ -87,6 +87,25 @@ class UserDashboardController < ApplicationController
     end
   end
 
+  #Recipe options
+  def showReceipeOptions
+    respond_to do |format|
+      #format.html
+      format.js
+      #render :partial=>"/layouts/supports/showTickets"
+    end
+  end
+
+  #Planned meal sections
+  def showPlannedMeals
+    respond_to do |format|
+      #format.html
+      format.js
+      #render :partial=>"/layouts/supports/showTickets"
+    end
+  end
+
+
   #USER MEAL PLANNER
   def showMealPlanner
 
@@ -102,9 +121,16 @@ class UserDashboardController < ApplicationController
     respond_to do |format|
       #format.html
       format.js
+      format.pdf do
+        kit = PDFKit.new('views/layouts/logup/login', page_size: 'A4')
+        pdf = kit.to_pdf
+        send_data(pdf,
+                  filename: 'testingPDFSave.pdf',
+                  disposition: 'attachment',
+                  type: :pdf)
+      end
       #render :partial=>"/layouts/supports/showTickets"
     end
-
   end
 
   def saveMealData

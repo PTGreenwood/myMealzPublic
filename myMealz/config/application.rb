@@ -29,5 +29,9 @@ module MYMEALZ
     config.assets.version = '1.0'
 
     config.assets.precompile += %w(meal_planner.js)
+
+    config.middleware.use PDFKit::Middleware
   end
+
+
 end
