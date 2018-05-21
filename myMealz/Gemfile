@@ -40,7 +40,11 @@ gem 'faker'
 #File attachment and profile images
 gem 'paperclip'
 #Editing images
-gem 'rmagick'
+#gem 'rmagick'
+
+#Payments
+gem 'activemerchant'
+
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

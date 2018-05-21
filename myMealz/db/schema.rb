@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517123538) do
+ActiveRecord::Schema.define(version: 20180521130552) do
 
   create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "UserID"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20180517123538) do
   end
 
   create_table "database_structures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  end
+
+  create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "last4"
+    t.decimal "amount", precision: 10
+    t.boolean "success"
+    t.string "authorization_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "plannedmeals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -52,15 +63,6 @@ ActiveRecord::Schema.define(version: 20180517123538) do
     t.string "productType"
     t.integer "servingQty"
     t.string "servingType"
-  end
-
-  create_table "saved_meals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "content"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_saved_meals_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_saved_meals_on_user_id"
   end
 
   create_table "savedmeals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

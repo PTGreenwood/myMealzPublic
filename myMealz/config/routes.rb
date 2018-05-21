@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :payments, only: [:connector, :new, :create]
+  get 'payments/connector'
+  get 'payments', to: 'payments#connector'
+  get 'payments/new'
+
+  get 'payments/create'
+
+
+
   mount RailsAdmin::Engine => '/adminDB', as: 'rails_admin'
 
   #Dietitian Controller - dietitian_dashboard
@@ -61,6 +70,7 @@ Rails.application.routes.draw do
   get '/home' => 'pages#home' #=> overrides default route
   get '/dashboard/:id' => 'pages#dashboard'
   get '/explore' => 'pages#explore'
+
 
 
 
