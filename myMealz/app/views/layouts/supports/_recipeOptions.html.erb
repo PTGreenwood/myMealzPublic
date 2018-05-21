@@ -1,1 +1,133 @@
-Hi there i'm all the recipe options
+<style>
+.RecipeTable {
+  border: 3px solid #37BC9B;
+}
+.TableHead {
+  color: white;
+  background-color: #37BC9B;
+  max-width: 100px;
+}
+
+.TableBody {
+  color: #37BC9B;
+}
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+<div class="row">
+  <div class="col-md-12">
+      <p class="jumbotron">My Recipes</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-1">
+    <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search for recipes..">
+    <br>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+<table id="myTable" class="table table-hover RecipeTable">
+  <thead class="TableHead">
+    <th onclick="openModal()">Meal Name</th>
+    <th>Ingredients</th>
+  </thead>
+  <tbody class="TableBody">
+  <tr onclick="openModal()">
+    <td>Alfreds Futterkiste</td>
+    <td>Germany</td>
+  </tr>
+  <tr onclick="openModal()">
+    <td>Berglunds snabbkop</td>
+    <td>Sweden</td>
+  </tr>
+  <tr onclick="openModal()">
+    <td>Island Trading</td>
+    <td>UK</td>
+  </tr>
+  <tr onclick="openModal()">
+    <td>Koniglich Essen</td>
+    <td>Germany</td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <!-- PUT RECIPE CONTENT HERE -->
+  </div>
+<script type="text/javascript">
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+// Open the Modal
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+// Close the Modal
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+</script>

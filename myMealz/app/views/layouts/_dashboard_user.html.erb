@@ -17,7 +17,6 @@
 
     <div class="panel panel-default">
       <div class="panel-body">
-        <p> Links </p>
         <p><%= link_to "Profile", profile_path, remote: true %></p>
         <p><%= link_to "Meal Planner", showMealPlanner_path, remote: true %></p>
         <p><%= link_to "myMealz", showPlannedMeals_path, remote: true %></p>
@@ -31,7 +30,7 @@
 
   <!-- Middle -->
   <!-- Middle -->
-  <div class="col-xs-9">
+  <div class="col-xs-10">
     <div id="current_dash_render"class="panel panel-default main-panel">
       <%= render '/layouts/supports/profile' %>
     </div>
@@ -40,4 +39,3 @@
   </div>
 </div>
 </div>
-
