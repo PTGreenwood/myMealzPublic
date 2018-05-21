@@ -1,13 +1,39 @@
-<html>
-<p>Welcome <%=current_user.firstname%> <%= current_user.lastname%> to your profile,</p>
 
-<p>Email: <%= current_user.email %>
-<p>Username: <%= current_user.username %>
-<p><% if current_user.connectedTo != "" %>
-  Dietitian ID Connected to: <%= current_user.connectedTo %>
-<% else %>
-  Dietitian Connect to: No Dietitian
-<% end %>
-</p>
 
-</html>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <p class="jumbotron"><%=current_user.firstname.to_s.humanize%> <%= current_user.lastname.to_s.humanize%>'s Profile</p>
+  </div>
+  <div class="col-md-3">
+    <%= link_to 'Edit Profile', edit_user_registration_path, { :class => "btn signupcontent"} %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="alert alert-warning">
+    <p>Email: <%= current_user.email %></p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="alert alert-warning">
+      <p>Username: <%= current_user.username %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="alert alert-warning">
+      <p><% if current_user.connectedTo != "" %>
+        Connected Dietitian ID: <%= current_user.connectedTo %>
+      <% else %>
+        Connected Dietitian ID: No Dietitian
+      <% end %>
+      </p>
+    </div>
+  </div>
+</div>
