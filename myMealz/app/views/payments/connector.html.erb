@@ -19,13 +19,15 @@
   </tr>
   <% if @payments.size > 0 %>
     <% @payments.each do |payment| %>
-      <tr>
-        <td><%= payment.first_name %></td>
-        <td><%= payment.last_name %></td>
-        <td><%= number_to_currency payment.amount %></td>
-        <td><%= payment.success == true ? "Yes" : "No" %></td>
-        <td><%= payment.authorization_code %></td>
-      </tr>
+      <% if payment.attachedUserID == current_user.id %>
+        <tr>
+          <td><%= payment.first_name %></td>
+          <td><%= payment.last_name %></td>
+          <td><%= number_to_currency payment.amount %></td>
+          <td><%= payment.success == true ? "Yes" : "No" %></td>
+          <td><%= payment.authorization_code %></td>
+        </tr>
+      <% end %>
     <% end %>
   <% else %>
     <tr>

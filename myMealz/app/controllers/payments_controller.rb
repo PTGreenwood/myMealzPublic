@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   def connector
+
     @payments = Payment.all
   end
 
@@ -9,7 +10,7 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new(payment_params)
-
+    @payment.attachedUserID = current_user.id
     if @payment.save
       if @payment.process
         @update = current_user
