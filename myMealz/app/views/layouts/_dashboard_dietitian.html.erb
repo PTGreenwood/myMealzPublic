@@ -1,7 +1,7 @@
 
 <div class="row">
   <!-- Left -->
-  <div class="col-xs-3">
+  <div class="col-xs-2">
     <div class="panel panel-default">
       <div class="panel-body">
         <p>
@@ -17,12 +17,9 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <p> Links </p>
-        <p><%= link_to "My Clientz", getMyClientz_path, remote: true %></p>
-        <p><a href="#">Link 2</a></p>
-        <p><a href="#">Link 3</a></p>
-        <p><a href="#">Link 4</a></p>
+        <p><%= link_to "My Clients", getMyClientz_path, remote: true %></p>
+        <p><%= link_to "My Profile", profile_path, remote: true %></p>
         <p><%= link_to "Support Tickets", showTickets_path, remote: true %></p>
-        <p><a href="#">Link 5</a></p>
       </div>
     </div>
 
@@ -30,8 +27,8 @@
   </div>
 
   <!-- Middle -->
-  <div class="col-xs-9">
-    <div id="current_dash_render">
+  <div class="col-xs-10">
+    <div id="current_dash_render" class="panel panel-default main-panel">
       <%= render '/layouts/supports/profile' %>
     </div>
 
