@@ -87,8 +87,80 @@ class UserDashboardController < ApplicationController
     end
   end
 
+  def idConvertHelper(stringSequence)
+    #converted = stringSequence.split(',')
+    #temp ||= []
+    returningArray ||= []
+    returningArray = returningArray.push(stringSequence.split(','))
+
+    return returningArray
+  end
+
+  def productCollectionHelper(arrayToLoop)
+
+    innerValues = Array.new()
+    outerValues = Array.new()
+
+    for outerItem in arrayToLoop
+      puts("outer item: #{outerItem}")
+      for innerItem in outerItem
+        puts("Inner item #{innerItem}")
+        for actualItem in innerItem
+          puts("inner inner item: #{actualItem}")
+          if(Product.find_by(productID: actualItem))
+            puts("FOund it")
+            prod = Product.find_by(productID: actualItem)
+            innerValues.push(prod)
+          end
+        end
+        outerValues << innerValues.dup
+        innerValues.clear
+      end
+    end
+    return outerValues
+  end
+
   #Recipe options
-  def showReceipeOptions
+  def showRecipeOptions
+
+    @meals = Savedmeal.all
+
+    proteinOuter ||= [] #is 2D Array
+    grainOuter   ||= [] #is 2D Array
+    dairyOuter   ||= [] #is 2D Array
+    vegeOuter    ||= [] #is 2D Array
+    fruitOuter   ||= [] #is 2D Array
+    fatsOuter    ||= [] #is 2D Array
+    discOuter    ||= [] #is 2D Array
+
+    @proteinCollection ||= []
+    @grainCollection   ||= []
+    @dairyCollection   ||= []
+    @vegeCollection    ||= []
+    @fruitCollection   ||= []
+    @fatsCollection    ||= []
+    @discCollection    ||= []
+
+    for item in @meals
+
+      proteinOuter.push(idConvertHelper(item.ProteinIDs))
+      grainOuter.push(idConvertHelper(item.GrainIDs))
+      dairyOuter.push(idConvertHelper(item.DairyIDs))
+      vegeOuter.push(idConvertHelper(item.VegeIDs))
+      fruitOuter.push(idConvertHelper(item.FruitIDs))
+      fatsOuter.push(idConvertHelper(item.FatIDs))
+      discOuter.push(idConvertHelper(item.DiscIDs))
+
+    end
+
+    @proteinCollection = productCollectionHelper(proteinOuter)
+    @grainCollection = productCollectionHelper(grainOuter)
+    @dairyCollection = productCollectionHelper(dairyOuter)
+    @vegeCollection = productCollectionHelper(vegeOuter)
+    @fruitCollection = productCollectionHelper(fruitOuter)
+    @fatsCollection = productCollectionHelper(fatsOuter)
+    @discCollection = productCollectionHelper(discOuter)
+
     respond_to do |format|
       #format.html
       format.js
@@ -98,6 +170,7 @@ class UserDashboardController < ApplicationController
 
   #Planned meal sections
   def showPlannedMeals
+    puts("Maybe here")
     respond_to do |format|
       #format.html
       format.js
@@ -197,8 +270,6 @@ class UserDashboardController < ApplicationController
       if(i != ',')
         arrCopy.push(i)
       end
-
-
     end
     puts(arrCopy)
     return arrCopy

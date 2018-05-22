@@ -19,22 +19,50 @@
     <th>Ingredients</th>
   </thead>
   <tbody class="ro_TableBody">
-  <tr onclick="openModal()">
-    <td>Alfreds Futterkiste</td>
-    <td>Germany</td>
-  </tr>
-  <tr onclick="openModal()">
-    <td>Berglunds snabbkop</td>
-    <td>Sweden</td>
-  </tr>
-  <tr onclick="openModal()">
-    <td>Island Trading</td>
-    <td>UK</td>
-  </tr>
-  <tr onclick="openModal()">
-    <td>Koniglich Essen</td>
-    <td>Germany</td>
-  </tr>
+  <% if @meals.size > 0 %>
+    <% counter = 0 %>
+    <% @meals.each do |item| %>
+      <tr onclick="openModal()">
+        <td><%= item.MealName%></td>
+        <td>
+          <% for i in @proteinCollection[counter] %>
+            <%= i.productName %>,
+          <% end %>
+
+          <% for i in @grainCollection[counter] %>
+            <%= i.productName %>,
+          <% end %>
+
+          <% for i in @dairyCollection[counter] %>
+            <%= i.productName %>,
+          <% end %>
+
+          <% for i in @vegeCollection[counter] %>
+            <%= i.productName %>,
+          <% end %>
+
+          <% for i in @fruitCollection[counter] %>
+            <%= i.productName %>,
+          <% end %>
+
+          <% for i in @fatsCollection[counter] %>
+            <%= i.productName %>,
+          <% end %>
+
+          <% for i in @discCollection[counter] %>
+            <%= i.productName %>,
+          <% end %>
+          <% counter += 1 %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="2">No Meals have been saved.</td>
+    </tr>
+  <% end %>
+
+
 </tbody>
 </table>
 </div>
