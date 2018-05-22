@@ -12,7 +12,7 @@ class DietitianDashboardController < ApplicationController
     #get all the clientz and pass them through
     currentLoggedID = User.find_by_username(current_user.username)
 
-    @extraDetails = "Empty"
+    @nameDetails ||= []
 
     @usersAttached ||= []
     @contracts ||= []
@@ -20,12 +20,15 @@ class DietitianDashboardController < ApplicationController
       if (currentLoggedID.id == item.DietitianID)
         nameDetails = User.find_by(id: item.UserID)
         @usersAttached.push(nameDetails)
-        @extraDetails = nameDetails.firstname
-        @extraDetails2 = nameDetails.lastname
+        fName = nameDetails.firstname
+        lName = nameDetails.lastname
+        @nameDetails.push(fName + " " + lName)
+        #@nameDetails.push(lName)
         @contracts.push(item)
       end
     end
     puts("Length of the amount of contracts: #{@contracts.length}")
+    puts("NameDetails: #{@nameDetails}")
     respond_to do |format|
       format.js
     end
