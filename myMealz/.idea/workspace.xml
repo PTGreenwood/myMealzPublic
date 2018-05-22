@@ -38,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mealPlanner.js.erb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mealPlanner.js.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mealPlanner.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
+            <state relative-caret-position="1527">
               <caret line="408" column="63" selection-start-line="408" selection-start-column="63" selection-end-line="408" selection-end-column="63" />
               <folding>
                 <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
@@ -61,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_showMealPlanner.html.erb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="_showMealPlanner.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/supports/_showMealPlanner.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3899">
-              <caret line="70" column="81" selection-start-line="70" selection-start-column="81" selection-end-line="70" selection-end-column="81" />
+            <state relative-caret-position="250">
+              <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
             </state>
           </provider>
         </entry>
@@ -161,8 +161,8 @@
         <option value="$PROJECT_DIR$/app/views/pages/reload_planner.js.erb" />
         <option value="$PROJECT_DIR$/app/controllers/pages_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/user_dashboard_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/supports/_showMealPlanner.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/mealPlanner.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/supports/_showMealPlanner.html.erb" />
       </list>
     </option>
   </component>
@@ -393,12 +393,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526883463717</updated>
-      <workItem from="1526883464804" duration="35353000" />
+      <workItem from="1526883464804" duration="35515000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35353000" />
+    <option name="totallyTimeSpent" value="35515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1440" height="829" extended-state="0" />
@@ -766,22 +766,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/supports/_showMealPlanner.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3899">
-          <caret line="70" column="81" selection-start-line="70" selection-start-column="81" selection-end-line="70" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mealPlanner.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
+        <state relative-caret-position="1527">
           <caret line="408" column="63" selection-start-line="408" selection-start-column="63" selection-end-line="408" selection-end-column="63" />
           <folding>
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#!!block;n#getMealData#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/supports/_showMealPlanner.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
         </state>
       </provider>
     </entry>
