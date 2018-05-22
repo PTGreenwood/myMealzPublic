@@ -37,13 +37,13 @@ discNames = Array["Sausage", "Hot Chips", "Pizza", "Garlic Bread", "Soft Drnk", 
 discServingSize = Array["1", "12", "1", "2", "330", "1", "4", "16", "7", "4"]
 discServingType = Array["qty", "qty", "slice", "pieces", "mL", "slice", "squares", "qty", "tsp", "tsp"]
 
-counter = 10
+counter = 0
 typeCount = 0
 10.times do
 
   #Proteins
   Product.create({
-                     productID: counter+1,
+                     productID: counter,
                      productName: proteinNames[typeCount],
                      totalCal: Faker::Number.between(100, 120),
                      proteinQty: Faker::Number.between(0, 10),
@@ -56,7 +56,7 @@ typeCount = 0
   counter +=1
   #Grains
   Product.create({
-                     productID: counter+1,
+                     productID: counter,
                      productName: grainNames[typeCount],
                      totalCal: Faker::Number.between(100, 120),
                      proteinQty: Faker::Number.between(0, 10),
@@ -69,7 +69,7 @@ typeCount = 0
   counter +=1
   #Dairy
   Product.create({
-                     productID: counter+1,
+                     productID: counter,
                      productName: dairyNames[typeCount],
                      totalCal: Faker::Number.between(100, 120),
                      proteinQty: Faker::Number.between(0, 10),
@@ -82,7 +82,7 @@ typeCount = 0
   counter +=1
   #Vegetables
   Product.create({
-                     productID: counter+10+1,
+                     productID: counter,
                      productName: vegeNames[typeCount],
                      totalCal: Faker::Number.between(100, 120),
                      proteinQty: Faker::Number.between(0, 10),
@@ -95,7 +95,7 @@ typeCount = 0
   counter +=1
   #Fruit
   Product.create({
-                     productID: counter+10+1,
+                     productID: counter,
                      productName: fruitNames[typeCount],
                      totalCal: Faker::Number.between(100, 120),
                      proteinQty: Faker::Number.between(0, 10),
@@ -108,7 +108,7 @@ typeCount = 0
   counter +=1
   #Fats
   Product.create({
-                     productID: counter+10+1,
+                     productID: counter,
                      productName: fatsNames[typeCount],
                      totalCal: Faker::Number.between(100, 120),
                      proteinQty: Faker::Number.between(0, 10),
@@ -121,7 +121,7 @@ typeCount = 0
   counter +=1
   #Disc
   Product.create({
-                     productID: counter+10+1,
+                     productID: counter,
                      productName: discNames[typeCount],
                      totalCal: Faker::Number.between(100, 120),
                      proteinQty: Faker::Number.between(0, 10),

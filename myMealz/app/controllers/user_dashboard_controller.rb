@@ -215,7 +215,8 @@ class UserDashboardController < ApplicationController
     dataReceived = JSON.parse(params[:mealData])
 
     newMeal = Savedmeal.create(
-        UserID: current_user.id, MealName: dataReceived["mealname"], ProteinIDs: dataReceived["proteinIDs"],
+        UserID: current_user.id, description: dataReceived["description"], method: dataReceived["method"],
+        MealName: dataReceived["mealname"], ProteinIDs: dataReceived["proteinIDs"],
         GrainIDs: dataReceived["grainIDs"], DairyIDs: dataReceived["dairyIDs"], VegeIDs: dataReceived["vegeIDs"],
         FruitIDs: dataReceived["fruitIDs"], FatIDs: dataReceived["fatIDs"], DiscIDs: dataReceived["discIDs"],
         totalProtein: dataReceived["proteinTotal"], totalCarb: dataReceived["carbTotal"], totalFat: dataReceived["fatTotal"],
@@ -313,10 +314,9 @@ class UserDashboardController < ApplicationController
       isDin = true
     end
 
-
-    if(Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun,
-                           isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"]))
-
+    puts("Check: #{Plannedmeal.exists?(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun, isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"])}")
+    if(Plannedmeal.exists?(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun, isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"]))
+      puts("Si?")
       pm = Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun,
                                isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"])
 

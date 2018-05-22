@@ -37,7 +37,8 @@ var saveMeal = -1;
 var selectedItemList = [];
 
 function resetAllVariables() {
-    currentServingAmount = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    currentServingAmount = [0,0,0,0,0,0,0,0];
 
     pTotal = 0;
     cTotal = 0;
@@ -60,7 +61,15 @@ function resetAllVariables() {
     $('#assPanel_fat').html('0g');
     $('#assPanel_cal').html('0cal');
 
-    alert(selectedItemList);
+
+    $('#proteinServing').html(parseInt(maxProtein));
+    $('#grainServing').html(parseInt(maxGrains));
+    $('#dairyServing').html(parseInt(maxDairy));
+    $('#vegeServing').html(parseInt(maxVege));
+    $('#fruitServing').html(parseInt(maxFruit));
+    $('#fatsServing').html(parseInt(maxFats));
+    $('#discServing').html(parseInt(maxDisc));
+    $('#totalCalServing').html(parseInt(maxCal));
 
 }
 
@@ -99,7 +108,7 @@ function resetTables() {
 
     var test = document.querySelectorAll('tr');
 
-    for (var i = 1; i < test.length; i++) {
+    for (var i = 0; i < test.length; i++) {
         var t = $(test[i]).attr('id');
         if(t != null) {
             var trimmed = t.slice('_');
@@ -131,7 +140,6 @@ function resetTables() {
     }
 
     resetAllVariables();
-    /*Also add to left list */
 }
 
 function showDataEntries(tableRow) {
@@ -143,29 +151,25 @@ function showDataEntries(tableRow) {
 function changeMealSelectionDay(dayChosen) {
 
     currentlyViewed = VIEWING_LIST[dayChosen];
-
-    /*Update chosen item list (if any) */
-
     $('#'+ELEMENT_LIST[dayChosen]).css('background-color', 'red');
     $('#currentViewed').html(currentlyViewed);
 }
 
 function calculateTotals() {
 
-    for(var k = 0; k < selectedItemList.length; k++) {
-        pTotal += selectedItemList[k][2];
-        cTotal += selectedItemList[k][3];
-        fTotal += selectedItemList[k][4];
-        calTotal += selectedItemList[k][1];
+        for (var k = 0; k < selectedItemList.length; k++) {
+            pTotal += selectedItemList[k][2];
+            cTotal += selectedItemList[k][3];
+            fTotal += selectedItemList[k][4];
+            calTotal += selectedItemList[k][1];
 
-    }
+        }
 
-    $('#proteinTotal').html(pTotal + 'g');
-    $('#carbTotal').html(cTotal + 'g');
-    $('#fatsTotal').html(fTotal + 'g');
-    $('#calTotal').html(calTotal + 'cal');
+        $('#proteinTotal').html(pTotal + 'g');
+        $('#carbTotal').html(cTotal + 'g');
+        $('#fatsTotal').html(fTotal + 'g');
+        $('#calTotal').html(calTotal + 'cal');
 
-    /*$('#accessoryPanel_currentList').html("<tr><td>Kangaroo</td></tr>");*/
 }
 
 function recreateSelectedList() {
@@ -304,10 +308,12 @@ function getMealData(mealData) {
         var message = mealData;
         var split = mealData.split('_');
         var data = {"meal": split[0], "day": split[1]};
+
+        saveDay = split[0];
+        saveMeal = split[1];
         var mealInt = convertMeal(split[0]);
         var dayInt = convertDay(split[1]);
         data = JSON.stringify(data);
-
         $.ajax({
             url: "/user_dashboard/getMealData/" + data + "",
             type: "GET",
@@ -315,6 +321,7 @@ function getMealData(mealData) {
             dataType: 'json',
         }).success(function (data) {
                 if (data["mealname"] != '-1') {
+                    resetTables();
                     loadInValuesFromDB(JSON.parse(data["proteinIDs"])["IDs"], 0);
                     loadInValuesFromDB(JSON.parse(data["grainIDs"])["IDs"], 1);
                     loadInValuesFromDB(JSON.parse(data["dairyIDs"])["IDs"], 2);
@@ -325,6 +332,7 @@ function getMealData(mealData) {
                     changeMealSelectionDay(split[1]);
                     updateSelected(dayInt, mealInt, data["mealname"]);
                 } else {
+                    resetTables();
                     updateSelected(dayInt, mealInt, "");
                     /* There is nothing stored in the DB for this day display what's stored */
                 }
@@ -343,6 +351,7 @@ function saveMealData(mealData) {
 
     var mealName = $('#mealName').val();
     var description = $('#mealDescription').val();
+    var method = $('#mealMethod').val();
 
     var isB = document.querySelector('#breakfastMeal').checked;
     var isL = document.querySelector('#lunchMeal').checked;
@@ -355,6 +364,7 @@ function saveMealData(mealData) {
     var fruitIDs = "";
     var fatsIDs = "";
     var discIDs = "";
+
 
 
     for(var i = 0; i < selectedItemList.length; i++) {
@@ -383,7 +393,7 @@ function saveMealData(mealData) {
         }
     }
 
-    var data = {"mealname": mealName, "description": description, "mealChosen": saveMeal, "dayChosen": saveDay,
+    var data = {"mealname": mealName, "description": description, "method": method, "mealChosen": saveMeal, "dayChosen": saveDay,
     "isBreakfastSuitable": isB, "isLunchSuitable": isL, "isDinnerSuitable": isD, "proteinIDs": proteinIDs,
     "grainIDs": grainIDs, "dairyIDs": dairyIDs, "vegeIDs": vegeIDs, "fruitIDs":fruitIDs, "fatIDs": fatsIDs,
     "discIDs": discIDs, "proteinTotal": assPanelProtein, "carbTotal": assPanelCarb, "fatTotal": assPanelFat,
@@ -396,7 +406,9 @@ function saveMealData(mealData) {
         contentType: "application/json",
         dataType: 'json',
     }).success(function(data) {
-            alert("Successful");
+        alert("Thank you, your meal has been successfully saved");
+        updateSelected(convertDay(saveDay), convertMeal(saveMeal.toLowerCase()), mealName);
+
         }
     )
 };

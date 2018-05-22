@@ -64,4 +64,6 @@ class PagesController < ApplicationController
     #Shows how to show all recipes.. or something of the like
     #@savedmeals = SavedMeal.all
   end
+
 end
+
