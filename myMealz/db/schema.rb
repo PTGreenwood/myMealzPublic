@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 20180521142652) do
     t.string "servingType"
   end
 
+  create_table "saved_meals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_saved_meals_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_saved_meals_on_user_id"
+  end
+
   create_table "savedmeals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "UserID"
     t.string "MealName"
