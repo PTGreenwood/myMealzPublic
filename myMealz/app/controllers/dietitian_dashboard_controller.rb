@@ -18,7 +18,8 @@ class DietitianDashboardController < ApplicationController
       if (currentLoggedID.id == item.DietitianID)
         nameDetails = User.find_by(id: item.UserID)
         @usersAttached.push(nameDetails)
-        @extraDetails = nameDetails.firstname + " " + nameDetails.lastname
+        @extraDetails = nameDetails.firstname
+        @extraDetails2 = nameDetails.lastname
         @contracts.push(item)
       end
     end
