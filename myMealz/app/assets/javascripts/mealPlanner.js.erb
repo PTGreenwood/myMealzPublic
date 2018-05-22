@@ -1,9 +1,3 @@
-/* Global Functions for use */
-/*VIEWING_LIST = ['Breakfast - Monday', 'Breakfast - Tuesday', 'Breakfast - Wednesday', 'Breakfast - Thursday',
-    'Breakfast - Friday','Breakfast - Weekend', 'Lunch - Monday', 'Lunch - Tuesday', 'Lunch - Wednesday',
-    'Lunch - Wednesday', 'Lunch - Thursday', 'Lunch - Friday', 'Lunch - Weekend', 'Dinner - Monday', 'Dinner - Tuesday',
-    'Dinner - Wednesday', 'Dinner - Thursday', 'Dinner - Friday', 'Dinner - Weekend'];
-*/
 
 VIEWING_LIST = [['Breakfast - Monday', 'Breakfast - Tuesday', 'Breakfast - Wednesday', 'Breakfast - Thursday',
     'Breakfast - Friday','Breakfast - Weekend'], ['Lunch - Monday', 'Lunch - Tuesday', 'Lunch - Wednesday',
@@ -21,6 +15,7 @@ TYPES_LIST = ['protein', 'grain', 'dairy', 'vege', 'fruit', 'fats', 'disc', 'tot
 
 currentServingAmount = [0,0,0,0,0,0,0,0];
 
+
 var pTotal = 0;
 var cTotal = 0;
 var fTotal = 0;
@@ -36,6 +31,13 @@ var saveDay = -1;
 var saveMeal = -1;
 var selectedItemList = [];
 
+
+/*
+    Reset all variables to default. Used mostly on a reload. Alternative ways to do this. If time. Add in
+    partial support for reloading of the page. This APP is not set up for this at the present time.
+
+    TODO: Full single page APP updates on Rails Render and template calls.
+ */
 function resetAllVariables() {
 
     currentServingAmount = [0,0,0,0,0,0,0,0];
@@ -61,7 +63,6 @@ function resetAllVariables() {
     $('#assPanel_fat').html('0g');
     $('#assPanel_cal').html('0cal');
 
-
     $('#proteinServing').html(parseInt(maxProtein));
     $('#grainServing').html(parseInt(maxGrains));
     $('#dairyServing').html(parseInt(maxDairy));
@@ -70,10 +71,13 @@ function resetAllVariables() {
     $('#fatsServing').html(parseInt(maxFats));
     $('#discServing').html(parseInt(maxDisc));
     $('#totalCalServing').html(parseInt(maxCal));
-
 }
 
-
+/*
+  Updates the Breadcrumbs at the top of the meal planner, mostly used when
+   a meal time is selected from the drop down list. Although it is also used
+   when a meal is saved, the breadcrumb is updated with the meal name
+ */
 function updateSelected(day, slot, mealname) {
     saveDay = WEEK_LIST[day];
     saveMeal = MEAL_LIST[slot];
@@ -89,6 +93,15 @@ function updateSelected(day, slot, mealname) {
 
 }
 
+/*
+    When data has been pulled in from the Database (after a selection of the drop-down menu - it has found
+    a previously saved meal for that day, for this particular user). It will then run through all tables
+    on the page and set the colours if they need to be highlighted.
+
+    e.g: Monday / Breakfast has just been clicked to load in. It will run through all of proteins
+         to find out that Chicken, Turkey and Beef are all part of this meal and will highlight
+         them accordingly
+ */
 function loadInValuesFromDB(data, productType) {
     /* Loop through the data for each of the sections and update that row in the tables. */
     for (var i = 0; i<data.length; i++) {
@@ -98,14 +111,14 @@ function loadInValuesFromDB(data, productType) {
         tdElem.click();
     }
 
-    /*Also add to left list */
 }
 
+/*
+    Resets all table and variables to default. Saves reloading the partial.
+    Is pretty primitive but it works. Relies on Client.
+ */
 function resetTables() {
     /* Loop through the data for each of the sections and update that row in the tables. */
-    var proElem = $('#proteinBody');
-    var fatElem = $('#mp_fatsTableBody');
-
     var test = document.querySelectorAll('tr');
 
     for (var i = 0; i < test.length; i++) {
@@ -135,26 +148,37 @@ function resetTables() {
                 case '6':
                     $(test[i]).css({"background-color": "white", "color": COLOURS_USED[6]});
                     break;
-            }
-        }
-    }
+            } /* End Switch */
+        }/* end if */
+    }/* end for loop */
 
+    /* Reset all variables to default */
     resetAllVariables();
 }
 
-function showDataEntries(tableRow) {
+/*
+    Keeping this here for the time being. When the Chosen Meal Table rows are clicked
+    they do nothing (at this present time). But possible option to allow the data to be removed based
+    on the ID of the row
+ */
+function showDataEntries(tableRow) {}
 
-    alert(tableRow);
-
-}
-
+/*
+    Relatively small function. Takes the day chosen, updates the top left corner
+    of the Meal Restriction table to the corresponding meal/day.
+    i.e. Breakfast - Monday or Lunch - Wednesday
+ */
 function changeMealSelectionDay(dayChosen) {
-
-    currentlyViewed = VIEWING_LIST[dayChosen];
-    $('#'+ELEMENT_LIST[dayChosen]).css('background-color', 'red');
-    $('#currentViewed').html(currentlyViewed);
+    $('#currentViewed').html(VIEWING_LIST[dayChosen]);
 }
 
+/*
+    Takes the data that has been added into the meal and sums up the totals of each
+    nutritional data.
+
+    Note: This whole function might be deprecated and unneeded. Leaving it here
+          just in case. Don't want breakage or bugs last minute.
+ */
 function calculateTotals() {
 
         for (var k = 0; k < selectedItemList.length; k++) {
@@ -162,24 +186,25 @@ function calculateTotals() {
             cTotal += selectedItemList[k][3];
             fTotal += selectedItemList[k][4];
             calTotal += selectedItemList[k][1];
-
         }
 
         $('#proteinTotal').html(pTotal + 'g');
         $('#carbTotal').html(cTotal + 'g');
         $('#fatsTotal').html(fTotal + 'g');
         $('#calTotal').html(calTotal + 'cal');
-
 }
 
+/*
+    Whenever an Item is removed from the list, the list needs to be reshuffled and the IDs need
+    to be reconfigured. Done here on Client side for ease. When an item is taken off the list this function
+    is called; it re-adds all the elements within the current holding ARRAY and sets their colours accordingly
+ */
 function recreateSelectedList() {
 
     assPanelProtein = 0;
     assPanelCarb = 0;
     assPanelFat = 0;
     assPanelCal = 0;
-
-
 
     $('#accessoryPanel_currentList').html('');
 
@@ -193,12 +218,15 @@ function recreateSelectedList() {
             '</td><td>' + selectedItemList[j][4] + 'g</tr><tr><td class="text-right"><strong>'+
             'Total Cal:&nbsp</strong></td><td>' + selectedItemList[j][1] + 'cal</td></tr></table></span></td> </tr>');
 
+        /* This is the little box during the mouseover for the selected items */
         assPanelProtein += parseInt(selectedItemList[j][2]);
         assPanelCarb += parseInt(selectedItemList[j][3]);
         assPanelFat += parseInt(selectedItemList[j][4]);
         assPanelCal += parseInt(selectedItemList[j][1]);
-
     }
+
+    /* Calculate what the totals are for those that are currently in the list - needs to be redone everytime
+     * list changes */
     calculateTotals();
 
     $('#assPanel_protein').html(assPanelProtein+'g');
@@ -209,26 +237,49 @@ function recreateSelectedList() {
 
 var counter = 0;
 
+/*
+    A huge function in how this part of the MealPlanner works. This handles most of the onClick events.
+    When an item is clicked within the MealPlanner tables, it is sent here. This function slices up all the data
+    necessary for storage, places it in temporary holding variables and ARRAYs and displays it where it needs to
+    be in the tables.
+
+    It is a simple append function to the HTML element of the Chosen Menu Items.
+    It refuses adding any item to the list if the user's restrictions are at their limit. See lower comment.
+
+    NOTE: The onClick event passes in what Type of item it is, this is key to highlighting it in the right colour
+          and adding/subtracting the right value from the right Restriction Category
+
+    TODO: If time, rewrite to remove onClick events by creating an event handler - if that's possible for all values...
+ */
 function makeItemSelection(itemType, productID, productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType) {
+
+    /* Prepare variables for easy access later on. */
     var el = $('#' + TYPES_LIST[itemType] + 'Serving');
     var totalCalIn = $('#' + TYPES_LIST[7] + 'Serving');
 
-        for (var i = 0; i < selectedItemList.length; i++) {
-            if (selectedItemList[i][0] == productName) {
-                selectedItemList.splice(i, 1);
-                $('#' + itemType + '_' + productID).css({"background-color": "white", "color": COLOURS_USED[itemType]});
-                recreateSelectedList();
-                /* Increase the servings */
+    /* Run a check through the current Chosen Menu Items. If it exists then remove it */
+    for (var i = 0; i < selectedItemList.length; i++) {
+        if (selectedItemList[i][0] == productName) {
+            selectedItemList.splice(i, 1);
+            $('#' + itemType + '_' + productID).css({"background-color": "white", "color": COLOURS_USED[itemType]});
 
-                el.html(parseInt(el.html()) + 1);
-                totalCalIn.html(parseInt(totalCalIn.html()) + parseInt(totalCal));
-                counter = 0;
-                return;
-            }
+            /* Recreate the List with new IDs */
+            recreateSelectedList();
+
+            /* Increase the servings as we have removed it from the table*/
+            el.html(parseInt(el.html()) + 1);
+            totalCalIn.html(parseInt(totalCalIn.html()) + parseInt(totalCal));
+            counter = 0;
+            return;
         }
+    }
 
+    /* Run Check on User Requirements to make sure they are still within bounds.
+     * If they are, continue and add it in. If not, skip */
     if(parseInt(totalCalIn.html()) >= parseInt(totalCal)) {
         if (parseInt(el.html()) != 0) {
+
+            /* Go head. All within bounds, add to the Array */
             selectedItemList.push([productName, totalCal, proteinQty, carbQty, fatQty, servingQty, servingType, itemType, productID]);
 
             $('#accessoryPanel_currentList').html('' + $('#accessoryPanel_currentList').html() +
@@ -240,20 +291,25 @@ function makeItemSelection(itemType, productID, productName, totalCal, proteinQt
 
             counter+=1;
 
+            /* Update the ChosenMeal list nutritional values */
             assPanelProtein += parseInt(proteinQty);
             assPanelCarb += parseInt(carbQty);
             assPanelFat += parseInt(fatQty);
             assPanelCal += parseInt(totalCal);
 
+            /* Visually represent the changes */
             $('#assPanel_protein').html(assPanelProtein+'g');
             $('#assPanel_carb').html(assPanelCarb+'g');
             $('#assPanel_fat').html(assPanelFat+'g');
             $('#assPanel_cal').html(assPanelCal+'cal');
 
+            /* Highlight with the right colour based on itemType */
             $('#' + itemType + '_' + productID).css({"background-color": COLOURS_USED[itemType], "color": "white"});
+
+            /* Calculate the total values of all items added */
             calculateTotals();
 
-            /* Reduce the servings */
+            /* Reduce the servings as we have added something new to the table */
             el.html(parseInt(el.html()) - 1);
             totalCalIn.html(parseInt(totalCalIn.html() - totalCal))
         }
@@ -261,6 +317,12 @@ function makeItemSelection(itemType, productID, productName, totalCal, proteinQt
 
 }
 
+/*
+    Simple function that takes a word and converts it to the number value.
+    Probably a better datatype to use here. But this is simple enough and it works
+
+    @TODO: Use alternative datatype.
+ */
 function convertMeal(mealWord) {
     switch (mealWord) {
         case 'breakfast':
@@ -275,6 +337,12 @@ function convertMeal(mealWord) {
     }
 }
 
+/*
+    Simple function that takes a word corresponding to weekday and converts it to the number value.
+    Once again, Probably a better datatype to use here. But this is simple enough and it works
+
+    @TODO: Use alternative datatype.
+ */
 function convertDay(dayWord) {
     switch (dayWord) {
         case 'Monday':
@@ -302,6 +370,14 @@ function convertDay(dayWord) {
 }
 
 
+/*
+    Rather large function. Essentially it takes an argument of "MealType_DayOfMeal" and requests
+    the data from the database. The DB will do all necessary calculations in order to determine
+    which meals are for which user and which are to be sent back. On a successful response
+    the function will reset all tables to be blank, load in each set of data for each type (protein, grain etc).
+    Change the MealSelectionDay to be corresponding to what has been selected and then update the breadcrumbs
+    according to what came back from the DB (mealname) + original Day / MealType
+ */
 function getMealData(mealData) {
 
     if(mealData != "-1") {
@@ -320,34 +396,38 @@ function getMealData(mealData) {
             contentType: "application/json",
             dataType: 'json',
         }).success(function (data) {
-                if (data["mealname"] != '-1') {
-                    resetTables();
-                    loadInValuesFromDB(JSON.parse(data["proteinIDs"])["IDs"], 0);
-                    loadInValuesFromDB(JSON.parse(data["grainIDs"])["IDs"], 1);
-                    loadInValuesFromDB(JSON.parse(data["dairyIDs"])["IDs"], 2);
-                    loadInValuesFromDB(JSON.parse(data["vegeIDs"])["IDs"], 3);
-                    loadInValuesFromDB(JSON.parse(data["fruitIDs"])["IDs"], 4);
-                    loadInValuesFromDB(JSON.parse(data["fatIDs"])["IDs"], 5);
-                    loadInValuesFromDB(JSON.parse(data["discIDs"])["IDs"], 6);
-                    changeMealSelectionDay(split[1]);
-                    updateSelected(dayInt, mealInt, data["mealname"]);
-                } else {
-                    resetTables();
-                    updateSelected(dayInt, mealInt, "");
-                    /* There is nothing stored in the DB for this day display what's stored */
-                }
+            /*Successful return of data */
+            if (data["mealname"] != '-1') {
+                resetTables();
+                loadInValuesFromDB(JSON.parse(data["proteinIDs"])["IDs"], 0);
+                loadInValuesFromDB(JSON.parse(data["grainIDs"])["IDs"], 1);
+                loadInValuesFromDB(JSON.parse(data["dairyIDs"])["IDs"], 2);
+                loadInValuesFromDB(JSON.parse(data["vegeIDs"])["IDs"], 3);
+                loadInValuesFromDB(JSON.parse(data["fruitIDs"])["IDs"], 4);
+                loadInValuesFromDB(JSON.parse(data["fatIDs"])["IDs"], 5);
+                loadInValuesFromDB(JSON.parse(data["discIDs"])["IDs"], 6);
+                changeMealSelectionDay(split[1]);
+                updateSelected(dayInt, mealInt, data["mealname"]);
+            } else {
+                resetTables();
+                updateSelected(dayInt, mealInt, "");
+                /* There is nothing stored in the DB for this day display what's stored */
             }
-        )
+        })
     } else {
-
         updateSelected(-1, 0, '');
         resetTables();
     }
 };
 
+/*
+    Rather large function. Sends off the data that is stored in the ChosenMeal Array
+    along with extra data pulled from HTML elements in both _showMealPlanner (partial) or the Model
+    that appears when saving the meal.
 
-
-function saveMealData(mealData) {
+    Once the meal has been saved. Will update the breadcrumbs to reflect
+ */
+function saveMealData() {
 
     var mealName = $('#mealName').val();
     var description = $('#mealDescription').val();
@@ -364,8 +444,6 @@ function saveMealData(mealData) {
     var fruitIDs = "";
     var fatsIDs = "";
     var discIDs = "";
-
-
 
     for(var i = 0; i < selectedItemList.length; i++) {
         switch (parseInt(selectedItemList[i][7])) {
@@ -406,7 +484,10 @@ function saveMealData(mealData) {
         contentType: "application/json",
         dataType: 'json',
     }).success(function(data) {
+        /* on AJAX success save */
         alert("Thank you, your meal has been successfully saved");
+
+        /* Update the breadcrumbs */
         updateSelected(convertDay(saveDay), convertMeal(saveMeal.toLowerCase()), mealName);
 
         }
