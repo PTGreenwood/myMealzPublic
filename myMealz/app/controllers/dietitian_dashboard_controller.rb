@@ -11,7 +11,9 @@ class DietitianDashboardController < ApplicationController
   def getMyClientz
     #get all the clientz and pass them through
     currentLoggedID = User.find_by_username(current_user.username)
+
     @extraDetails = "Empty"
+
     @usersAttached ||= []
     @contracts ||= []
     Contract.find_each do |item|
@@ -23,7 +25,7 @@ class DietitianDashboardController < ApplicationController
         @contracts.push(item)
       end
     end
-
+    puts("Length of the amount of contracts: #{@contracts.length}")
     respond_to do |format|
       format.js
     end
