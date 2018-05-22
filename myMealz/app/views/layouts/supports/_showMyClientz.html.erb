@@ -1,139 +1,97 @@
-<% contractCounter = 0 %>
-<% @contracts.each do |item| %>
-  <div class="panel panel-default">
-    <h3>&nbsp&nbsp&nbspYour clients</h3>
-     <div class="panel-body">
-       <div class="container">
-         <div class="row">
-           <div class="col-md-3">
-             <div class="panel panel-default">
-               <div class="panel-body">
-                 <p><%= image_tag @usersAttached[contractCounter].avatar %></p>
-               </div>
-             </div>
-           </div>
-
-           <div class="col-md-5">
-             <div class="panel panel-default">
-               <p> <strong> Client Name: </strong> <%= @extraDetails%></p>
-
-               <p> <strong> Current Cal Restriction: </strong>
-                 <input type="text" style="width: 50px" id="reqUpdate0_<%= contractCounter %>_<%= item.id %>"
-                        placeholder="" value="<%= item.totalCalRestriction %>">cal
-              </p>
-               <p> <strong> Currently set servings: </strong></p>
-               <table>
-                 <tr>
-                   <td width="100px" height="40px">
-                    <strong> Protein: </strong>
-                   </td>
-                   <td>
-                     <input type="text" style="width: 50px" id="reqUpdate1_<%=contractCounter%>_<%=item.id %>"
-                            placeholder="" value="<%= item.proteinReq %>">
-                   </td>
-                   <td style="padding-left: 5px">
-
-                   </td>
-                 </tr>
-                 <tr>
-                   <td width="100px" height="40px">
-                     <strong> Grains: </strong>
-                   </td>
-                   <td>
-                     <input type="text" style="width: 50px" id="reqUpdate2_<%=contractCounter%>_<%=item.id %>"
-                            placeholder="" value="<%= item.grainsReq %>">
-                   </td>
-                   <td style="padding-left: 5px">
-
-                   </td>
-
-                 </tr>
-                 <tr>
-                   <td width="100px" height="40px">
-                     <strong> Dairy: </strong>
-                   </td>
-                   <td>
-                     <input type="text" style="width: 50px" id="reqUpdate3_<%=contractCounter%>_<%=item.id %>"
-                            placeholder="" value="<%= item.dairyReq %>">
-                   </td>
-                   <td style="padding-left: 5px">
-
-                   </td>
-
-                 </tr>
-                 <tr>
-                   <td width="100px" height="40px">
-                     <strong> Vegetables: </strong>
-                   </td>
-                   <td>
-                     <input type="text" style="width: 50px" id="reqUpdate4_<%=contractCounter%>_<%=item.id %>"
-                            placeholder="" value="<%= item.vegeReq %>">
-                   </td>
-
-                 </tr>
-                 <tr>
-                   <td width="100px" height="40px">
-                     <strong> Fruit: </strong>
-                   </td>
-                   <td>
-                     <input type="text" style="width: 50px" id="reqUpdate5_<%=contractCounter%>_<%=item.id %>"
-                            placeholder="" value="<%= item.fruitReq %>">
-                   </td>
-                   <td style="padding-left: 5px">
-
-                   </td>
-
-                 </tr>
-                 <tr>
-                   <td width="100px" height="40px">
-                     <strong> Fats: </strong>
-                   </td>
-                   <td>
-                     <input type="text" style="width: 50px" id="reqUpdate6_<%=contractCounter%>_<%=item.id %>"
-                            placeholder="" value="<%= item.fatsReq %>">
-                   </td>
-                   <td style="padding-left: 5px">
-                   </td>
-
-                 </tr>
-                 <tr>
-                   <td width="100px" height="40px">
-                     <strong> Discretionary: </strong>
-                   </td>
-                   <td>
-                     <input type="text" style="width: 50px" id="reqUpdate7_<%=contractCounter%>_<%=item.id %>"
-                            placeholder="" value="<%= item.discReq %>">
-                   </td>
-                   <td style="padding-left: 5px">
-
-                   </td>
-
-                 </tr>
-                 <tr>
-                   <td height="50px">
-                     <button type="button" class="btn btn-info btn-xs"
-                             onclick="updateContract(<%=contractCounter%>, <%=item.id %>)">Make
-                       Changes
-                     </button>
-                   </td>
-                   <td>
-                     <div id='notice_<%= contractCounter %>' style="display:none; float:center"></div>
-                   </td>
-                 </tr>
-               </table>
-             </div>
-          </div>
-
-           <div class="col-md-3" style="display:none">
-             <div class="panel panel-default">
-               <p><strong> Client Name: </strong> Name from DB</p>
-               <p><strong> Current Cal Restriction: </strong> 1000000kj</p>
-             </div>
-           </div>
+<div class="row">
+  <!-- Title for content panel -->
+  <div class="col-md-10 col-md-offset-1">
+    <h3 style="text-align:center">Your clients</h3>
+  </div>
+  <!-- Displays each client from database -->
+  <% contractCounter = 0 %>
+  <% @contracts.each do |item| %>
+<!-- Layout for each client from the database-->
+  <div class="col-md-6" style="margin: 30px">
+<!-- Top panel containing profile picture and client name-->
+    <div class="panel panel-default" style="background-color: #37BC9B; border: 0px; border-radius: 4px 4px 0px 0px; margin-bottom: 0px;">
+      <div class="panel-body">
+        <!-- Profile picture goes in here -->
+        <div class="col-md-4">
+          <%= image_tag @usersAttached[contractCounter].avatar, :size => '120x120', :style => "float:left; border: 5px solid white" %>
+        </div>
+        <!-- User first name and last name goes here -->
+        <div class="col-md-8" style="height: 120px">
+          <h1 style="color: white; text-align: center; margin: 0px; line-height: 120px"><%= @extraDetails.to_s.humanize%> <%= @extraDetails2.to_s.humanize%></h1>
         </div>
       </div>
     </div>
-   </div>
-  <% contractCounter += 1 %>
- <%end %>
-
+    <!-- Bottom panel containing client set servings and total calorie count -->
+    <div class="panel panel-default" style="border-color: #37BC9B; border-radius: 0px 0px 4px 4px;">
+      <div class="panel-body">
+        <div class="col-md-12"  style="color: #37BC9B">
+          <!-- Client set servings -->
+          <h3 style="margin:0px 0px 20px 0px"><strong> Currently set servings: </strong></h3>
+          <div class="row">
+            <!-- Protein -->
+            <div class="col-md-4" style="margin-bottom: 10px">
+              <strong> Protein: </strong>
+              <input class="form-control" type="text" id="reqUpdate1_<%=contractCounter%>_<%=item.id %>"
+              placeholder="" value="<%= item.proteinReq %>">
+            </div>
+            <!-- Grains -->
+            <div class="col-md-4" style="margin-bottom: 10px">
+              <strong> Grains: </strong>
+              <input class="form-control" type="text" id="reqUpdate2_<%=contractCounter%>_<%=item.id %>"
+              placeholder="" value="<%= item.grainsReq %>">
+            </div>
+            <!-- Dairy -->
+            <div class="col-md-4" style="margin-bottom: 10px">
+              <strong> Dairy: </strong>
+              <input class="form-control" type="text" id="reqUpdate3_<%=contractCounter%>_<%=item.id %>"
+              placeholder="" value="<%= item.dairyReq %>">
+            </div>
+            <!-- Vegetables -->
+            <div class="col-md-4" style="margin-bottom: 10px">
+              <strong> Vegetables: </strong>
+              <input class="form-control" type="text" id="reqUpdate4_<%=contractCounter%>_<%=item.id %>"
+              placeholder="" value="<%= item.vegeReq %>">
+            </div>
+            <!-- Fruit -->
+            <div class="col-md-4" style="margin-bottom: 10px">
+              <strong> Fruit: </strong>
+              <input class="form-control" type="text" id="reqUpdate5_<%=contractCounter%>_<%=item.id %>"
+              placeholder="" value="<%= item.fruitReq %>">
+            </div>
+            <!-- Fats -->
+            <div class="col-md-4" style="margin-bottom: 10px">
+              <strong> Fats: </strong>
+              <input class="form-control" type="text" id="reqUpdate6_<%=contractCounter%>_<%=item.id %>"
+              placeholder="" value="<%= item.fatsReq %>">
+            </div>
+            <!-- Discretionary -->
+            <div class="col-md-4" style="margin-bottom: 10px">
+              <strong> Discretionary: </strong>
+              <input class="form-control" type="text" id="reqUpdate7_<%=contractCounter%>_<%=item.id %>"
+              placeholder="" value="<%= item.discReq %>">
+            </div>
+          </div>
+          <!-- Notice for successful change of set servings for a client -->
+          <div id='notice_<%= contractCounter %>' style="display:none; float:center"></div>
+          <br>
+          <!-- Total calorie count -->
+          <div class="row">
+            <div class="col-md-12">
+              <strong> Total Calorie Restriction: </strong>
+              <input class="form-control" type="text" id="reqUpdate0_<%= contractCounter %>_<%= item.id %>"
+              placeholder="" value="<%= item.totalCalRestriction %>">
+            </div>
+          </div>
+        </div>
+        <!-- Save changes button -->
+        <button type="button" class="btn signupcontent"
+        onclick="updateContract(<%=contractCounter%>, <%=item.id %>)">
+        Save Changes
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Increments the contractCounter to the next user, loops over rendering process -->
+<% contractCounter += 1 %>
+<%end %>
