@@ -1,13 +1,11 @@
 <div class="row">
 <nav class="navbar navbar-default guestnav" id="navbarus">
     <div class="navbar-header" id="navbarleft">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" id="mymealznav" href="#">myMealz</a>
+      <a href="#"><%=image_tag("myMealzlogo.png", size: "70x70", id: "mymealznavguest") %></a>
+      <div style="border-right: 1px solid white; height: 70px; width: 5px; float: right; margin-top: 10px;">
+      </div>
     </div>
+
       <div class="nav navbar-nav" style="float: right" id="logins">
         <%= render 'layouts/logup/login' %>
       </div>
