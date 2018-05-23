@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :email, :password, :password_confirmation, :remember_me])
 
     #devise_parameter_sanitizer.permit(:account_update, keys: {[:email, :password, :password_confirmation, :avatar, :dietitianID, :current_password]})
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :avatar, :dietitianID, :current_password) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :avatar, :dietitianID, :connectedTo, :current_password) }
 
 
   end

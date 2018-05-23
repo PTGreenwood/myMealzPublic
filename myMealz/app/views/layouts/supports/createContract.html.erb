@@ -1,0 +1,20 @@
+<script type="text/javascript">
+
+    function doContract(value) {
+        var data = {"connection": value};
+
+        data = JSON.stringify(data);
+
+        $.ajax({
+            url: "/user_dashboard/doContract/" + data + "",
+            type: "GET",
+            contentType: "application/json",
+            dataType: 'json',
+        }).success(function (data) {
+            /*Successful return of data */
+            $('#initiateButton').toggle()
+        });
+    }
+</script>
+
+<button class="btn-xs btn-primary pull-right " id="initiateButton" onclick="doContract(<%= current_user.connectedTo %>)">Initiate Contract</button>

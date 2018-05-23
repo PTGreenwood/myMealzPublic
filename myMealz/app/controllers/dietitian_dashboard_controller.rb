@@ -28,8 +28,7 @@ class DietitianDashboardController < ApplicationController
         @contracts.push(item)
       end
     end
-    puts("Length of the amount of contracts: #{@contracts.length}")
-    puts("NameDetails: #{@nameDetails}")
+
     respond_to do |format|
       format.js
     end

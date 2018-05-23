@@ -31,8 +31,12 @@
     <div class="alert alert-warning">
       <p><% if current_user.connectedTo != "" %>
           <strong>Connected Dietitian ID:</strong> <%= current_user.connectedTo %>
+          <% if @hasInitiated %>
+            <%= render :template => '/layouts/supports/createContract', layout: false%>
+          <%end %>
       <% else %>
           <strong>Connected Dietitian ID:</strong> No Dietitian
+
       <% end %>
       </p>
     </div>

@@ -4,7 +4,7 @@ class UserDashboardController < ApplicationController
   require 'json'
 
   @meals = Savedmeal.all
-  
+
   def support
     if(User.find_by_username(params[:id]))
         @userLogged = User.find_by_username(params[:id])
@@ -394,5 +394,34 @@ class UserDashboardController < ApplicationController
     @userToUpdate.save
   end
 
+  #Contract stuff
+  def doContract
+
+    @hasInitiated = false
+    connection = JSON.parse(params[:connection])
+    puts("Connection #{connection}")
+    puts("Ever make it here?")
+    if(Contract.find_by(UserID: current_user.id))
+      puts("Found a contract already")
+    else
+      puts("No contract found")
+      if(connection["connection"] != "")
+        if(User.find_by(dietitianID: connection["connection"]))
+          userContract = Contract.create(
+              UserID: current_user.id, DietitianID: (User.find_by(dietitianID: connection["connection"])).id, totalCalRestriction: 999,
+              proteinReq: 10, fruitReq: 10, dairyReq: 10, vegeReq: 10, grainsReq: 10, fatsReq: 10, discReq: 10)
+          userContract.save
+          puts("Saved")
+          @hasInitiated = true
+        else
+          puts("Dietitian code isn't legit")
+          updateUser = current_user
+          updateUser.connectedTo = ""
+          updateUser.save
+
+        end
+      end
+    end
+  end
 end
 

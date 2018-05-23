@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   #Recipe options
   get '/user_dashboard/displayRecipeModel/:request', to: 'user_dashboard#displayRecipeModel'
 
+  #myClientz - Contract linking
+  get '/user_dashboard/doContract/:connection', to: 'user_dashboard#doContract'
+
   #Meal planner stuff
   get '/user_dashboard/getMealData/:request', to: 'user_dashboard#getMealData'
   get '/user_dashboard/saveMeal/:mealData' , to: 'user_dashboard#saveMealData'
