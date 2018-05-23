@@ -1,15 +1,20 @@
-<div id="foodImage"><%= image_tag("savedMealsPlaceholder.jpeg", class: "img-responsive", alt: "foodImage")%></div>
-
+<div class="panel-body">
 <!-- RECIPE NAME -->
-<div id="recipeName">Meal Name: <%= @zoomedMeal.MealName %></div>
+<div id="recipeName" class="jumbotron">Recipe For: <%= @zoomedMeal.MealName %></div>
 
 <!-- RECIPE DESCRIPTION -->
-<div id="recipeDescription">Description: <%= @zoomedMeal.description %></div>
+<div id="recipeDescription" class="jumbotron"><small><%= @zoomedMeal.description%></small></div>
+
+<!-- PICTURE OF FOOD (DUMMY) -->
+<div id="foodImage" class="col-md-12">
+  <%= image_tag("savedMealsPlaceholder.jpeg", class: "img-responsive", alt: "foodImage")%>
+</div>
+
 <!-- RECIPE METHOD -->
-<div id="recipeMethod">Prep Method: <%= @zoomedMeal.method %> </div>
+<div id="recipeMethod" class="col-md-12" style= "word-wrap: break-word"><h1>Preparation Method:</h1> <%= @zoomedMeal.method%> </div>
 
 <!-- RECIPE MEALTIMES -->
-<div id="recipeMealTimes">
+<div id="recipeMealTimes" class="col-md-12">
   <!-- mayb ein a table? I dunno -->
   <% if @zoomedMeal.IsBreakfastItem %> Breakfast <%end %>
   <% if @zoomedMeal.IsLunchItem %> Lunch <%end %>
@@ -18,14 +23,15 @@
 
     </div>
 <!-- RECIPE INGREDIENTS -->
-<div id="recipeIngredients">
-    <strong>Protein: </strong>
+<div id="recipeIngredients" class="col-md-12">
+  <h1>Ingredients</h1>
+    <strong>Proteins: </strong>
     <% for i in @proteinIngredients[0] %>
       <%= i.productName%>
     <% end %>
     <br>
 
-    <strong>Grain: </strong>
+    <strong>Grains: </strong>
     <% for i in @grainIngredients[0] %>
       <%= i.productName %>
     <% end %>
@@ -43,7 +49,7 @@
     <% end %>
   <br>
 
-    <strong>Fruit: </strong>
+    <strong>Fruits: </strong>
     <% for i in @fruitIngredients[0] %>
       <%= i.productName %>
     <% end %>
@@ -62,10 +68,12 @@
   <br>
 </div>
 
-<div id="totals">
-  <strong>Protein:</strong> <%= @zoomedMeal.totalProtein %>g <br>
+<div id="totals" class="col-md-12" style="margin-bottom: 20px;">
+  <h1>Nutrient Information</h1>
+  <strong>Proteins:</strong> <%= @zoomedMeal.totalProtein %>g <br>
   <strong>Fats: </strong><%= @zoomedMeal.totalFat %>g<br>
   <strong>Carbohydrates: </strong><%= @zoomedMeal.totalCarb %>g<br>
-  <strong>Total Calories: </strong><%= @zoomedMeal.totalCal %>g<br>
+  <strong>Total Calories: </strong><%= @zoomedMeal.totalCal %>cal<br>
 
+</div>
 </div>
