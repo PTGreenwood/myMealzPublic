@@ -7,8 +7,7 @@
         </div>
       </div>
     <div class="navbar-brand"></div>
-      <ul class="nav navbar-nav" style="float: right">
-        <li><a id="navtext" href="#">Link</a></li>
+      <ul class="nav navbar-nav" style="float: right; margin-right: 15px;">
         <li class="dropdown">
           <a id="navtext" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= "Hello, " + current_user.firstname %> <span class="caret"></span></a>
 
@@ -20,7 +19,6 @@
             <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
           </ul>
         </li>
-        <li><a id="navtext"href="#">Help</a></li>
       </ul>
 </nav>
 </div>
