@@ -27,51 +27,52 @@
   <% if @meals.size > 0 %>
     <% counter = 0 %>
     <% @meals.each do |item| %>
-      <tr onclick="openModal(<%=tableRow%>)">
-        <td><%= item.MealName%></td>
-        <td>
-          <% for i in @proteinCollection[counter] %>
-            <%= i.productName %>,
-          <% end %>
+      <% if item.UserID == current_user.id %>
+        <tr onclick="openModal(<%=tableRow%>)">
+          <td><%= item.MealName%></td>
+          <td>
+            <% for i in @proteinCollection[counter] %>
+              <%= i.productName %>,
+            <% end %>
 
-          <% for i in @grainCollection[counter] %>
-            <%= i.productName %>,
-          <% end %>
+            <% for i in @grainCollection[counter] %>
+              <%= i.productName %>,
+            <% end %>
 
-          <% for i in @dairyCollection[counter] %>
-            <%= i.productName %>,
-          <% end %>
+            <% for i in @dairyCollection[counter] %>
+              <%= i.productName %>,
+            <% end %>
 
-          <% for i in @vegeCollection[counter] %>
-            <%= i.productName %>,
-          <% end %>
+            <% for i in @vegeCollection[counter] %>
+              <%= i.productName %>,
+            <% end %>
 
-          <% for i in @fruitCollection[counter] %>
-            <%= i.productName %>,
-          <% end %>
+            <% for i in @fruitCollection[counter] %>
+              <%= i.productName %>,
+            <% end %>
 
-          <% for i in @fatsCollection[counter] %>
-            <%= i.productName %>,
-          <% end %>
+            <% for i in @fatsCollection[counter] %>
+              <%= i.productName %>,
+            <% end %>
 
-          <% for i in @discCollection[counter] %>
-            <%= i.productName %>,
-          <% end %>
-          <% counter += 1 %>
-        </td>
-          <% if (!item.IsDinnerItem) && (!item.IsLunchItem) && (!item.IsBreakfastItem) %>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-          <% else %>
-            <td><% if(item.IsBreakfastItem) %> Yes <% else %> No <% end %></td>
-            <td><% if(item.IsLunchItem) %> Yes <% else %> No <% end %></td>
-            <td><% if(item.IsDinnerItem) %> Yes <% else %> No <% end %></td>
-          <% end %>
-      </tr>
-      <% puts("tableRow: #{tableRow}") %>
-      <% tableRow += 1 %>
-
+            <% for i in @discCollection[counter] %>
+              <%= i.productName %>,
+            <% end %>
+            <% counter += 1 %>
+          </td>
+            <% if (!item.IsDinnerItem) && (!item.IsLunchItem) && (!item.IsBreakfastItem) %>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+            <% else %>
+              <td><% if(item.IsBreakfastItem) %> Yes <% else %> No <% end %></td>
+              <td><% if(item.IsLunchItem) %> Yes <% else %> No <% end %></td>
+              <td><% if(item.IsDinnerItem) %> Yes <% else %> No <% end %></td>
+            <% end %>
+        </tr>
+        <% puts("tableRow: #{tableRow}") %>
+        <% tableRow += 1 %>
+      <% end %>
     <% end %>
 
 

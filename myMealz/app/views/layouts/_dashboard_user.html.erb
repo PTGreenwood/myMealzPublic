@@ -2,18 +2,17 @@
 <div class="row">
   <!-- Left -->
   <div class="col-xs-2">
-    <div class="panel panel-default">
-      <div class="panel-body profile-picture">
-        <p>
-          <% if (current_user.avatar?) %>
-            <%= image_tag current_user.avatar, :size => '100x100'%>
-          <% else %>
-            <%= "No Profile Picture Found" %>
-          <% end %>
+    <!--<div class="panel panel-default">-->
+      <!--<div class="panel-body profile-picture">-->
 
-        </p>
-      </div>
-    </div>
+          <% if (current_user.avatar?) %>
+            <%= image_tag current_user.avatar.url, size: "175x175", :style => "border: 5px solid black; border-radius: 100px; margin-left: 6%"%>
+          <% else %>
+            <%= image_tag ('profile.png'), size: "175x175", :style => "border: 5px solid black; border-radius: 100px; margin-left: 6%"  %>
+          <% end %>
+    <br><br>
+      <!--</div>-->
+    <!--</div>-->
 
     <div class="panel panel-default">
       <div class="panel-body">

@@ -4,6 +4,7 @@ class UserDashboardController < ApplicationController
   require 'json'
 
   @meals = Savedmeal.all
+  
   def support
     if(User.find_by_username(params[:id]))
         @userLogged = User.find_by_username(params[:id])

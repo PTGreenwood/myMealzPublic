@@ -41,7 +41,13 @@
           <%= f.text_field :dietitianID, :class => "form-control" %>
         </div>
           <br>
-      <% end %>
+      <% else %>
+        <div class="field">
+          <%= f.label :dietitianID, "Dietitian Code", :style => "color: #293135" %><br/>
+          <%= f.text_field :dietitianID, placeholder: current_user.connectedTo, :class => "form-control" %>
+        </div>
+        <br>
+        <% end %>
   <div class="field">
     <%= f.label :current_password, :style => "color: #293135" %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off", :class => "form-control" %>
