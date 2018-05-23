@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.get("/user_dashboard/afterPaymentLoad", function (data) {
+            /*Not actually wanting anything */
+        }, "html");
+
+    });
+</script>
+
+<br><br>
+<p class="text-center"><h2>Thanks <%=current_user.firstname%>, payment of <strong>$19.99</strong> received! Your account
+  will be updated shortly.</h2>
+<a href="/dashboard/<%=current_user.id%>"><button class="btn btn-primary">Return</button></a>

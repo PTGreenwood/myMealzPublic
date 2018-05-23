@@ -362,6 +362,18 @@ class UserDashboardController < ApplicationController
     render partial: '/layouts/supports/recipeDisplay', layout: false
   end
 
+  def displayPaymentForm
+    render '/charges/new', layout: false
+  end
+
+  #Update User
+  def afterPaymentLoad
+
+    @userToUpdate = current_user
+    @userToUpdate.dietitian_role = true
+    @userToUpdate.user_role = false
+    @userToUpdate.save
+  end
 
 end
 

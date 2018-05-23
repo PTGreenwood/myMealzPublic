@@ -1,3 +1,9 @@
 $('#accessoryPanel').html('');
 $('#accessoryPanel').css('display', 'none');
 $('#current_dash_render').html("<%= escape_javascript(render :partial => 'layouts/supports/profile')%>")
+
+$.get("/user_dashboard/getPaymentForm/", function (data) {
+    $('#stripePayment').html(data);
+}, "html");
+
+$('#recipeContent').reveal();

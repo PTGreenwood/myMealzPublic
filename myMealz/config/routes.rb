@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   get 'payments/connector'
   get 'payments', to: 'payments#connector'
   get 'payments/new'
-
   get 'payments/create'
 
-
+  #Stripe
+  resources :charges
+  get '/user_dashboard/getPaymentForm/', to: 'user_dashboard#displayPaymentForm'
+  get '/user_dashboard/afterPaymentLoad', to: 'user_dashboard#afterPaymentLoad'
 
   mount RailsAdmin::Engine => '/adminDB', as: 'rails_admin'
 
