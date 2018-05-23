@@ -1,22 +1,23 @@
 <h2> Your currently open tickets </h2>
-<span style="float:right; padding-right: 10px; margin-top: 20px">
+<span style="float:top;">
   <button type="button" class="btn btn-success"
-onclick="showFormNewTicket()">New Ticket</button></span>
+onclick="showFormNewTicket()" style="margin-bottom: 20px;">New Ticket</button></span>
 
 <div id="newTicket" style="display:none"><br>
-  <div class="container">
+  <div class="container" style="width: inherit;">
     <div class="row">
       <div class="col-xs">
-        <div class="input-group">
+        <div class="input-group" style="display: block;">
           <strong> Title: </strong> <input type="text" class="form-control" id="newTickTitle"
           placeholder="Ticket Details"><br>
           <strong> Message: </strong><input type="text" class="form-control" id="newTickMessage"
           placeholder="Ticket Details"><br>
-          <span class="input-group-btn">
-            <button class="btn btn-default" onclick="generateNewTicket()"
-            type="button">Send</button>
-          </span>
+          
         </div>
+        <span class="input-group-btn">
+            <button class="btn signupcontent" onclick="generateNewTicket()"
+            type="button" style="float: left; margin-top: 15px; border-radius: 5px">Send</button>
+          </span>
       </div>
     </div>
   </div>
