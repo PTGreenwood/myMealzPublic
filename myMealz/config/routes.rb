@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
   get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'
 
+  #Recipe options
+  get '/user_dashboard/displayRecipeModel/:request', to: 'user_dashboard#displayRecipeModel'
+
   #Meal planner stuff
   get '/user_dashboard/getMealData/:request', to: 'user_dashboard#getMealData'
   get '/user_dashboard/saveMeal/:mealData' , to: 'user_dashboard#saveMealData'
@@ -47,14 +50,14 @@ Rails.application.routes.draw do
   get 'profile', to: 'pages#showProfile'
 
   #User is general public
-  devise_for :users, path: 'users', controllers: { sessions: "devise/sessions" }
+  devise_for :users, path: 'users', controllers: { sessions: "users/sessions" }
   #devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
   devise_scope :users do
     get 'users/login', to: 'devise/sessions#new'
     get 'login', to: 'pages#index'
     delete 'users/logout', to: 'devise/sessions#destroy'
   end
-  #
+
 
 
 

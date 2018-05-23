@@ -12,20 +12,22 @@
 </div>
 
 <div class="row">
+
   <div class="col-md-10 col-md-offset-1">
 <table id="myTable" class="table table-hover ro_RecipeTable">
   <thead class="ro_TableHead">
-    <th onclick="openModal()">Meal Name</th>
+    <th>Meal Name</th>
     <th>Ingredients</th>
     <th>Breakfast</th>
     <th>Lunch</th>
     <th>Dinner</th>
   </thead>
   <tbody class="ro_TableBody">
+  <% tableRow = 0 %>
   <% if @meals.size > 0 %>
     <% counter = 0 %>
     <% @meals.each do |item| %>
-      <tr onclick="openModal()">
+      <tr onclick="openModal(<%=tableRow%>)">
         <td><%= item.MealName%></td>
         <td>
           <% for i in @proteinCollection[counter] %>
@@ -57,18 +59,21 @@
           <% end %>
           <% counter += 1 %>
         </td>
-        <% if (!item.IsDinnerItem) && (!item.IsLunchItem) && (!item.IsBreakfastItem) %>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-        <% else %>
-          <td><% if(item.IsBreakfastItem) %> Yes <% else %> No <% end %></td>
-          <td><% if(item.IsLunchItem) %> Yes <% else %> No <% end %></td>
-          <td><% if(item.IsDinnerItem) %> Yes <% else %> No <% end %></td>
-        <% end %>
-
+          <% if (!item.IsDinnerItem) && (!item.IsLunchItem) && (!item.IsBreakfastItem) %>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          <% else %>
+            <td><% if(item.IsBreakfastItem) %> Yes <% else %> No <% end %></td>
+            <td><% if(item.IsLunchItem) %> Yes <% else %> No <% end %></td>
+            <td><% if(item.IsDinnerItem) %> Yes <% else %> No <% end %></td>
+          <% end %>
       </tr>
+      <% puts("tableRow: #{tableRow}") %>
+      <% tableRow += 1 %>
+
     <% end %>
+
 
   <% else %>
     <tr>
@@ -85,7 +90,7 @@
 
 <div id="myModal" class="ro_modal">
   <span class="ro_close cursor" onclick="closeModal()">&times;</span>
-  <div class="ro_modal-content">
+  <div id="recipeContent" class="ro_modal-content">
     <!-- PUT RECIPE CONTENT HERE -->
   </div>
 </div>

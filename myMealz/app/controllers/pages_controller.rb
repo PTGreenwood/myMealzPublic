@@ -59,10 +59,6 @@ class PagesController < ApplicationController
 
   #backend code for pages/explore
   def explore
-
-    #Display all Saved Meals here.. Not where we want it but ohwell.
-    #Shows how to show all recipes.. or something of the like
-    #@savedmeals = SavedMeal.all
   end
 
 end

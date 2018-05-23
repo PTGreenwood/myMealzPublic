@@ -2,6 +2,7 @@ class UserDashboardController < ApplicationController
   respond_to :js, :json, :html, :xml
   require 'json'
 
+  @meals = Savedmeal.all
   def support
     if(User.find_by_username(params[:id]))
         @userLogged = User.find_by_username(params[:id])
@@ -171,11 +172,11 @@ class UserDashboardController < ApplicationController
 
   #Planned meal sections
   def showPlannedMeals
-    puts("Maybe here")
+
     respond_to do |format|
       #format.html
       format.js
-      #render :partial=>"/layouts/supports/showTickets"
+
     end
   end
 
@@ -232,8 +233,6 @@ class UserDashboardController < ApplicationController
     isL = false
     isB = false
 
-    puts(dataReceived["dayChosen"])
-    puts(dataReceived["mealChosen"])
     if(dataReceived["dayChosen"] != -1)
 
       if(dataReceived["mealChosen"]) == 'Breakfast'
@@ -282,26 +281,6 @@ class UserDashboardController < ApplicationController
   def getMealData
 
     requestReceived = JSON.parse(params[:request])
-    #t.integer :UserID
-    #t.integer :MealName
-    #t.string :ProteinIDs
-    #t.string :GrainIDs
-    #t.string :DairyIDs
-    #t.string :VegeIDs
-    #t.string :FruitIDs
-    #t.string :FatIDs
-    #t.string :DiscIDs
-    #t.boolean :IsDinnerItem
-    #t.boolean :IsLunchItem
-    #t.boolean :IsBreakfastItem
-
-    #t.integer :proteinAMT
-    #t.integer :grainAMT
-    #t.integer :dairyAMT
-    #t.integer :vegeAMT
-    #t.integer :fruitAMT
-    #t.integer :FatAMT
-    #t.integer :discAMT
 
     isDin = false
     isLun = false
@@ -315,9 +294,8 @@ class UserDashboardController < ApplicationController
       isDin = true
     end
 
-    puts("Check: #{Plannedmeal.exists?(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun, isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"])}")
     if(Plannedmeal.exists?(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun, isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"]))
-      puts("Si?")
+
       pm = Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isBre, isLunchItem: isLun,
                                isDinnerItem: isDin, dayOfPlannedMeal: requestReceived["day"])
 
@@ -341,6 +319,47 @@ class UserDashboardController < ApplicationController
                 "fatIDs": '', "discIDs": ''}
     end
     respond_with(JSON.parse(@reply.to_json))
+  end
+
+  def displayRecipeModel
+    dataReceived = JSON.parse(params[:request])
+
+    #Have to get all the variables specifc to this one
+    puts("DataReceived: #{dataReceived["requestedRow"]}")
+
+    mealAll = Savedmeal.all
+
+    @zoomedMeal = mealAll[0]
+
+    #Annoying declaration
+    tempProteins  ||= []
+    tempGrains    ||= []
+    tempDairy     ||= []
+    tempVege      ||= []
+    tempFruit     ||= []
+    tempFats      ||= []
+    tempDisc      ||= []
+
+
+    tempProteins.push(idConvertHelper(mealAll[0].ProteinIDs))
+    tempGrains.push(idConvertHelper(mealAll[0].GrainIDs))
+    tempDairy.push(idConvertHelper(mealAll[0].DairyIDs))
+    tempVege.push(idConvertHelper(mealAll[0].VegeIDs))
+    tempFruit.push(idConvertHelper(mealAll[0].FruitIDs))
+    tempFats.push(idConvertHelper(mealAll[0].FatIDs))
+    tempDisc.push(idConvertHelper(mealAll[0].DiscIDs))
+
+
+    @proteinIngredients = productCollectionHelper(tempProteins)
+    @grainIngredients   = productCollectionHelper(tempGrains)
+    @dairyIngredients   = productCollectionHelper(tempDairy)
+    @vegeIngredients    = productCollectionHelper(tempVege)
+    @fruitIngredients   = productCollectionHelper(tempFruit)
+    @fatsIngredients    = productCollectionHelper(tempFats)
+    @discIngredients    = productCollectionHelper(tempDisc)
+
+
+    render partial: '/layouts/supports/recipeDisplay', layout: false
   end
 
 

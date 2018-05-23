@@ -23,9 +23,20 @@ function myFunction() {
   }
 }
 // Open the Modal
-function openModal() {
+function openModal(tableRow, mealItem) {
   document.getElementById('myModal').style.display = "block";
-}
+  /*$('#recipeName').html(mealItem[tableRow])*/
+
+    var data = {"requestedRow": tableRow};
+
+    data = JSON.stringify(data);
+    $.get("/user_dashboard/displayRecipeModel/" + data, function (data) {
+        $('#recipeContent').html(data);
+    }, "html");
+
+    $('#recipeContent').reveal();
+
+};
 
 // Close the Modal
 function closeModal() {

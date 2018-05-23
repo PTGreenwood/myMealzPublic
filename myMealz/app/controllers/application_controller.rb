@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   #Call the configured devise_parameter_sanitizer
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   # protect the database, while allowing these fields to be updated.
   protected
   def configure_permitted_parameters

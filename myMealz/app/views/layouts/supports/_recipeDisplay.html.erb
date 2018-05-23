@@ -1,0 +1,71 @@
+<div id="foodImage"><%= image_tag("savedMealsPlaceholder.jpeg", class: "img-responsive", alt: "foodImage")%></div>
+
+<!-- RECIPE NAME -->
+<div id="recipeName">Meal Name: <%= @zoomedMeal.MealName %></div>
+
+<!-- RECIPE DESCRIPTION -->
+<div id="recipeDescription">Description: <%= @zoomedMeal.description %></div>
+<!-- RECIPE METHOD -->
+<div id="recipeMethod">Prep Method: <%= @zoomedMeal.method %> </div>
+
+<!-- RECIPE MEALTIMES -->
+<div id="recipeMealTimes">
+  <!-- mayb ein a table? I dunno -->
+  <% if @zoomedMeal.IsBreakfastItem %> Breakfast <%end %>
+  <% if @zoomedMeal.IsLunchItem %> Lunch <%end %>
+  <% if @zoomedMeal.IsDinnerItem %> Dinner<%end %>
+
+
+    </div>
+<!-- RECIPE INGREDIENTS -->
+<div id="recipeIngredients">
+    <strong>Protein: </strong>
+    <% for i in @proteinIngredients[0] %>
+      <%= i.productName%>
+    <% end %>
+    <br>
+
+    <strong>Grain: </strong>
+    <% for i in @grainIngredients[0] %>
+      <%= i.productName %>
+    <% end %>
+  <br>
+
+    <strong>Dairy: </strong>
+    <% for i in @dairyIngredients[0] %>
+      <%= i.productName %>
+    <% end %>
+  <br>
+
+    <strong>Vegetables: </strong>
+    <% for i in @vegeIngredients[0] %>
+      <%= i.productName %>
+    <% end %>
+  <br>
+
+    <strong>Fruit: </strong>
+    <% for i in @fruitIngredients[0] %>
+      <%= i.productName %>
+    <% end %>
+  <br>
+
+    <strong>Fats: </strong>
+    <% for i in @fatsIngredients[0] %>
+      <%= i.productName %>
+    <% end %>
+  <br>
+
+    <strong>Discretionary: </strong>
+    <% for i in @discIngredients[0] %>
+      <%= i.productName %>
+    <% end %>
+  <br>
+</div>
+
+<div id="totals">
+  <strong>Protein:</strong> <%= @zoomedMeal.totalProtein %>g <br>
+  <strong>Fats: </strong><%= @zoomedMeal.totalFat %>g<br>
+  <strong>Carbohydrates: </strong><%= @zoomedMeal.totalCarb %>g<br>
+  <strong>Total Calories: </strong><%= @zoomedMeal.totalCal %>g<br>
+
+</div>

@@ -21,6 +21,7 @@ gem 'cancancan'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 
+gem 'dotenv-rails'
 
 # Jquery for rails
 gem 'jquery-rails'
