@@ -161,6 +161,7 @@ class UserDashboardController < ApplicationController
     @fatsCollection = productCollectionHelper(fatsOuter)
     @discCollection = productCollectionHelper(discOuter)
 
+
     respond_to do |format|
       #format.html
       format.js

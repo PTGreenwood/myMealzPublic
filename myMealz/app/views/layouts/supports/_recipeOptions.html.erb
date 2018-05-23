@@ -17,6 +17,9 @@
   <thead class="ro_TableHead">
     <th onclick="openModal()">Meal Name</th>
     <th>Ingredients</th>
+    <th>Breakfast</th>
+    <th>Lunch</th>
+    <th>Dinner</th>
   </thead>
   <tbody class="ro_TableBody">
   <% if @meals.size > 0 %>
@@ -54,13 +57,25 @@
           <% end %>
           <% counter += 1 %>
         </td>
+        <% if (!item.IsDinnerItem) && (!item.IsLunchItem) && (!item.IsBreakfastItem) %>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+        <% else %>
+          <td><% if(item.IsBreakfastItem) %> Yes <% else %> No <% end %></td>
+          <td><% if(item.IsLunchItem) %> Yes <% else %> No <% end %></td>
+          <td><% if(item.IsDinnerItem) %> Yes <% else %> No <% end %></td>
+        <% end %>
+
       </tr>
     <% end %>
+
   <% else %>
     <tr>
-      <td colspan="2">No Meals have been saved.</td>
+      <td colspan="5">No Meals have been saved.</td>
     </tr>
   <% end %>
+
 
 
 </tbody>
