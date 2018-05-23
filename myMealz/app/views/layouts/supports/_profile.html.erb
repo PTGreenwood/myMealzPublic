@@ -57,11 +57,11 @@
 <% if current_user.dietitian_role != true %>
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="alert alert-warning">
-        Are you an registed APD? Subscribe today to register for Dietitian access for only $19.99per month
-        <p><a href="/charges/new">Upgrade Account</a></p>
+      <div class="alert alert-info">
+        Are you an registed APD? Subscribe today to register for Dietitian access for only $19.99USD per month. Access to a tonne of new features.
+        <!--<p><a href="/charges/new">Upgrade Account</a></p>--><br><br>
         <div id="stripePayment">
-
+          <%= render :template => '/charges/new', layout: false%>
         </div>
       </div>
     </div>
