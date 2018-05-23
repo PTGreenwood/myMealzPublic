@@ -17,11 +17,11 @@
 
     <div class="panel panel-default">
       <div class="panel-body">
-        <p><%= link_to "Profile", profile_path, remote: true %></p>
-        <p><%= link_to "Meal Planner", showMealPlanner_path, remote: true %></p>
-        <p><%= link_to "myMealz", showPlannedMeals_path, remote: true %></p>
-        <p><%= link_to "View Recipes", showRecipeOptions_path, remote: true %></p>
-        <p><%= link_to "Support Tickets", showTickets_path, remote: true %></p>
+        <p class="s-m-l"><%= link_to "Profile", profile_path, remote: true %></p>
+        <p class="s-m-l"><%= link_to "Meal Planner", showMealPlanner_path, remote: true %></p>
+        <p class="s-m-l"><%= link_to "myMealz", showPlannedMeals_path, remote: true %></p>
+        <p class="s-m-l"><%= link_to "View Recipes", showRecipeOptions_path, remote: true %></p>
+        <p class="s-m-l"><%= link_to "Support Tickets", showTickets_path, remote: true %></p>
       </div>
     </div>
     <div class="panel panel-default" id="accessoryPanel" style="display:none">
@@ -31,7 +31,7 @@
   <!-- Middle -->
   <!-- Middle -->
   <div class="col-xs-10">
-    <div id="current_dash_render"class="panel panel-default main-panel">
+    <div id="current_dash_render" class="panel panel-default main-panel">
       <%= render '/layouts/supports/profile' %>
     </div>
         <!-- @savedmeals is the variable in the controller that all SavedMeal database entries go into

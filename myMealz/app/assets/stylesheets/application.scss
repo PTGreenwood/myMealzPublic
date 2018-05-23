@@ -271,5 +271,54 @@ padding: 20px 10px 40px 30px;
     padding: 15px 15px 0px 15px;
 }
 
+//SIDE MENU LINKS
+.s-m-l > a {
+  font-size: 20px;
+  text-decoration: none;
+  color: rgba(55,188,155,1);
+  position: relative;
+  padding: 16px 7px;
+  border-top: 2px solid rgba(55,188,155,0);
+  border-bottom: 2px solid rgba(55,188,155,0);
+  transition: padding .3s,border-color .3s;
+}
+
+.s-m-l > a:hover, a:focus {
+  padding: 5px 7px;
+  border-color: rgba(55,188,155,1);
+  outline: none;
+}
+
+.s-m-l > a::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-height: 0;
+  color: rgba(55,188,155,0);
+  border-left: 2px solid rgba(55,188,155,0);
+  content: attr(data-text);
+  transition: max-height .3s,border-color 0s;
+}
+
+.s-m-l > a::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+  max-height: 0;
+  color: rgba(55,188,155,0);
+  border-right: 2px solid rgba(55,188,155,0);
+  content: attr(data-text);
+  transition: max-height .3s,border-color 0s;
+}
+
+.s-m-l > a:focus::before, .s-m-l > a:hover::before, .s-m-l > a:focus::after, .s-m-l >a:hover::after {
+  max-height: 100%;
+  transition-delay: .28s;
+  border-color: rgba(55,188,155,1);
+}
 
 //END DASHBOARD
