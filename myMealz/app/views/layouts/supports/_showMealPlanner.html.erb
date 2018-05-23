@@ -41,10 +41,11 @@
         });
     });
 </script>
-<%=link_to 'Download Report', showMealPlanner_path(format: 'pdf')%>
+
 
  <%= stylesheet_link_tag "meal_planner" %>
-  <div class="container">
+<div class="panel-body">
+  <div class="container" style="width: inherit; margin-bottom: 20px">
     <div class="row">
       <div class="col-md-2">
         <div class="dropdown">
@@ -88,17 +89,21 @@
         </ul>
       </div>
     </div>
-    <div class="col col-md-4">
-      <ol id="mp_breadcrumb" class="breadcrumb">
+    <div class="col-md-4">
+      <ol id="mp_breadcrumb" class="breadcrumb" style="margin: 0px">
         <li class="breadcrumb-item">No Meal Selected</li>
       </ol>
     </div>
+    <div class="col-md-4" style="float:right">
+    <%=link_to 'Download Report', showMealPlanner_path(format: 'pdf'), :class => "btn signupcontent", :style => "margin: 0px"%>
+</div>
   </div>
+
 </div>
 
-  <div class="container">
+  <div class="container" style="width: inherit">
     <div class="row">
-      <div class="col-md-pull-12">
+      <div class="col-md-12">
         <div class="table-responsive">
           <table class="table table-sm" style="border: 1px solid burlywood">
             <thead style="background-color: burlywood">
@@ -117,7 +122,7 @@
 
             <tbody>
             <tr style="background-color: white">
-              <td class="text-right mp_sTable">Daily AMT Remaining:</td>
+              <td class="text-right mp_sTable">Servings Remaining:</td>
               <td id="proteinServing" class="text-center mp_sTable"><%=@clientRestriction[0].proteinReq%></td>
               <td id="grainServing" class="text-center mp_sTable"><%=@clientRestriction[0].grainsReq%></td>
               <td id="dairyServing" class="text-center mp_sTable"><%=@clientRestriction[0].dairyReq%></td>
@@ -134,8 +139,7 @@
     </div>
   </div>
 
-<div class="panel panel-default">
-  <div class="panel-body">
+<div class="container" style="width: inherit">
     <!--<div class="container">-->
       <div class="row">
 
@@ -290,6 +294,5 @@
         </div>
       </div>
       </div>
-    </div>
   </div>
 </div>

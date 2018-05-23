@@ -1,8 +1,8 @@
 $('#accessoryPanel').css("display", "block");
 $('#accessoryPanel').html('<div class="panel-body">\n' +
     '        <div class="table-responsive">\n' +
-    '          <table class="table table-hover" style="border: 3px solid limegreen">\n' +
-    '            <thead style="background-color: limegreen">\n' +
+    '          <table class="table table-hover" style="border: 3px solid #37BC9B">\n' +
+    '            <thead style="background-color: #37BC9B">\n' +
     '              <tr>\n' +
     '                <th scope="col" class="text-center" style="color: white" colspan="2">Chosen Menu Items</th>\n' +
     '              </tr>\n' +
@@ -37,11 +37,11 @@ $('#accessoryPanel').html('<div class="panel-body">\n' +
     '              </td>\n' +
     '            </tr>\n' +
     '          </table>\n' +
-    '          <br><br>\n' +
+    '         <br>\n' +
     '        </div>\n' +
     '\n' +
     '        <!-- Trigger the modal with a button -->\n' +
-    '        <button type="button" class="btn btn-warning btn-sm pull-right" data-toggle="modal" data-target="#myModal">Save Meal</button>\n' +
+    '        <button type="button" style="margin: 0px" class="btn signupcontent" data-toggle="modal" data-target="#myModal">Save Meal</button>\n' +
     '\n' +
     '        <!-- Modal -->\n' +
     '\n' +
@@ -58,15 +58,15 @@ $('#accessoryPanel').html('<div class="panel-body">\n' +
     '                  <form>\n' +
     '                    <div class="form-group">\n' +
     '                      <label for="mealName">What\'s your meal called?</label>\n' +
-    '                      <textarea class="form-control" id="mealName" rows="1"></textarea>\n' +
+    '                      <textarea style="resize:none" class="form-control" id="mealName" rows="1"></textarea>\n' +
     '                    </div>\n' +
     '                    <div class="form-group">\n' +
     '                      <label for="description">Description:</label>\n' +
-    '                      <textarea class="form-control" id="mealDescription" rows="1"></textarea>\n' +
+    '                      <textarea style="resize:none" class="form-control" id="mealDescription" rows="1"></textarea>\n' +
     '                    </div>\n' +
     '                    <div class="form-group">\n' +
     '                      <label for="method">Method:</label>\n' +
-    '                      <textarea class="form-control" id="mealMethod" rows="3"></textarea>\n' +
+    '                      <textarea style="resize:none" class="form-control" id="mealMethod" rows="3"></textarea>\n' +
     '                    </div>\n' +
     '                    <label for="description">Meal suitable for:</label> Please Note that leaving this blank, deems it suitable for all meals\n' +
     '                    <div class="form-check form-check-inline">\n' +
@@ -81,14 +81,13 @@ $('#accessoryPanel').html('<div class="panel-body">\n' +
     '                  </form>\n' +
     '                </div>\n' +
     '                <div class="modal-footer">\n' +
-    '                  <button type="button" class="btn btn-primary" onclick="saveMealData()" data-dismiss="modal">Save changes</button>\n' +
-    '                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n' +
+    '                  <button type="button" style="float:left; margin-top: 0px" class="btn signupcontent" onclick="saveMealData()" data-dismiss="modal">Save changes</button>\n' +
+    '                  <button type="button" style="float:left" class="btn btn-secondary" data-dismiss="modal">Close</button>\n' +
     '                </div>\n' +
     '              </div>\n' +
     '\n' +
     '            </div>\n' +
     '          </div>\n' +
-    '        <br><br>\n' +
     '        </div>\n' +
     '\n' +
     '      </div>');
