@@ -42,6 +42,7 @@
     });
 </script>
 
+<h1 class="jumbotron">Welcome to the meal planner!</h1>
 
  <%= stylesheet_link_tag "meal_planner" %>
 <div class="panel-body">
@@ -108,7 +109,7 @@
           <table class="table table-sm" style="border: 1px solid burlywood">
             <thead style="background-color: burlywood">
               <tr>
-                <th scope="col" id="currentViewed" class="text-center mp_sTableHeadersException">Any meal</th>
+                <th scope="col" id="currentViewed" class="text-center mp_sTableHeadersException">Servings</th>
                 <th scope="col" class="text-center mp_sTableHeaders">Protein</th>
                 <th scope="col" class="text-center mp_sTableHeaders">Grains</th>
                 <th scope="col" class="text-center mp_sTableHeaders">Dairy</th>
@@ -122,7 +123,7 @@
 
             <tbody>
             <tr style="background-color: white">
-              <td class="text-right mp_sTable">Servings Remaining:</td>
+              <td class="text-center mp_sTable">Remaining:</td>
               <td id="proteinServing" class="text-center mp_sTable"><%=@clientRestriction[0].proteinReq%></td>
               <td id="grainServing" class="text-center mp_sTable"><%=@clientRestriction[0].grainsReq%></td>
               <td id="dairyServing" class="text-center mp_sTable"><%=@clientRestriction[0].dairyReq%></td>
