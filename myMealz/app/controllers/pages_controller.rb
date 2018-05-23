@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # The pages controller contains all of the code for any page inside of /pages
 class PagesController < ApplicationController
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddDescriptionMethodToSavedMeals < ActiveRecord::Migration[5.1]
   def change
     add_column :savedmeals, :description, :text

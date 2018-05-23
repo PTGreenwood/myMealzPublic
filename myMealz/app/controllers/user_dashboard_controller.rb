@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserDashboardController < ApplicationController
   respond_to :js, :json, :html, :xml
   require 'json'
@@ -208,17 +209,36 @@ class UserDashboardController < ApplicationController
     end
   end
 
+
+  def convertToSafe(text)
+    newText = ""
+
+    text.split("").each do |i|
+      if i == '|'
+        newText += "."
+      else
+        newText += i
+      end
+    end
+    return newText
+  end
+
+
   def saveMealData
     #    var data = {"mealname": mealName, "description": description, "mealChosen": split[0], "dayChosen": split[1],
     #"isBreakfastSuitable": isB, "isLunchSuitable": isL, "isDinnerSuitable": isD, "proteinIDs": proteinIDs,
     #"grainIDs": grainIDs, "dairyIDs": dairyIDs, "vegeIDs": vegeIDs, "fruitIDs":fruitIDs, "fatIDs": fatsIDs,
     #"discIDs": discIDs, "proteinTotal": pTotal, "carbTotal": cTotal, "fatTotal": fTotal, "calTotal": calTotal};
 
-    dataReceived = JSON.parse(params[:mealData])
+    dataReceived    = JSON.parse(params[:mealData])
+    safeName        = convertToSafe(dataReceived["mealname"])
+    safeDescription = convertToSafe(dataReceived["description"])
+    safeMethod      = convertToSafe(dataReceived["method"])
 
+    puts("safeName #{safeName}")
     newMeal = Savedmeal.create(
-        UserID: current_user.id, description: dataReceived["description"], method: dataReceived["method"],
-        MealName: dataReceived["mealname"], ProteinIDs: dataReceived["proteinIDs"],
+        UserID: current_user.id, description: safeDescription, method: safeMethod,
+        MealName: safeName, ProteinIDs: dataReceived["proteinIDs"],
         GrainIDs: dataReceived["grainIDs"], DairyIDs: dataReceived["dairyIDs"], VegeIDs: dataReceived["vegeIDs"],
         FruitIDs: dataReceived["fruitIDs"], FatIDs: dataReceived["fatIDs"], DiscIDs: dataReceived["discIDs"],
         totalProtein: dataReceived["proteinTotal"], totalCarb: dataReceived["carbTotal"], totalFat: dataReceived["fatTotal"],
@@ -228,7 +248,7 @@ class UserDashboardController < ApplicationController
 
     newMeal.save
 
-    mealID = Savedmeal.find_by(MealName: dataReceived["mealname"])
+    mealID = Savedmeal.find_by(MealName: safeName)
     isD = false
     isL = false
     isB = false
@@ -250,13 +270,13 @@ class UserDashboardController < ApplicationController
         mealToUpdate = Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isB, isLunchItem: isL,
                                            isDinnerItem: isD, dayOfPlannedMeal: dataReceived["dayChosen"])
         mealToUpdate.SavedMealID = mealID.id
-        mealToUpdate.MealName = dataReceived["mealname"]
+        mealToUpdate.MealName = safeName
         mealToUpdate.save
 
       else
         #No meal has been planned for this day yet, so make a new plan
         plannedMeal = Plannedmeal.create(
-            UserID: current_user.id, MealName: dataReceived["mealname"], SavedMealID: mealID.id,
+            UserID: current_user.id, MealName: safeName, SavedMealID: mealID.id,
             IsDinnerItem: isD, IsLunchItem: isL,
             IsBreakfastItem: isB, dayOfPlannedMeal: dataReceived["dayChosen"])
 
@@ -275,8 +295,6 @@ class UserDashboardController < ApplicationController
     puts(arrCopy)
     return arrCopy
   end
-
-
 
   def getMealData
 

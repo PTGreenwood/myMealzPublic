@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 if Rails.env == "development"
   ActiveMerchant::Billing::FirstdataE4Gateway.wiredump_device = File.open(Rails.root.join("log","active_merchant.log"), "a+")
   ActiveMerchant::Billing::FirstdataE4Gateway.wiredump_device.sync = true

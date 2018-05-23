@@ -1,5 +1,42 @@
-<div class="container">
+<script type="text/javascript">
 
+  function convertToSave(text) {
+      alert(text[0]);
+      var newText = "";
+      for(var i=0; i<text.length; i++) {
+          if(text[i] == '.') {
+              newText += '|';
+          }else {
+              newText += text[i];
+          }
+      }
+      return newText;
+  }
+
+    function sendEmail() {
+        replaced = convertToSave($('#userEmail').val());
+        /*$('#recipeName').html(mealItem[tableRow])*/
+        var data = {"userEmail": replaced};
+
+        data = JSON.stringify(data);
+
+        $.ajax({
+            url: "/dietitian_dashboard/sendMail/" + data + "",
+            contentType: "application/json",
+            dataType: 'json',
+        }).success(function (data) {
+            /* on AJAX success save */
+            alert("Email Sent. Thanks!");
+        });
+    }
+
+</script>
+
+
+<div class="container">
+  <strong>Please Note:</strong> An incorrect email address causes nothing to happen<br>
+  <input type="text" id="userEmail" style="width: 30%" name="userEmail" placeholder="Client's Email address">
+  <button class="btn btn-primary" onclick="sendEmail()">Send out your link now</button>
 <div class="row">
   <!-- Title for content panel -->
   <div class="col-md-10 col-md-offset-1">

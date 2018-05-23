@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Payment < ApplicationRecord
 
   #User built in rails helpers

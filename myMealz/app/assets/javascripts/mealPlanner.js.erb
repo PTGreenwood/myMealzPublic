@@ -82,13 +82,18 @@ function updateSelected(day, slot, mealname) {
     saveDay = WEEK_LIST[day];
     saveMeal = MEAL_LIST[slot];
 
-    if(day != -1) {
+    if(day != -1 && day != 6) {
         $('#currentViewed').html(VIEWING_LIST[slot][day]);
         $('#mp_breadcrumb').html('<li class="breadcrumb-item">' + WEEK_LIST[day] + '</li><li class="breadcrumb-item">' +
             MEAL_LIST[slot] + '</li><li class="breadcrumb-item"><strong>' + mealname + '</strong></li>');
+    } else if (day == 6) {
+        $('#currentViewed').html("Unspecified");
+        $('#mp_breadcrumb').html('<li class="breadcrumb-item">Anyday</li><li class="breadcrumb-item">' +
+            'No Specific Mealtime<li class="breadcrumb-item"><strong>' + mealname + '</strong></li>');
     } else {
         $('#currentViewed').html("Unspecified");
-        $('#mp_breadcrumb').html('<li class="breadcrumb-item">Anyday</li><li class="breadcrumb-item"><strong>No Specific Meal</strong></li>');
+        $('#mp_breadcrumb').html('<li class="breadcrumb-item">Anyday</li><li class="breadcrumb-item">' +
+            '<strong>No Specific Mealtime</strong></li>');
     }
 
 }
@@ -334,6 +339,10 @@ function convertMeal(mealWord) {
         case 'dinner':
             return 2;
             break;
+        case 'any':
+            return 6;
+            break;
+
     }
 }
 
@@ -363,12 +372,11 @@ function convertDay(dayWord) {
         case 'Weekend':
             return 5;
             break;
-        case 'Monday':
+        case 'Any':
             return 6;
             break;
     }
 }
-
 
 /*
     Rather large function. Essentially it takes an argument of "MealType_DayOfMeal" and requests
@@ -420,6 +428,20 @@ function getMealData(mealData) {
     }
 };
 
+/* Stupid function that converts full stops to underscores to pass through */
+function convertToSafe(text) {
+    var newText = "";
+    for(var i=0; i<text.length; i++) {
+        if(text[i] == '.') {
+            newText += '_';
+        }else {
+            newText += text[i];
+        }
+    }
+    return newText;
+}
+
+
 /*
     Rather large function. Sends off the data that is stored in the ChosenMeal Array
     along with extra data pulled from HTML elements in both _showMealPlanner (partial) or the Model
@@ -429,9 +451,27 @@ function getMealData(mealData) {
  */
 function saveMealData() {
 
-    var mealName = $('#mealName').val();
+    var mealName = $('#mealName').val()
     var description = $('#mealDescription').val();
     var method = $('#mealMethod').val();
+
+    /*Check if fields have been entered */
+    if(mealName == "") {
+        $('#mealName').css("border","1px solid red");
+        $('#mealName').attr("placeholder", 'This meal must have a name');
+        return;
+    }
+
+    if (description == "") {
+        $('#mealName').css("border","none");
+        $('#mealDescription').css("border", "1px solid red");
+        $('#mealDescription').attr("placeholder", 'Please describe this meal');
+        return;
+    }
+
+    /* Replace new line and /r characters with <br> */
+    method = method.replace(/(\r\n|\n|\r)/gm, "<br>");  /*   .replace(/\r\n/g,'\n')*/
+    method = convertToSafe(method);
 
     var isB = document.querySelector('#breakfastMeal').checked;
     var isL = document.querySelector('#lunchMeal').checked;
@@ -488,8 +528,13 @@ function saveMealData() {
         alert("Thank you, your meal has been successfully saved");
 
         /* Update the breadcrumbs */
-        updateSelected(convertDay(saveDay), convertMeal(saveMeal.toLowerCase()), mealName);
-
+        if(saveMeal != -1) {
+            updateSelected(convertDay(saveDay), convertMeal(saveMeal.toLowerCase()), mealName);
+            $('#buttonToClose').click();
+        } else {
+            updateSelected(6, 6, mealName);
+            $('#buttonToClose').click();
+        }
         }
     )
 };

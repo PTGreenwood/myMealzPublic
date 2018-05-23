@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # frozen_string_literal: true
 
 class DeviseCreateClients < ActiveRecord::Migration[5.1]

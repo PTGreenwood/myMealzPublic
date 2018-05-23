@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DietitianDashboardController < ApplicationController
 
   def support
@@ -52,6 +53,33 @@ class DietitianDashboardController < ApplicationController
     contractToUpdate.discReq = @data["disc"].to_f
 
     contractToUpdate.save
+
+
+  end
+
+  def convertToSafe(text)
+    newText = ""
+
+    text.split("").each do |i|
+      if i == '|'
+        newText += "."
+      else
+        newText += i
+      end
+    end
+    return newText
+  end
+
+
+  def sendConnectionEmail
+    received = JSON.parse(params[:request])
+    safe = convertToSafe(received["userEmail"])
+
+    if(User.find_by(email: safe))
+      @userToEmail = User.find_by(email: safe)
+      @dietToEmail = current_user
+      UserMailer.with(user: @userToEmail, dietitian: @dietToEmail).send_apd_to_user(@userToEmail,@dietToEmail).deliver_now
+    end
 
 
   end

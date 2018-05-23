@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeIntsToFloat < ActiveRecord::Migration[5.1]
   def change
     change_column :contracts, :proteinReq, :float

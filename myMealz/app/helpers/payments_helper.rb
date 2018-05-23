@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module PaymentsHelper
   def months
     (1..12).collect{|n| ["#{n} - #{Date::MONTHNAMES[n]}", n]}

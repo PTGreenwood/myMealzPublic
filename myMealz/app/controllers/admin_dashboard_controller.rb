@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AdminDashboardController < ApplicationController
 
   require 'json'

@@ -23,6 +23,11 @@ gem 'wkhtmltopdf-binary'
 
 gem 'dotenv-rails'
 
+
+#Fixing up pipeline stuff
+gem 'magic_encoding'
+
+
 # Jquery for rails
 gem 'jquery-rails'
 

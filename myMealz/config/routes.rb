@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   resources :payments, only: [:connector, :new, :create]
   get 'payments/connector'
@@ -42,6 +43,8 @@ Rails.application.routes.draw do
   #Dietitian Controller - dietitian_dashboard
   get '/dietitian/ticketSupport' => 'dietitian_dashboard#support'
   get 'getMyClientz' => 'dietitian_dashboard#getMyClientz'
+  get 'dietitian_dashboard/sendMail/:request', to: 'dietitian_dashboard#sendConnectionEmail'
+
   get 'user_dashboard/replyMessage/:messageDetails', to: 'user_dashboard#replyTicketMessage'
   get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
   get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'

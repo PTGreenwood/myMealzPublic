@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h1>Hi, <%= @user.firstname %></h1>
+<p>
+  Did you know you are unable to use most of the sites features? As a matter of fact... You can't use any of the sites features...<br>
+  This is due to not being linked in with a Dietitian...<br><br>
+
+  What are you going to do about it?<br>
+
+  <%= @dietitian.firstname %> <%= @dietitian.lastname %>, wants to change that.<br><br><br>
+
+  All you need to do is take this lot of characters: <strong><%=@dietitian.dietitianID%></strong> head to your profile <br>
+  click on the 'edit profile' button and chuck it into the 'ConnectedTo' text field.<br><br>
+
+  The Dietitian will review the connection, and you'll be approved in no time!
+
+</p>
+<p>
+  To login to the site, just follow this link: <a href="localhost:3000">myMealz</a>>
+</p>
+<p>Thanks for being a part of the myMealz future, and while you're at it, have a great day!</p>
+</body>
+</html>

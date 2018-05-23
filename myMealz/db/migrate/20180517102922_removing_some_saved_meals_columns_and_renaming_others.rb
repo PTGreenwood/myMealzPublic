@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemovingSomeSavedMealsColumnsAndRenamingOthers < ActiveRecord::Migration[5.1]
   def change
     rename_column :savedmeals, :proteinAMT, :totalProtein

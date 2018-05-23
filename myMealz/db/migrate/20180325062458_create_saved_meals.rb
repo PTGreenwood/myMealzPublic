@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #created with
 # rails generate model SavedMeals content:text user:references
 

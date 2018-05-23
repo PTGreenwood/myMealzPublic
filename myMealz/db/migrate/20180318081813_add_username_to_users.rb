@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddUsernameToUsers < ActiveRecord::Migration[5.1]
   def change # anything inside this method is translated to SQL code and modified the database (currently, SQLite)
     add_column :users, :username, :string # add a new column to table "users", called "username" and of type "string"

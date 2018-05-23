@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SetupContractTable < ActiveRecord::Migration[5.1]
   def change
 
