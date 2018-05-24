@@ -24,6 +24,10 @@ class PagesController < ApplicationController
 
   end
 
+  def redirectOnFail
+    redirect_to root_path
+  end
+
   def showTickets
 
     #get all the tickets and pass them through
