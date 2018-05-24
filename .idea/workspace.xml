@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7fb5f14-2a53-4673-8303-741b254d2e9d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/myMealz/app/controllers/pages_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/myMealz/app/controllers/pages_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myMealz/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/myMealz/config/routes.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myMealz/public/assets/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myMealz/config.ru" beforeDir="false" afterPath="$PROJECT_DIR$/myMealz/config.ru" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myMealz/config/environment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/myMealz/config/environment.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myMealz/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/myMealz/public/favicon.ico" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,7 +17,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/RubyMine@Development__myMealz.rcov" NAME="Development: myMealz Coverage Results" MODIFIED="1526863988660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/myMealz" MODULE_NAME="myMealz" />
-    <SUITE FILE_PATH="coverage/myMealzPublic@Development__myMealz.rcov" NAME="Development: myMealz Coverage Results" MODIFIED="1527123192231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/myMealz" MODULE_NAME="myMealz" />
+    <SUITE FILE_PATH="coverage/myMealzPublic@Development__myMealz.rcov" NAME="Development: myMealz Coverage Results" MODIFIED="1527131231129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/myMealz" MODULE_NAME="myMealz" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -50,20 +53,67 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pages_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pages_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myMealz/app/controllers/pages_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state relative-caret-position="140">
+              <caret line="32" column="11" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_dashboard_controller.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myMealz/app/controllers/user_dashboard_controller.rb">
+      <file leaf-file-name="development.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myMealz/config/environments/development.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="345" column="44" selection-start-line="345" selection-start-column="44" selection-end-line="345" selection-end-column="44" />
+            <state relative-caret-position="15">
+              <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myMealz/app/assets/javascripts/application.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myMealz/app/views/layouts/application.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.ru" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myMealz/config.ru">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="environment.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/myMealz/config/environment.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myMealz/config/application.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -73,36 +123,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="279">
               <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_recipeDisplay.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myMealz/app/views/layouts/supports/_recipeDisplay.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="136" selection-start-line="11" selection-start-column="136" selection-end-line="11" selection-end-column="136" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_recipeOptions.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myMealz/app/views/layouts/supports/_recipeOptions.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.ru" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myMealz/config.ru">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -118,15 +138,13 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>saveMe</find>
-      <find>split</find>
       <find>swit</find>
       <find>total</find>
-      <find>total nutri</find>
+      <find />
       <find>assPanel_protein</find>
       <find>@url</find>
       <find>mailer</find>
-      <find>Someone has requested a link to change your password. You can do this through the link below.</find>
+      <find />
       <find>proteinReq</find>
       <find>new_user_reg</find>
       <find>new_user</find>
@@ -148,6 +166,8 @@
       <find>showMealPlanner</find>
       <find>display</find>
       <find>zoomed</find>
+      <find>.png</find>
+      <find>l</find>
     </findStrings>
     <replaceStrings>
       <replace>g</replace>
@@ -162,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myMealz/config/initializers/rails_admin.rb" />
         <option value="$PROJECT_DIR$/myMealz/db/schema.rb" />
         <option value="$PROJECT_DIR$/myMealz/db/migrate/20180517123538_change_column_types.rb" />
         <option value="$PROJECT_DIR$/myMealz/app/assets/stylesheets/application.scss" />
@@ -183,7 +202,6 @@
         <option value="$PROJECT_DIR$/myMealz/app/controllers/users/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/myMealz/config/secrets.yml" />
         <option value="$PROJECT_DIR$/myMealz/config/initializers/stripe.rb" />
-        <option value="$PROJECT_DIR$/myMealz/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/myMealz/app/controllers/charges_controller.rb" />
         <option value="$PROJECT_DIR$/myMealz/app/views/charges/create.html.erb" />
         <option value="$PROJECT_DIR$/myMealz/app/views/pages/showProfile.js.erb" />
@@ -203,8 +221,6 @@
         <option value="$PROJECT_DIR$/myMealz/app/views/layouts/supports/_showMealPlanner.html.erb" />
         <option value="$PROJECT_DIR$/myMealz/config/initializers/mime_types.rb" />
         <option value="$PROJECT_DIR$/myMealz/app/views/user_dashboard/showRecipeOptions.js.erb" />
-        <option value="$PROJECT_DIR$/myMealz/config.ru" />
-        <option value="$PROJECT_DIR$/myMealz/config/environment.rb" />
         <option value="$PROJECT_DIR$/myMealz/config/application.rb" />
         <option value="$PROJECT_DIR$/myMealz/app/controllers/user_dashboard_controller.rb" />
         <option value="$PROJECT_DIR$/myMealz/config/initializers/wicked_pdf_helpers.rb" />
@@ -213,6 +229,10 @@
         <option value="$PROJECT_DIR$/myMealz/Gemfile" />
         <option value="$PROJECT_DIR$/myMealz/config/routes.rb" />
         <option value="$PROJECT_DIR$/myMealz/app/controllers/pages_controller.rb" />
+        <option value="$PROJECT_DIR$/myMealz/config/environments/development.rb" />
+        <option value="$PROJECT_DIR$/myMealz/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/myMealz/config.ru" />
+        <option value="$PROJECT_DIR$/myMealz/config/environment.rb" />
       </list>
     </option>
   </component>
@@ -274,81 +294,26 @@
               <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
               <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
               <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="supports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user_dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="initializers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="locales" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
               <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
               <item name="myMealz" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
+              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
+              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -373,11 +338,11 @@
       <recent name="$PROJECT_DIR$/myMealz/app/assets/javascripts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myMealz/public/assets" />
+      <recent name="$PROJECT_DIR$/myMealz/public" />
       <recent name="$PROJECT_DIR$/myMealz/app/views/layouts/supports" />
       <recent name="$PROJECT_DIR$/myMealz/app/views/pages" />
       <recent name="$PROJECT_DIR$/myMealz/app/views/user_dashboard" />
-      <recent name="$PROJECT_DIR$/myMealz/app/controllers/users" />
-      <recent name="$PROJECT_DIR$/myMealz/app/models" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -504,7 +469,7 @@
       <workItem from="1526813587085" duration="11308000" />
       <workItem from="1527060284150" duration="521000" />
       <workItem from="1527065920563" duration="21144000" />
-      <workItem from="1527119220712" duration="9411000" />
+      <workItem from="1527119220712" duration="10829000" />
     </task>
     <task id="LOCAL-00001" summary="Changed IDE. Updating a few things to make sure it works. Hope it doesn't break.">
       <created>1526003434366</created>
@@ -517,22 +482,23 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161481000" />
+    <option name="totallyTimeSpent" value="162899000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="830" extended-state="6" />
+    <frame x="-1" y="24" width="1440" height="830" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2074392" />
       <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5035765" side_tool="true" weight="0.32561308" />
-      <window_info anchor="right" id="Database" order="0" weight="0.3297568" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="4" />
-      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49642345" visible="true" weight="0.32469305" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" sideWeight="0.49642345" visible="true" weight="0.32469305" />
       <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49928468" weight="0.329235" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2074392" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="0" weight="0.3297568" />
+      <window_info anchor="bottom" id="Find" order="6" sideWeight="0.49928468" weight="0.329235" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
@@ -541,7 +507,6 @@
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="6" sideWeight="0.49928468" weight="0.329235" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,20 +528,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myMealz/app/views/pages/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myMealz/app/views/devise/shared/_links.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myMealz/app/views/layouts/_dashboard_admin.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
@@ -616,20 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myMealz/config/environments/development.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myMealz/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -798,24 +735,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myMealz/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myMealz/app/views/user_dashboard/showRecipeOptions.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" selection-start-line="29" selection-end-line="31" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myMealz/config.ru">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -872,13 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myMealz/config/environment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myMealz/app/views/layouts/supports/_recipeOptions.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -917,10 +833,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/myMealz/config/boot.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/myMealz/app/controllers/pages_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        <state relative-caret-position="140">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myMealz/config/environments/development.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myMealz/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myMealz/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myMealz/config.ru">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myMealz/config/application.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myMealz/config/environment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
         </state>
       </provider>
     </entry>
