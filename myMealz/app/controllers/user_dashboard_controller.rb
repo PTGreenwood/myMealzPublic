@@ -105,13 +105,13 @@ class UserDashboardController < ApplicationController
     outerValues = Array.new()
 
     for outerItem in arrayToLoop
-      puts("outer item: #{outerItem}")
+      #puts("outer item: #{outerItem}")
       for innerItem in outerItem
-        puts("Inner item #{innerItem}")
+        #puts("Inner item #{innerItem}")
         for actualItem in innerItem
-          puts("inner inner item: #{actualItem}")
+          #puts("inner inner item: #{actualItem}")
           if(Product.find_by(productID: actualItem))
-            puts("FOund it")
+            #puts("FOund it")
             prod = Product.find_by(productID: actualItem)
             innerValues.push(prod)
           end
@@ -136,6 +136,7 @@ class UserDashboardController < ApplicationController
     fatsOuter    ||= [] #is 2D Array
     discOuter    ||= [] #is 2D Array
 
+
     @proteinCollection ||= []
     @grainCollection   ||= []
     @dairyCollection   ||= []
@@ -143,6 +144,7 @@ class UserDashboardController < ApplicationController
     @fruitCollection   ||= []
     @fatsCollection    ||= []
     @discCollection    ||= []
+    @mealTime          ||= []
 
     for item in @meals
 
@@ -154,6 +156,8 @@ class UserDashboardController < ApplicationController
       fatsOuter.push(idConvertHelper(item.FatIDs))
       discOuter.push(idConvertHelper(item.DiscIDs))
 
+      @mealTime.push(Plannedmeal.find_by(SavedMealID: item.id).dayOfPlannedMeal)
+
     end
 
     @proteinCollection = productCollectionHelper(proteinOuter)
@@ -163,7 +167,7 @@ class UserDashboardController < ApplicationController
     @fruitCollection = productCollectionHelper(fruitOuter)
     @fatsCollection = productCollectionHelper(fatsOuter)
     @discCollection = productCollectionHelper(discOuter)
-
+    #@mealTime << mealTime.dup
 
     respond_to do |format|
       #format.html
@@ -226,17 +230,12 @@ class UserDashboardController < ApplicationController
 
 
   def saveMealData
-    #    var data = {"mealname": mealName, "description": description, "mealChosen": split[0], "dayChosen": split[1],
-    #"isBreakfastSuitable": isB, "isLunchSuitable": isL, "isDinnerSuitable": isD, "proteinIDs": proteinIDs,
-    #"grainIDs": grainIDs, "dairyIDs": dairyIDs, "vegeIDs": vegeIDs, "fruitIDs":fruitIDs, "fatIDs": fatsIDs,
-    #"discIDs": discIDs, "proteinTotal": pTotal, "carbTotal": cTotal, "fatTotal": fTotal, "calTotal": calTotal};
 
     dataReceived    = JSON.parse(params[:mealData])
     safeName        = convertToSafe(dataReceived["mealname"])
     safeDescription = convertToSafe(dataReceived["description"])
     safeMethod      = convertToSafe(dataReceived["method"])
-
-    puts("safeName #{safeName}")
+    
     newMeal = Savedmeal.create(
         UserID: current_user.id, description: safeDescription, method: safeMethod,
         MealName: safeName, ProteinIDs: dataReceived["proteinIDs"],
@@ -253,6 +252,7 @@ class UserDashboardController < ApplicationController
     isD = false
     isL = false
     isB = false
+    mealDay = dataReceived["dayChosen"]
 
     if(dataReceived["dayChosen"] != -1)
 
@@ -264,12 +264,17 @@ class UserDashboardController < ApplicationController
         isD = true
       end
 
-      if(Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isB, isLunchItem: isL,
-                             isDinnerItem: isD, dayOfPlannedMeal: dataReceived["dayChosen"]))
+    else
+      puts("dayChosen = -1")
+      mealDay = "Not Specific"
+    end
+
+    if(Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isB, isLunchItem: isL,
+                             isDinnerItem: isD, dayOfPlannedMeal: mealDay)) #dataReceived["dayChosen"]
 
         #Already a value for this time of meal so update it.
         mealToUpdate = Plannedmeal.find_by(UserID: current_user.id, isBreakfastItem: isB, isLunchItem: isL,
-                                           isDinnerItem: isD, dayOfPlannedMeal: dataReceived["dayChosen"])
+                                           isDinnerItem: isD, dayOfPlannedMeal: mealDay) #dataReceived["dayChosen"]
         mealToUpdate.SavedMealID = mealID.id
         mealToUpdate.MealName = safeName
         mealToUpdate.save
@@ -279,11 +284,11 @@ class UserDashboardController < ApplicationController
         plannedMeal = Plannedmeal.create(
             UserID: current_user.id, MealName: safeName, SavedMealID: mealID.id,
             IsDinnerItem: isD, IsLunchItem: isL,
-            IsBreakfastItem: isB, dayOfPlannedMeal: dataReceived["dayChosen"])
+            IsBreakfastItem: isB, dayOfPlannedMeal: mealDay) #dataReceived["dayChosen"]
 
         plannedMeal.save
       end
-    end
+
   end
 
   def mealHelper(receivedString)

@@ -21,6 +21,7 @@
     <th>Breakfast</th>
     <th>Lunch</th>
     <th>Dinner</th>
+    <th>Day</th>
   </thead>
   <tbody class="ro_TableBody">
   <% tableRow = 0 %>
@@ -69,8 +70,8 @@
               <td><% if(item.IsLunchItem) %> Yes <% else %> No <% end %></td>
               <td><% if(item.IsDinnerItem) %> Yes <% else %> No <% end %></td>
             <% end %>
+          <td><%= @mealTime[tableRow]%></td>
         </tr>
-        <% puts("tableRow: #{tableRow}") %>
         <% tableRow += 1 %>
       <% end %>
     <% end %>
