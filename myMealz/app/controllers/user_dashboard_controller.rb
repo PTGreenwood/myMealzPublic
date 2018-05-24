@@ -235,7 +235,7 @@ class UserDashboardController < ApplicationController
     safeName        = convertToSafe(dataReceived["mealname"])
     safeDescription = convertToSafe(dataReceived["description"])
     safeMethod      = convertToSafe(dataReceived["method"])
-    
+
     newMeal = Savedmeal.create(
         UserID: current_user.id, description: safeDescription, method: safeMethod,
         MealName: safeName, ProteinIDs: dataReceived["proteinIDs"],
@@ -349,11 +349,11 @@ class UserDashboardController < ApplicationController
     dataReceived = JSON.parse(params[:request])
 
     #Have to get all the variables specifc to this one
-    puts("DataReceived: #{dataReceived["requestedRow"]}")
+    #puts("DataReceived: #{dataReceived["requestedRow"]}")
 
     mealAll = Savedmeal.all
 
-    @zoomedMeal = mealAll[0]
+    @zoomedMeal = mealAll[dataReceived["requestedRow"]]
 
     #Annoying declaration
     tempProteins  ||= []
