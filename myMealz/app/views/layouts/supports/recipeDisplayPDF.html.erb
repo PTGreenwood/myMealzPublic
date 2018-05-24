@@ -1,15 +1,15 @@
+<div id ="variable"><%=@zoomedInt%></div>
 <div class="panel-body">
   <% hold = {:requestedData => @zoomedInt}.to_json %>
   <script type="text/javascript">
       $(document).ready(function () {
-            var tempModel = {"requestedRow": <%= @zoomedInt %>};
-            tempModel = JSON.stringify(tempModel);
-            $('#linky').attr('href', '/user_dashboard/displayRecipeModel/' + tempModel + '.pdf)');
-
+        var tempModel = {"requestedRow": <%= @zoomedInt %>}
+        tempModel = JSON.stringify(tempModel);
+        $('#linky').attr('href', '/user_dashboard/displayRecipeModel/'+tempModel+'.pdf)');
       });
   </script>
 
-  <a style="float: right" id="linky" href=""><button class="btn btn-info " onClick="hideLink()">Generate Printable Document</button></a>
+  <a id="linky" href="">Print</a>
 <!-- RECIPE NAME -->
 <div id="recipeName" class="jumbotron">Recipe For: <%= @zoomedMeal.MealName %></div>
 

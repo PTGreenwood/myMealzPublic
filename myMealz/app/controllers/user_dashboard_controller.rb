@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class UserDashboardController < ApplicationController
-  respond_to :js, :json, :html, :xml
+  respond_to :js, :json, :html, :xml, :pdf
   require 'json'
 
   @meals = Savedmeal.all
@@ -202,14 +202,7 @@ class UserDashboardController < ApplicationController
     respond_to do |format|
       #format.html
       format.js
-      format.pdf do
-        kit = PDFKit.new('views/layouts/logup/login', page_size: 'A4')
-        pdf = kit.to_pdf
-        send_data(pdf,
-                  filename: 'testingPDFSave.pdf',
-                  disposition: 'attachment',
-                  type: :pdf)
-      end
+
       #render :partial=>"/layouts/supports/showTickets"
     end
   end
@@ -345,14 +338,64 @@ class UserDashboardController < ApplicationController
     respond_with(JSON.parse(@reply.to_json))
   end
 
+  def getModelPrint
+
+    format.pdf do
+      @example_text = "some text"
+      render :pdf => "file_name",
+             :template => 'layouts/supports/recipeDisplayPDF',
+             :footer => {
+                 :center => "Center",
+                 :left => "Left",
+                 :right => "Right"
+             }
+    end
+
+    #respond_to do |format|
+    #  #format.html { render :template => '/layouts/logup/login' }
+    #  format.pdf  do
+    #    kit = PDFKit.new('views/layouts/logup/login', page_size: 'A4')
+    #    pdf = kit.to_pdf
+
+    #    send_data(pdf,
+    #              filename: 'testingPDFSave.pdf',
+    #              disposition: 'attachment',
+    #              type: :pdf)
+        #html = render_to_string(:layout => false , :action => "login.pdf.erb") # your view erb files goes to :action
+
+        #kit = PDFKit.new(html)
+        #kit.stylesheets << "#{Rails.root}/public/stylesheets/pdf.css"
+        #send_data(kit.to_pdf, :filename=>"#{current_user.firstname}.pdf",
+        #          :type => 'application/pdf', :disposition => 'attachment')
+
+
+    #respond_to do |format|
+      #format.pdf do
+      #  kit = PDFKit.new('views/layouts/logup/login', page_size: 'A4')
+      #  pdf = kit.to_pdf
+      ##  send_data(pdf,
+       #           filename: 'testingPDFSave.pdf',
+       #           disposition: 'attachment',
+       #           type: :pdf)
+      #format.html
+      #format.pdf do
+      #  render pdf: "file_name",
+      #         disposition: 'attachment',
+      #         template: '/layouts/supports/recipeDisplay',
+      #         layout: :pdf,
+      #         page_size: 'A4'
+
+        # Excluding ".pdf" extension.
+      #end
+  end
+
   def displayRecipeModel
     dataReceived = JSON.parse(params[:request])
 
     #Have to get all the variables specifc to this one
-    #puts("DataReceived: #{dataReceived["requestedRow"]}")
-
     mealAll = Savedmeal.all
 
+    @zoomedInt = dataReceived["requestedRow"]
     @zoomedMeal = mealAll[dataReceived["requestedRow"]]
 
     #Annoying declaration
@@ -382,8 +425,8 @@ class UserDashboardController < ApplicationController
     @fatsIngredients    = productCollectionHelper(tempFats)
     @discIngredients    = productCollectionHelper(tempDisc)
 
-
     render partial: '/layouts/supports/recipeDisplay', layout: false
+
   end
 
   def displayPaymentForm

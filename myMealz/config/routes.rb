@@ -13,9 +13,6 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/adminDB', as: 'rails_admin'
 
-  #Dietitian Controller - dietitian_dashboard
-
-
   #Admin Controller - admin_dashboard
   get '/admin/ticketSupport' => 'admin_dashboard#support'
   get '/admin/alterContent' => 'admin_dashboard#alterContent'
@@ -29,6 +26,8 @@ Rails.application.routes.draw do
   get '/showMealPlanner', to: 'user_dashboard#showMealPlanner'
   get '/showPlannedMeals', to: 'user_dashboard#showPlannedMeals'
   get '/showRecipeOptions', to: 'user_dashboard#showRecipeOptions'
+  get '/getModelPrint', to: 'user_dashboard#getModelPrint'
+
   get 'user_dashboard/replyMessage/:messageDetails', to: 'user_dashboard#replyTicketMessage'
   get 'user_dashboard/getMessageHistory/:ticketID', to: 'user_dashboard#getMessageHistory'
   get '/user_dashboard/newTicket/:messageDetails', to: 'user_dashboard#newTicket'
