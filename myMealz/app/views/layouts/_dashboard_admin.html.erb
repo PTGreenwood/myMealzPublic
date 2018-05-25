@@ -2,24 +2,24 @@
 <div class="row panel-offset">
   <!-- Left -->
   <div class="col-xs-2">
-    <div class="panel panel-default">
-      <div class="panel-body profile-picture">
-        <p>
-          <% if(current_user.avatar?) %>
-            <%= image_tag current_user.avatar, :size => '100x100'%>
-          <% else %>
-            <%= "No Profile Picture Found"%>
-          <% end %>
-        </p>
-      </div>
-    </div>
+    <!--<div class="panel panel-default">-->
+    <!--<div class="panel-body profile-picture">-->
+
+    <% if (current_user.avatar?) %>
+      <%= image_tag current_user.avatar.url, size: "175x175", :style => "border: 5px solid black; border-radius: 100px; margin-left: 6%"%>
+    <% else %>
+      <%= image_tag ('profile.png'), size: "175x175", :style => "border: 5px solid black; border-radius: 100px; margin-left: 6%"  %>
+    <% end %>
+    <br><br>
+    <!--</div>-->
+    <!--</div>-->
 
     <div class="panel panel-default">
       <div class="panel-body">
         <p> Links </p>
         <p class="s-m-l"><a href="/adminDB">Admin Panel</a></p>
         <p class="s-m-l"><%= link_to "Support Tickets", showTickets_path, remote: true %></p>
-        <p class="s-m-l"><a href="/admin/alterContent">Alter Content</a></p>
+        <!--<p class="s-m-l"><a href="/admin/alterContent">Alter Content</a></p>-->
       </div>
     </div>
 
