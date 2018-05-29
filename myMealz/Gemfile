@@ -86,3 +86,5 @@ gem 'jbuilder', '>= 2.5'
  # gem 'therubyracer', :platforms => :ruby
 
 #end
+
+ruby "2.5.1"

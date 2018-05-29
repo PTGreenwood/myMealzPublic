@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e7fb5f14-2a53-4673-8303-741b254d2e9d" name="Default" comment="" />
+    <list default="true" id="e7fb5f14-2a53-4673-8303-741b254d2e9d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/myMealz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/myMealz.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myMealz/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/myMealz/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myMealz/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/myMealz/Gemfile.lock" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +63,8 @@
       <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myMealz/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="611">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -194,7 +198,6 @@
         <option value="$PROJECT_DIR$/myMealz/app/views/layouts/_dashboard_admin.html.erb" />
         <option value="$PROJECT_DIR$/myMealz/app/views/layouts/supports/_profile.html.erb" />
         <option value="$PROJECT_DIR$/myMealz/app/views/pages/index.html.erb" />
-        <option value="$PROJECT_DIR$/myMealz/Gemfile" />
         <option value="$PROJECT_DIR$/myMealz/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/myMealz/config/database.yml" />
         <option value="$PROJECT_DIR$/myMealz/config/environment.rb" />
@@ -203,6 +206,7 @@
         <option value="$PROJECT_DIR$/myMealz/db/migrate/20180512021326_add_contract_column_to_users.rb" />
         <option value="$PROJECT_DIR$/myMealz/db/migrate/20180512031900_alter_contracts_to_house_correct_cols.rb" />
         <option value="$PROJECT_DIR$/myMealz/db/migrate/20180512081823_change_ints_to_float.rb" />
+        <option value="$PROJECT_DIR$/myMealz/Gemfile" />
       </list>
     </option>
   </component>
@@ -243,77 +247,6 @@
             <path>
               <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
               <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="environments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-              <item name="migrate" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myMealzPublic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myMealzPublic" type="462c0819:PsiDirectoryNode" />
-              <item name="myMealz" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -469,7 +402,7 @@
       <workItem from="1527065920563" duration="21144000" />
       <workItem from="1527119220712" duration="20504000" />
       <workItem from="1527211732243" duration="544000" />
-      <workItem from="1527563261667" duration="3115000" />
+      <workItem from="1527563261667" duration="3974000" />
     </task>
     <task id="LOCAL-00001" summary="Changed IDE. Updating a few things to make sure it works. Hope it doesn't break.">
       <created>1526003434366</created>
@@ -482,7 +415,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176233000" />
+    <option name="totallyTimeSpent" value="177092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="830" extended-state="0" />
@@ -528,13 +461,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myMealz/app/mailers/application_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myMealz/app/views/layouts/supports/_plannedMeals.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -862,10 +788,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/myMealz/public/system/users/avatars/000/000/001/medium/32384002_2053884291306774_3353181813819310080_n.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/myMealz/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="611">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
