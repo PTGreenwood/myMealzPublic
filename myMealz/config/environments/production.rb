@@ -21,6 +21,32 @@ MYMEALZ::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  #Mailer stuff
+  #Uses for Devises Gem -- will probably change for the server
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #config.action_mailer.default_url_options ={ host: '137.74.175.51', port: 3001 }
+
+  #Mailing configuration
+  config.action_mailer.perform_caching = false
+
+  config.action_mailer.perform_deliveries = true
+
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+      user_name:      Rails.application.secrets.mail_username,
+      password:       Rails.application.secrets.mail_password,
+      domain:         'mail.google.com',
+      address:       'smtp.gmail.com',
+      port:          '587',
+      authentication: :plain,
+      enable_starttls_auto: true
+  }
+
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
@@ -65,4 +91,11 @@ MYMEALZ::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  #
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  end
 end
