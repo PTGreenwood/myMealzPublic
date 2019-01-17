@@ -3,8 +3,10 @@
 Built on the rails framework, myMealz aims to create a seamless integration between
 clients and their Deititian, and the changes that they may need to make.
 
-Updates to come.
+== Feature List
 
+Mailing Support, User Authentication and Validation (Account Recovery, Tokens, Password Resets), User Permissions (Admin, Dietitan
+and client), Stripe Payment Integration, Meal Planner (Custom - JS), Routing, Image upload + edit, Page2PDF.
 
 The RailsApps file structure can be seen below.
 
