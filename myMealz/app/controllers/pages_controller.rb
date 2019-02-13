@@ -57,6 +57,7 @@ class PagesController < ApplicationController
         tempUser.save
       end
     else
+
       redirect_to root_path, :notice=> "User not found!"
     end
 

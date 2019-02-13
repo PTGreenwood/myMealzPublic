@@ -14,7 +14,6 @@ class DietitianDashboardController < ApplicationController
     currentLoggedID = User.find_by_username(current_user.username)
 
     @nameDetails ||= []
-
     @usersAttached ||= []
     @contracts ||= []
     Contract.find_each do |item|
@@ -28,6 +27,7 @@ class DietitianDashboardController < ApplicationController
         @contracts.push(item)
       end
     end
+
 
     respond_to do |format|
       format.js
@@ -73,11 +73,13 @@ class DietitianDashboardController < ApplicationController
   def sendConnectionEmail
     received = JSON.parse(params[:request])
     safe = convertToSafe(received["userEmail"])
-
+    puts("safe email #{received} and #{safe}")
     if(User.find_by(email: safe))
       @userToEmail = User.find_by(email: safe)
+      puts("user to email: #{@userToEmail}")
       @dietToEmail = current_user
-      UserMailer.with(user: @userToEmail, dietitian: @dietToEmail).send_apd_to_user(@userToEmail,@dietToEmail).deliver_now
+      puts("diet to email: #{@dietToEmail}")
+      UserMailer.with(user: @userToEmail, dietitian: @dietToEmail).send_apd_to_user(@userToEmail, @dietToEmail).deliver_now
     end
 
 
